@@ -1,0 +1,439 @@
+# Yen-Ting (Tim) Chen
+
+> UCLA Statistics & Data Science student (B.S., March 2027) who builds multi-agent simulations, LLM evaluation systems and hidden-information games. Legal name Yen-Ting Chen; goes by Tim (also on his passport as an alternative name). Chinese name: 陳彥廷. Based in Los Angeles and Taiwan. Looking for software, AI engineering or data roles; available from April 2027.
+
+This is the full text of https://tim-chen-yen-ting.github.io/ in plain markdown (English version; the site also has a Traditional Chinese version). A short index is at https://tim-chen-yen-ting.github.io/llms.txt.
+
+# I build AI systems, then try very hard to prove they work.
+
+Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.
+
+UCLA · Statistics & Data Science · March 2027
+
+[GitHub](https://github.com/Tim-Chen-Yen-Ting) [LinkedIn](https://www.linkedin.com/in/tim-chen-yen-ting)
+
+## Selected work
+
+Two things worth a look if you only have a minute.
+
+### 🏠 Civilizism
+
+What if you simulated one person really well, then simulated a lot of them?
+
+A social simulation where nobody scripts the outcome. The model proposes actions, and a personality engine decides which one happens.
+
+[Watch a replay](https://civilizism.vercel.app/viewer)
+
+### 🧪 Phygtl · Agentic Systems Engineering Intern
+
+Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.
+
+- Every night, six simulated AI users hold 192 conversations with Lana (6 personas × 32 seeds), part of five evaluation pipelines I built.
+- A CI gate blocks any deploy that makes Lana worse (a regression above 5% on any axis, or any new hard failure), and I cut its per-PR cost 69% without losing signal.
+- An intent consolidation, tested on 1,547 utterances, adopted by the CEO and AI lead.
+
+## Overview
+
+I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)
+
+I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.
+
+## Education
+
+UCLA
+
+B.S. Statistics & Data Science, minor in Data Science Engineering
+
+Sept 2024 – Mar 2027
+
+That's two and a half years. I'm calling it efficiency, not a cry for help.
+
+Major GPA 3.96, Latin Honors candidate, Dean's Honors List
+
+## Projects at a glance
+
+The short version, for people skimming. Click any row for the whole story.
+
+## Toolbox
+
+Languages
+
+Python, TypeScript / JavaScript, R, SQL, HTML / CSS
+
+AI & data
+
+LLM APIs (Claude, GPT, Gemini), sentence-transformers, scikit-learn, XGBoost, pandas, NumPy, Pydantic
+
+Backend & infrastructure
+
+FastAPI, Node.js / Fastify, PostgreSQL, SQLite, Supabase, pytest, GitHub Actions
+
+Frontend & deployment
+
+React, Electron, Streamlit, Vercel, Render
+
+## Projects
+
+Click anything for the full story: the problem, the fix, and the bugs that made me question my life choices.
+
+## The non-work me
+
+Strong opinions, held loosely. Mostly about anime and food.
+
+### 📖 The Unobserved
+
+What if your power depended on how sharply you understood reality?
+
+An original fantasy novel · Traditional Chinese · in progress
+
+In this world, every attack on a living opponent gets turned into a hallucination, so their body stays untouched until you break their mind first. At the center are a boy who sealed away his ability to feel, and a girl who senses every possibility, including the ones she kills by choosing.
+
+Right now it's a world, a cast, and a storyboard through the first arc, planned to run past 800,000 words. The prose is the part I'm putting off. (The plan is AI help filling in between my beats, with me reviewing, and the repo says so openly.)
+
+[Read the world design](https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved)
+
+### Favorites
+
+🏐 Sport
+
+Volleyball. I play badly, but who can reject a sport that gives you a valid excuse to roll on the floor? Also, Haikyu is fire.
+
+🏴‍☠️ Anime
+
+One Piece. The only anime better than One Piece is One Piece before the time skip. After the time skip... that's hard to say... Oda, I know you can do better.
+
+📚 Light novel
+
+No Game No Life. Yuu Kamiya, where is the new volume? It's been ten years. Also, your books are a bit too smart for me, but that's what a battle of wits is.
+
+🎤 Artist
+
+The globally renowned pick: JJ Lin. The hot take: Ren Ran, no hesitation. I have a 15-hour Spotify playlist of only Ren Ran songs, and I didn't even know Spotify had that many.
+
+🍜 Food
+
+Lu wei (Taiwanese braised street snacks), no hesitation. Stir-fried noodles are a close second. In the US the closest thing is malatang, which is somehow expensive, so my US pick is Chick-fil-A. Thinking about it is making me want some right now.
+
+🐻 School
+
+U! C! L! A! Fight, fight, fight! I'm convinced the eight clap is written in our DNA.
+
+💬 Quote
+
+"We do these things not because they are easy, but because we thought they were going to be easy." John F. Kennedy did not say this. Maciej Cegłowski did.
+
+😴 Spare time
+
+Sleep and reading light novels when I'm broke, whiskey tasting when I'm rich. I'm a college student, so you can guess which one wins.
+
+## Say hi
+
+Email is the fastest way to reach me. I split my time between the US and Taiwan, so phone reception is a coin flip.
+
+[LinkedIn](https://www.linkedin.com/in/tim-chen-yen-ting) [GitHub](https://github.com/Tim-Chen-Yen-Ting)
+
+### Resumes
+
+Same person, three framings. Grab whichever fits the role.
+
+## The recruiter cheat sheet
+
+- Name: Yen-Ting (Tim) Chen. Tim is also on my passport as an alternative name.
+- Based in: Los Angeles and Taiwan
+- Languages: English and Mandarin Chinese (Traditional)
+- Graduating: March 2027, UCLA, B.S. Statistics & Data Science
+- Available: From April 2027
+- Looking for: Software, AI engineering, or data roles
+- Most recent role: Agentic Systems Engineering Intern, Phygtl (summer 2026)
+
+## Where & when
+
+Those are the live local times. Only one of the two does daylight saving, so the gap is 15 or 16 hours depending on the season. If you're scheduling an interview and want an overlap, my WhenWhere project will gladly do the math.
+
+### Questions you might have
+
+### Are you authorized to work in the US? Do you need sponsorship?
+
+Yes, I'm authorized to work in the US through F-1 OPT and STEM OPT, and I don't need visa sponsorship. Happy to talk through the details in an interview.
+
+### Which resume should I read?
+
+Hiring for software? Grab the software one. Forward-deployed or customer-facing engineering? The forward-deployed one. Stats or data science? The last one. Can't decide? The full CV has all of it, and I won't be offended by the length.
+
+### Is Tim your real name?
+
+My legal name is Yen-Ting Chen. I go by Tim, and Tim is also listed on my passport as an alternative name, so both are real and both work. Use whichever you like.
+
+### Can I see the private Civilizism code?
+
+Yes, on request. The public repo has the architecture, devlogs, research engines and sample outputs. The core simulation lives in a private repo, and I'm happy to walk someone through it.
+
+### Why is there so much humor on this site?
+
+Because my READMEs, devlogs and commit messages are like this too. You'd have found out eventually, and I'd rather you find out before the interview.
+
+### Good reasons to email me
+
+You're hiring for software, AI or data roles. You want to see the private Civilizism code. You found a bug in WhenWhere, or you beat my Stratego-Chess bot. You want to settle the One Piece post-timeskip debate. Or you are Yuu Kamiya, and you have news about No Game No Life.
+
+## 🧪 Phygtl · Agentic Systems Engineering Intern
+
+How do we know whether Lana is doing what she's supposed to do?
+
+### The problem
+
+Lana is Phygtl's AI concierge: a sheep in a bellhop uniform who helps people find something nearby or share something with their neighbors. She's live in production. When I got there, "is Lana better or worse after this change?" was answered mostly by hope, and quality meant someone chatting with her by hand. (Totally normal for a young product. Also how you get surprised later.) Nobody had built evaluation for her, so the whole eval codebase is mine.
+
+### My solution
+
+My first task was going from manual QA to a simulation environment. Six AI mock users with deliberately different personas hold 192 conversations with Lana every night (6 personas × 32 seeds across 7 buckets, each seed testing one specific behavior), like a performance review she can't skip. Then five evaluation pipelines read those conversations: core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged.
+
+On top of that came regression checks and CI/CD that answer the real question: are we making Lana better or worse? A pull-request gate blocks a deploy on any regression above 5% on an axis, or any new hard failure.
+
+### Challenges & fun stories
+
+Before I trusted any of it, I let the simulation run one full pass, then went through the results stored in the dev database by hand, labeling every verdict as a true positive, true negative, false positive or false negative, and tuned my tests (the mock users and the checks) accordingly. Unglamorous, and the reason the rest could be trusted. Later, a measured audit found my own mock user breaking character in 13 of 102 conversations (12.7%), and I fixed that so a failure would mean something about Lana, not about my simulator.
+
+The core idea is to split every check by how it can fail. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like "warm, but not sycophantic?", go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)
+
+I kept the judge model off the product's own model family, so it never grades its own kind. And the triage tool collapsed a 729-row human-review queue by re-deriving evidence from stored transcripts instead of asking a second LLM, then measured itself against 51 human-labeled rows rather than just asserting it was right.
+
+The PR gate originally ran 6 personas × 18 seeds = 108 cases on every pull request. I cut it to 3 × 11 = 33, a 69% reduction, based on measured evidence. One seed from the most expensive bucket stayed because it was the only place hallucination ever fired, and I picked personas for contrast, not for failure count, since a gate that overfits to known bugs misses the next one. Nothing was deleted, only deferred to the nightly 192.
+
+The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged. I wrote the proposal down in a dated document before testing it, then checked it on a 1,547-utterance set I built for the purpose, which broke a 39.9% baseline pass rate into three distinct root causes. The CEO approved it and the AI lead adopted it. Turns out "I have a test set" is a very persuasive sentence.
+
+### Tech stack & what I learned
+
+Python, pytest, GitHub Actions, LLM-as-judge, Simulated users, Protocol-typed ports
+
+This is where my vibe coding went from projects to commercial level: code that ran every night, gated real deploys, and that other engineers depended on. That raised the bar for everything: checks that can fail, a judge calibrated against something outside itself, tests for the tests.
+
+It also meant writing the conventions for a codebase that had none, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.
+
+## 🏠 Civilizism
+
+What if you simulated one person really well, then simulated a lot of them?
+
+### The problem
+
+Most social simulations hardcode the outcome: the rules say how groups behave, and, surprise, they behave that way. I wanted the opposite. Build one believable individual, then see whether groups, beliefs and norms show up on their own.
+
+### My solution
+
+Agents that perceive, remember, reflect and plan, with memory as the hub of everything. Whatever beliefs and relationships form are a side effect and the surprise my product gives me in return. The model only proposes actions; a deterministic utility engine called SHAPE scores each one against 43 personality coefficients (Schwartz values plus HEXACO traits) and decides which actually happens. Character is enforced by code, not by prompting: a wild horse is only a good ride if you put a mathematical rein on it.
+
+### Challenges & fun stories
+
+LLM agents drift based on vibes. My first four housemates snacked all day, paced between the kitchen and the living room, and once tried to blend smoothies from ingredients that didn't exist. (I'm told this is relatable.) Then they started hiding their sadness behind cheerful small talk, and I had to ask whether that was a bug or a personality trait. Humans do it constantly, so I refused to hardcode a fix and put the control in code instead.
+
+The validation story is the nerdy one: I'm checking the whole thing against Milgram, Asch, Robbers Cave and the Stanford Prison Experiment, with predictions written down before any run so I can't cheat. The Stanford case is built so that a null result agrees with the modern reading of that study. The harness is done; the scored runs are still pending...waiting on the day I feel like letting my laptop run through an entire night and hopefully not burning down while I sleep through it.
+
+### Tech stack & what I learned
+
+Python, NumPy, sentence-transformers, LiteLLM + Instructor, Pydantic, React
+
+Pydantic saved my life when parsing LLM output with regex was a living hell. This was also my first real step into vibe coding. And modelling humans, drawing on psychology and biology and turning it all into functions and memories, was a living hell of its own kind.
+
+### Demo & code
+
+[Watch a replay](https://civilizism.vercel.app/viewer) [Public repo](https://github.com/Tim-Chen-Yen-Ting/Civilizism) [STEME](https://github.com/Tim-Chen-Yen-Ting/STEME) [BLOC](https://github.com/Tim-Chen-Yen-Ting/BLOC)
+
+The core simulation code is private, and I'm happy to share it on request.
+
+## ♟️ Stratego-Chess
+
+What if chess no longer has a 100% capture rate?
+
+### The problem
+
+Chess is perfect information: everything is on the board. Stratego is all hidden information, but its pieces just shuffle forward one square at a time. What happens if you put the secrets onto chess movement?
+
+### My solution
+
+Welcome to the child of Chess and Stratego. Every piece moves like a chess piece (public), but also carries a hidden rank (secret) that decides what it beats. You can see how an enemy piece moves, never what it can capture. It is not chess: there's no checkmate, the king is just a piece, and passing is always legal. If you came to castle your way to safety, welcome.
+
+No friends? No worries. There's a bot to play against, and the game is LLM friendly: swap /g/ with /llm/ in the URL and a chatbot can play by fetching plain links.
+
+### Challenges & fun stories
+
+The fun problem is that information leaks everywhere. If the game announced "equal rank" and "bomb" differently, the announcement itself would reveal a hidden piece, so both read as the same mutual destruction. Engineers and the flag are both immune to bombs, because an immunity only one piece had would point right at it. If your setup timer runs out, the server deals you a random legal army, since a predictable default is a leaked army.
+
+The bot is a particle filter that keeps a running probability for what each of your pieces might be, and it plays a little randomly on purpose: a deterministic bot leaks its own ranks over enough games just by which move it reliably picks.
+
+### Tech stack & what I learned
+
+TypeScript, Fastify 5, Socket.IO, React 19, Vite, Zustand, Vitest
+
+My first step into TypeScript, and my first time seeing client/server lessons up close. As a non-CS student I learned those lessons the hard way, and thank god Claude Code exists. The biggest takeaway was to make a leak structurally impossible: hidden ranks leave the server through exactly one function, so there's no display filter to forget about.
+
+### Demo & code
+
+[Play it](https://stratego-chess.onrender.com/) [Code](https://github.com/Tim-Chen-Yen-Ting/stratego-chess)
+
+It's on free hosting, so the first load after a quiet spell can take up to a minute. Go stretch.
+
+## ⏰ WhenWhere
+
+What if you need to find some time to meet a friend on the other side of the globe?
+
+### The problem
+
+I kept doing LA-to-Taipei math in my head, and it's a worse problem than it sounds: only one of the two places does daylight saving, so the offset between them changes twice a year. And I'm lazy.
+
+### My solution
+
+Add cities to a day/night map, say when each person is free, and it shows when everyone overlaps. Every other city on the map turns green or red depending on whether it could still join. There's also a simple point-in-time converter. Daylight saving and half-hour timezones are handled properly, so you can trust this more than the old fashioned clock on your wall...as long as you can find your city on the map.
+
+### Challenges & fun stories
+
+For cities far enough apart, the real overlap can land on adjacent calendar days, so "same local window" has to be treated as a recurring daily pattern, not the date you typed. And the map itself fought me: Russia, Fiji and Antarctica drew spurious bands across the whole world because their polygons cross the antimeridian and the map library doesn't wrap. I had to split the rings.
+
+Custom cities were another puzzle. Their timezone is inferred from the nearest known city, longitude first, since timezones are basically longitude bands, with a distance cutoff so a far-away neighbor's political quirks (looking at you, Adelaide) don't come along.
+
+### Tech stack & what I learned
+
+Python, FastAPI, pytz, Leaflet, Intl API, pytest, Render
+
+Civilizism taught me how to build my own framework. WhenWhere taught me when not to, because that has another name: reinventing the wheel. Thank god pytz exists, and there are already datasets online. The timezone math also runs in the browser, mirroring a tested backend, so most interactions need no round trip.
+
+### Demo & code
+
+[Try it](https://whenwhere-65it.onrender.com/) [Code](https://github.com/Tim-Chen-Yen-Ting/WhenWhere)
+
+Free hosting again, so it may take a moment to wake up.
+
+## 🔔 Claude Code Status Card
+
+What if you could tell which Claude Code session needs you without alt-tabbing through all of them?
+
+### The problem
+
+With several Claude Code sessions open, I kept losing track of which one had finished and which was quietly stuck waiting on me.
+
+### My solution
+
+One always-on-top card per session. Blue is working, red means "come here", green is done. Click a card to jump to that repo's VS Code window, and a sound plays when something changes. Each repo gets its own animal and each session its own color, which is unnecessary and I stand by it. It's fed by global Claude Code hooks, so it doesn't care which editor you use.
+
+### Challenges & fun stories
+
+Favorite bug: log rotation briefly left an empty file, the widget read that as "start over", and dead sessions came back to life. I was, technically, the necromancer. The fix was an atomic rename.
+
+Another: sessions started from different subfolders counted as different repos, so one real project showed up as nine entries with nine icons. Now it walks up to the project root. And on Windows, Claude Code's hook layer eats backslashes in paths, which took an embarrassing amount of time to figure out.
+
+Known issue: the red "needs approval" state is inferred rather than signalled, and it's been unreliable since Claude Code defaulted to Auto mode. Turns out the best way to fix approval prompts is to have fewer of them.
+
+### Tech stack & what I learned
+
+Electron, Node.js, Claude Code hooks, PowerShell
+
+SaaS cannot be done in one day. I learned how hooks work and how to tell repos apart by reading hooks alone. And grinding out improvements took weeks, as a real user of my own tool. Day one I realized I couldn't recall which session was named what. Day two the icons were inconsistent across sessions. Day three I noticed I was still keeping an eye on my monitor, just not alt-tabbing anymore, so I added sound effects on top of the state changes.
+
+### Code
+
+[Code](https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card)
+
+## 🧠 STEME & BLOC
+
+What if you could turn "sincerity" into a number without calling an LLM every time?
+
+### The problem
+
+Civilizism constantly has to translate between words and numbers: how sincere is this person, do these two memories express the same belief, are these two beliefs fighting each other? Doing that with an LLM call every time would be slow, expensive and inconsistent.
+
+### My solution
+
+STEME (Semantic Transformation & Evaluation Mapping Engine) is the translation layer. It combines calibrated embedding similarity, zero-shot entailment classification, and an emotion classifier, and it can anchor abstract concepts like sincerity using definitions plus polar behavioral examples. BLOC (Belief & Label-Oriented Clustering) groups memories into beliefs that drift as new experiences arrive, and flags opposing beliefs as internal conflict.
+
+### Challenges & fun stories
+
+Raw cosine similarity is a trap: embedding scores crowd into a narrow band, so I had to recalibrate them to get any separation. And clustering by cosine similarity makes centroids crowd together as meaning drifts, so BLOC uses entailment to decide cluster membership instead.
+
+### Tech stack & what I learned
+
+Python, sentence-transformers, NLI models, scikit-learn
+
+I thought STEME (essentially 1-NN) was a universal tool, until the emotion projection pushed everything toward the center, and I realized I needed a different classification method. The chart shows real benchmark output: STEME scores 0.79–0.91 F1 across four embedding models on a synthetic tagging set, and BLOC gets 0.70 ARI on drifting data versus 0.57 for global k-means.
+
+### Code
+
+[STEME](https://github.com/Tim-Chen-Yen-Ting/STEME) [BLOC](https://github.com/Tim-Chen-Yen-Ting/BLOC)
+
+## 📬 Cold Email Automator
+
+What if the job hunt did its own legwork?
+
+### The problem
+
+Cold outreach works, but the middle is miserable: figuring out who to contact, finding a working address, and writing something that isn't obviously a template.
+
+### My solution
+
+A pipeline I use on my own job search. Claude researches targets with web search, an email verifier checks the addresses, a draft is written around one specific hook (a recent launch, a piece of news), and the email goes out through Gmail while a Google Sheets dashboard tracks status, bounces and replies. Yes, I automated the job hunt; someone still has to read the replies.
+
+### Challenges & fun stories
+
+Keeping it from researching the same companies forever (each run is told to skip the 100 most recent), and keeping it cheap: roughly a few cents per sent email depending on the provider. I also made the LLM layer provider-agnostic, so Claude, GPT-4o and Gemini are interchangeable from a config file.
+
+### Tech stack & what I learned
+
+Python, Pydantic, SQLite, Gmail API, Google Sheets API, Claude / GPT-4o / Gemini
+
+I learned OAuth the hard way: Gmail's credentials are not bypassable when you mass-send from scripts, no matter how clever you feel. Also, my wallet is crying from the API cost.
+
+### Code
+
+[Code](https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator)
+
+Feature-complete and tested. I'm deliberately holding off deploying it until the timing of my job search makes sense.
+
+## 💬 Past Messages Analyzer
+
+What if you could watch a friendship's tone drift over time?
+
+### The problem
+
+Years of messages with the same people, and no real sense of how those relationships changed. Weirdly emotional for a stats project.
+
+### My solution
+
+A pipeline that ingests Facebook Messenger and Instagram exports into a normalized SQLite database, then layers analysis on top: response latency, sentiment, and rolling drift in vocabulary and tone, with changepoint detection to flag when a relationship's style actually shifts. It reuses BLOC's incremental clustering to track relationship drift in embedding space.
+
+### Challenges & fun stories
+
+The real design question was privacy. They're my friends' messages, so the AI narration layer only sees summary statistics by default. A close-reading mode exists for statistically flagged anomalies, but it's opt-in and off by default, a deliberate trade of interpretability for privacy.
+
+### Tech stack & what I learned
+
+Python, SQLite, pandas, VADER, SnowNLP, PELT changepoints, Jupyter
+
+Unsurprisingly, you need two sentiment tools when your friends text in two languages. Also, welcome to the world of psychology: my stats skills get challenged by sentiment, at least according to the psych textbooks.
+
+### Code
+
+[Code](https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis)
+
+## 📚 Personal Knowledge Base
+
+What if your notes could tell you what you're missing?
+
+### The problem
+
+I built this for a non-technical user with a pile of documents and no way to ask questions across them, or to know what they hadn't covered yet.
+
+### My solution
+
+Drop in a PDF, Word doc or text file. An LLM turns it into a tagged wiki entry, you can ask questions against the whole knowledge base (or just some topics) with sources cited, and a per-topic "knowledge audit" lists your strengths, gaps and what to read next. Nothing humbles you like a list of what you haven't read. Yes, the front end is ugly. It works.
+
+### Challenges & fun stories
+
+Left alone, LLM tagging invents near-duplicates ("ml", "machine-learning", "machine learning") until the tags are useless, so each ingest shows the model the existing tags and tells it to reuse them. I also chose to answer questions by loading the relevant entries into the prompt instead of building a vector search. At this scale it's simpler, cheaper and easier to debug, and the sources are exactly what the model saw.
+
+### Tech stack & what I learned
+
+Python, Vercel serverless, Supabase, Gemini API, pdfplumber, Chart.js
+
+I know RAG, and this is when I learned when not to use RAG. Also, great minds think alike :) When I finished building the knowledge base, I realized I had built my own Gemini Notebook. Well done, past me.
+
+### Code
+
+[Code](https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager)

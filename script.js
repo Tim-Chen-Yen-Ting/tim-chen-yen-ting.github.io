@@ -54,7 +54,7 @@
   });
 
   // Language toggle (EN / 中文), remembered across visits
-  var TITLES = { "en": "Yen-Ting (Tim) Chen", "zh-Hant": "陳彥廷 (Tim)" };
+  var TITLES = { "en": "Yen-Ting (Tim) Chen | AI Systems & Evaluation, UCLA Statistics & Data Science", "zh-Hant": "陳彥廷 (Tim) | AI 系統與評測，UCLA 統計與資料科學" };
   function setLang(l) {
     if (l !== "en" && l !== "zh-Hant") l = "en";
     var root = document.documentElement;

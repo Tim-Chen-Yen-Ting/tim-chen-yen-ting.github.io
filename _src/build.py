@@ -75,13 +75,46 @@ def hook(en, zh):
 
 
 # ============================================================ PAGE ==========
+import json
+import datetime
+
+SITE = "https://tim-chen-yen-ting.github.io/"
+SEO_TITLE = "Yen-Ting (Tim) Chen | AI Systems &amp; Evaluation, UCLA Statistics &amp; Data Science"
+SEO_DESC = ("Yen-Ting (Tim) Chen is a UCLA Statistics &amp; Data Science student (B.S. 2027) who builds multi-agent "
+            "simulations (Civilizism), LLM evaluation systems and hidden-information games. Project stories, live demos and r&eacute;sum&eacute;s.")
+_person = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yen-Ting Chen",
+    "alternateName": ["Tim Chen", "Yen-Ting (Tim) Chen", "陳彥廷"],
+    "url": SITE,
+    "image": SITE + "assets/img/headshot.jpg",
+    "description": "UCLA Statistics & Data Science student (B.S. 2027) who builds multi-agent simulations, LLM evaluation systems and hidden-information games.",
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of California, Los Angeles"},
+    "knowsAbout": ["Multi-agent simulation", "LLM evaluation", "Statistics", "Machine learning", "Natural language processing", "Software engineering"],
+    "sameAs": ["https://github.com/Tim-Chen-Yen-Ting", "https://www.linkedin.com/in/tim-chen-yen-ting"],
+}
+JSONLD = json.dumps(_person, ensure_ascii=False)
+SEO_HEAD = f"""<title>{SEO_TITLE}</title>
+  <meta name="description" content="{SEO_DESC}">
+  <link rel="canonical" href="{SITE}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
+  <meta property="og:title" content="{SEO_TITLE}">
+  <meta property="og:description" content="{SEO_DESC}">
+  <meta property="og:url" content="{SITE}">
+  <meta property="og:image" content="{SITE}assets/img/civilizism.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_TW">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{JSONLD}</script>"""
+
 head = f"""<!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yen-Ting (Tim) Chen</title>
-  <meta name="description" content="Yen-Ting (Tim) Chen: UCLA Statistics &amp; Data Science. I build AI systems, then try very hard to prove they work.">
+  {SEO_HEAD}
   <meta name="color-scheme" content="dark">
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
@@ -724,3 +757,160 @@ for name in ("style.css", "script.js"):
 
 root.joinpath("index.html").write_text(html, encoding="utf-8")
 print("wrote index.html", len(html), "chars")
+
+
+# =====================================================================
+# Search + AI-friendly files: robots.txt, sitemap.xml, llms.txt, llms-full.txt
+# =====================================================================
+import re
+from html.parser import HTMLParser
+from urllib.parse import urljoin
+
+root = Path(__file__).resolve().parent.parent
+today = datetime.date.today().isoformat()
+
+(root / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n", encoding="utf-8")
+(root / "sitemap.xml").write_text(
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    f"  <url><loc>{SITE}</loc><lastmod>{today}</lastmod></url>\n"
+    "</urlset>\n", encoding="utf-8")
+
+SUMMARY = ("UCLA Statistics & Data Science student (B.S., March 2027) who builds multi-agent simulations, "
+           "LLM evaluation systems and hidden-information games. Legal name Yen-Ting Chen; goes by Tim (also on his passport as an alternative name). "
+           "Chinese name: 陳彥廷. Based in Los Angeles and Taiwan. Looking for software, AI engineering or data roles; available from April 2027.")
+
+LLMS = f"""# Yen-Ting (Tim) Chen
+
+> {SUMMARY}
+
+The website is a bilingual (English and Traditional Chinese) portfolio. Everything on it is also available as plain markdown in llms-full.txt.
+
+## Start here
+
+- [Full site content as one markdown file]({SITE}llms-full.txt): every page, project story and FAQ answer in plain text
+- [Website]({SITE}): the portfolio itself
+
+## Work
+
+- Phygtl, Agentic Systems Engineering Intern (summer 2026): sole author of the evaluation suite for Lana, an AI concierge. Built five evaluation pipelines from scratch, including a nightly simulation of 192 conversations (6 simulated-user personas x 32 seeds), CI regression gates, and an intent consolidation tested on 1,547 utterances that the CEO and AI lead adopted.
+
+## Projects
+
+- [Civilizism](https://github.com/Tim-Chen-Yen-Ting/Civilizism): multi-agent social simulation where an LLM proposes actions and a deterministic personality-utility engine (SHAPE) decides which one happens. Live replay at https://civilizism.vercel.app/viewer. Core code is private, available on request.
+- [Stratego-Chess](https://github.com/Tim-Chen-Yen-Ting/stratego-chess): original hidden-information game combining chess movement with secret Stratego-style ranks, with a belief-tracking bot and a plain-URL interface for LLM opponents. Playable at https://stratego-chess.onrender.com/
+- [WhenWhere](https://github.com/Tim-Chen-Yen-Ting/WhenWhere): daylight-saving-correct meeting planner on a live day/night map. Live at https://whenwhere-65it.onrender.com/
+- [Claude Code Status Card](https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card): always-on-top Electron widget showing the state of every Claude Code session.
+- [STEME](https://github.com/Tim-Chen-Yen-Ting/STEME) and [BLOC](https://github.com/Tim-Chen-Yen-Ting/BLOC): semantic scoring and incremental belief-clustering engines used by Civilizism.
+- [Cold Email Automator](https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator): end-to-end outreach pipeline (research, verify, draft, send, track).
+- [Past Messages Analyzer](https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis): privacy-first analysis of how a friendship's tone drifts over time.
+- [Personal Knowledge Base](https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager): upload documents, ask across them, audit knowledge gaps.
+- [The Unobserved](https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved): original Traditional Chinese fantasy novel in progress (world design and storyboard).
+
+## Résumés
+
+- [Software engineering résumé]({SITE}assets/resumes/YenTing_Tim_Chen_Resume_SWE.pdf)
+- [Forward-deployed engineering résumé]({SITE}assets/resumes/YenTing_Tim_Chen_Resume_FDE.pdf)
+- [Statistics and data science résumé]({SITE}assets/resumes/YenTing_Tim_Chen_Resume_StatsDS.pdf)
+- [Full CV]({SITE}assets/resumes/YenTing_Tim_Chen_CV.pdf): the long master document
+
+## Profiles
+
+- [GitHub](https://github.com/Tim-Chen-Yen-Ting)
+- [LinkedIn](https://www.linkedin.com/in/tim-chen-yen-ting)
+"""
+(root / "llms.txt").write_text(LLMS, encoding="utf-8")
+
+
+class _MD(HTMLParser):
+    """Turns the built page into markdown: English only, no duplicated tile/summary UI."""
+    VOID = {"img", "br", "hr", "meta", "link", "input"}
+    SKIP_TAGS = {"script", "style", "button", "nav", "footer", "header", "head", "title", "form", "img"}
+    SKIP_CLASSES = {"tabbar", "lang-toggle", "num", "eyebrow", "close"}
+    BLOCKS = {"p": "", "h1": "# ", "h2": "## ", "h3": "### ", "li": "- ", "summary": "### "}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.blocks, self.stack, self.cur, self.kind, self.anchor, self.drop = [], [], None, None, None, 0
+
+    def skipping(self):
+        return any(e["skip"] for e in self.stack)
+
+    def flush(self):
+        if self.cur is not None and self.kind:
+            text = re.sub(r"\s+", " ", self.cur).strip().rstrip(",").strip()
+            if text:
+                prefix = "- " if self.kind == "cheat" else self.BLOCKS.get(self.kind, "")
+                self.blocks.append((self.kind, prefix + text))
+        self.cur, self.kind = None, None
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        classes = set((a.get("class") or "").split())
+        if tag in self.VOID:
+            return
+        skip = (tag in self.SKIP_TAGS or a.get("lang") == "zh-Hant" or bool(classes & self.SKIP_CLASSES)
+                or a.get("id") == "d-resume")
+        self.stack.append({"tag": tag, "cls": classes, "skip": skip})
+        if self.skipping():
+            return
+        if tag in self.BLOCKS:
+            self.flush()
+            self.cur, self.kind = "", tag
+        elif tag == "div" and "cheat-row" in classes:
+            self.flush()
+            self.cur, self.kind = "", "cheat"
+        elif tag == "a":
+            href = a.get("href", "")
+            if href.startswith("#") or href.startswith("mailto:") or not href:
+                self.drop += 1
+                self.anchor = None
+            else:
+                self.anchor = {"href": urljoin(SITE, href), "text": ""}
+
+    def handle_endtag(self, tag):
+        if tag in self.VOID or not self.stack:
+            return
+        entry = self.stack.pop()
+        if entry["skip"] or self.skipping():
+            return
+        if tag in self.BLOCKS or (tag == "div" and "cheat-row" in entry["cls"]):
+            self.flush()
+        elif tag == "dt" and self.cur is not None:
+            self.cur += ": "
+        elif tag == "span" and self.stack and self.stack[-1]["tag"] == "p" and "chips" in self.stack[-1]["cls"] and self.cur is not None:
+            self.cur += ", "
+        elif tag == "a":
+            if self.anchor is not None and self.cur is not None:
+                t = re.sub(r"\s+", " ", self.anchor["text"]).strip()
+                if t:
+                    self.cur += f"[{t}]({self.anchor['href']})"
+            elif self.drop:
+                self.drop -= 1
+            self.anchor = None
+
+    def handle_data(self, data):
+        if self.skipping() or self.cur is None or self.drop:
+            return
+        if self.anchor is not None:
+            self.anchor["text"] += data
+        else:
+            self.cur += data
+
+    def markdown(self):
+        out, prev = [], None
+        for kind, text in self.blocks:
+            joiner = "\n" if (out and kind in ("li", "cheat") and prev == kind) else "\n\n"
+            out.append((joiner if out else "") + text)
+            prev = kind
+        return "".join(out)
+
+
+_md = _MD()
+_md.feed(html)
+FULL = (f"# Yen-Ting (Tim) Chen\n\n> {SUMMARY}\n\n"
+        "This is the full text of https://tim-chen-yen-ting.github.io/ in plain markdown (English version; the site also has a Traditional Chinese version). "
+        "A short index is at https://tim-chen-yen-ting.github.io/llms.txt.\n\n"
+        + _md.markdown() + "\n")
+(root / "llms-full.txt").write_text(FULL, encoding="utf-8")
+print("wrote robots.txt, sitemap.xml, llms.txt, llms-full.txt", len(FULL), "chars")

@@ -1,0 +1,38 @@
+# Yen-Ting (Tim) Chen
+
+> UCLA Statistics & Data Science student (B.S., March 2027) who builds multi-agent simulations, LLM evaluation systems and hidden-information games. Legal name Yen-Ting Chen; goes by Tim (also on his passport as an alternative name). Chinese name: 陳彥廷. Based in Los Angeles and Taiwan. Looking for software, AI engineering or data roles; available from April 2027.
+
+The website is a bilingual (English and Traditional Chinese) portfolio. Everything on it is also available as plain markdown in llms-full.txt.
+
+## Start here
+
+- [Full site content as one markdown file](https://tim-chen-yen-ting.github.io/llms-full.txt): every page, project story and FAQ answer in plain text
+- [Website](https://tim-chen-yen-ting.github.io/): the portfolio itself
+
+## Work
+
+- Phygtl, Agentic Systems Engineering Intern (summer 2026): sole author of the evaluation suite for Lana, an AI concierge. Built five evaluation pipelines from scratch, including a nightly simulation of 192 conversations (6 simulated-user personas x 32 seeds), CI regression gates, and an intent consolidation tested on 1,547 utterances that the CEO and AI lead adopted.
+
+## Projects
+
+- [Civilizism](https://github.com/Tim-Chen-Yen-Ting/Civilizism): multi-agent social simulation where an LLM proposes actions and a deterministic personality-utility engine (SHAPE) decides which one happens. Live replay at https://civilizism.vercel.app/viewer. Core code is private, available on request.
+- [Stratego-Chess](https://github.com/Tim-Chen-Yen-Ting/stratego-chess): original hidden-information game combining chess movement with secret Stratego-style ranks, with a belief-tracking bot and a plain-URL interface for LLM opponents. Playable at https://stratego-chess.onrender.com/
+- [WhenWhere](https://github.com/Tim-Chen-Yen-Ting/WhenWhere): daylight-saving-correct meeting planner on a live day/night map. Live at https://whenwhere-65it.onrender.com/
+- [Claude Code Status Card](https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card): always-on-top Electron widget showing the state of every Claude Code session.
+- [STEME](https://github.com/Tim-Chen-Yen-Ting/STEME) and [BLOC](https://github.com/Tim-Chen-Yen-Ting/BLOC): semantic scoring and incremental belief-clustering engines used by Civilizism.
+- [Cold Email Automator](https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator): end-to-end outreach pipeline (research, verify, draft, send, track).
+- [Past Messages Analyzer](https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis): privacy-first analysis of how a friendship's tone drifts over time.
+- [Personal Knowledge Base](https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager): upload documents, ask across them, audit knowledge gaps.
+- [The Unobserved](https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved): original Traditional Chinese fantasy novel in progress (world design and storyboard).
+
+## Résumés
+
+- [Software engineering résumé](https://tim-chen-yen-ting.github.io/assets/resumes/YenTing_Tim_Chen_Resume_SWE.pdf)
+- [Forward-deployed engineering résumé](https://tim-chen-yen-ting.github.io/assets/resumes/YenTing_Tim_Chen_Resume_FDE.pdf)
+- [Statistics and data science résumé](https://tim-chen-yen-ting.github.io/assets/resumes/YenTing_Tim_Chen_Resume_StatsDS.pdf)
+- [Full CV](https://tim-chen-yen-ting.github.io/assets/resumes/YenTing_Tim_Chen_CV.pdf): the long master document
+
+## Profiles
+
+- [GitHub](https://github.com/Tim-Chen-Yen-Ting)
+- [LinkedIn](https://www.linkedin.com/in/tim-chen-yen-ting)
