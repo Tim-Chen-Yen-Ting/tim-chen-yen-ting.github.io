@@ -116,13 +116,25 @@
         </div>
       </article>
 
-      <div class="cards">
-        <article class="card">
+      <article class="project stacked">
+        <img src="assets/img/statuscard.png" alt="Claude Code Status Card: Working, Needs Approval and Done cards, with the icon and color menus" loading="lazy">
+        <div class="project-body">
           <h3>Claude Code Status Card</h3>
-          <p class="meta">Electron · developer tool</p>
-          <p>An always-on-top widget showing the live state of every Claude Code session on my machine: working, needs approval, or done. Driven by global hooks, not editor integration. Includes a real race-condition diagnosis, where a truncate-before-write let a reader replay the log and resurrect dead sessions.</p>
-          <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card">Code →</a></p>
-        </article>
+          <p class="meta">Electron · a dev tool I built for myself</p>
+          <p>An always-on-top widget with one card per Claude Code session on my machine, so I can tell at a glance which one needs me without keeping VS Code focused. Blue means working, red means it needs approval or something's wrong, green means it's done and waiting for my next prompt. Each card is named after the start of your latest prompt, so you can tell sessions apart.</p>
+          <ul>
+            <li>Clicking a card jumps to that repo's VS Code window</li>
+            <li>Sound cues on red and green, with a volume slider</li>
+            <li>Icon per repo and color per session, both customizable and remembered across restarts</li>
+            <li>Fed by global Claude Code hooks, not editor integration, and written to fail silently so the widget can never break the session it watches</li>
+            <li>Diagnosed a real reader/writer race: a truncate-before-write let the widget replay its log and resurrect dead sessions. Fixed with an atomic rename.</li>
+          </ul>
+          <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card">Code</a></p>
+          <p class="note">Approval detection is inferred rather than signalled, and is less reliable now that Claude Code defaults to Auto mode.</p>
+        </div>
+      </article>
+
+      <div class="cards">
         <article class="card">
           <h3>Cold Email Automator</h3>
           <p class="meta">Python · the pipeline I use on my own job search</p>
