@@ -100,3 +100,37 @@ footer {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+/* ---- content layout ---- */
+.hero { display: flex; gap: 2rem; align-items: center; }
+.headshot { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--border); flex-shrink: 0; }
+.links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 0; }
+.button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.hero .button, .project .button { margin-top: 0; }
+
+.job { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; }
+.job-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.25rem 1rem; align-items: baseline; }
+.job-head h3 { margin: 0; }
+.date, .meta { color: var(--muted); font-size: 0.9rem; margin: 0; }
+.job ul, .project ul { padding-left: 1.2rem; }
+.job li, .project li { margin-bottom: 0.4rem; }
+
+.project { display: grid; grid-template-columns: 1fr 1.2fr; gap: 1.5rem; margin-bottom: 2rem; padding: 1.25rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; align-items: start; }
+.project img { width: 100%; border-radius: 8px; border: 1px solid var(--border); }
+.project h3 { margin-bottom: 0.1rem; }
+.project.featured { border-color: var(--accent); }
+.zh { font-weight: 400; color: var(--muted); font-size: 0.9em; }
+.note { color: var(--muted); font-size: 0.85rem; }
+
+.cards .card h3 { margin-bottom: 0.1rem; }
+.card.wide { margin-bottom: 1rem; }
+.plain { padding-left: 1.2rem; }
+.plain li { margin-bottom: 0.6rem; }
+.resumes { color: var(--muted); }
+
+@media (max-width: 720px) {
+  .hero { flex-direction: column; align-items: flex-start; padding-top: 3rem; }
+  .project { grid-template-columns: 1fr; }
+  .site-header { flex-direction: column; gap: 0.5rem; }
+  nav a { margin: 0 0.75rem 0 0; }
+}
