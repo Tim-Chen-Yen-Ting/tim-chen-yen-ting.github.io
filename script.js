@@ -26,20 +26,31 @@
     var d = document.getElementById(el.getAttribute("data-open"));
     if (d && d.showModal && !d.open) d.showModal();
   }
+  var openedByKeyboard = false;
   document.addEventListener("click", function (e) {
     if (e.target.closest("a")) return;
     var t = e.target.closest("[data-open]");
-    if (t) openFrom(t);
+    if (t) {
+      openedByKeyboard = e.detail === 0; // a real mouse click reports detail >= 1
+      openFrom(t);
+    }
   });
   document.addEventListener("keydown", function (e) {
     if ((e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches('[role="button"][data-open]')) {
       e.preventDefault();
+      openedByKeyboard = true;
       openFrom(e.target);
     }
   });
   document.querySelectorAll("dialog.modal").forEach(function (d) {
     // click on the backdrop (the dialog element itself) closes it
     d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
+    // Closing a dialog hands focus back to whatever opened it, which leaves it looking "hovered".
+    // Keep that for keyboard users; for mouse users, drop it.
+    d.addEventListener("close", function () {
+      var a = document.activeElement;
+      if (!openedByKeyboard && a && a !== document.body && a.blur) a.blur();
+    });
   });
 
   // Language toggle (EN / 中文), remembered across visits
