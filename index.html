@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tim Chen Yen-Ting</title>
+  <meta name="description" content="Personal website of Tim Chen Yen-Ting.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#top">Tim Chen</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Hello, I'm</p>
+      <h1>Tim Chen Yen-Ting</h1>
+      <p class="tagline">Welcome to my corner of the internet. Add a one-line description of what you do here.</p>
+      <a class="button" href="#contact">Get in touch</a>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>Write a short paragraph about yourself: your background, what you're interested in, and what you're working on right now.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Project One</h3>
+          <p>A short description of your first project.</p>
+        </article>
+        <article class="card">
+          <h3>Project Two</h3>
+          <p>A short description of your second project.</p>
+        </article>
+        <article class="card">
+          <h3>Project Three</h3>
+          <p>A short description of your third project.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:timchen678@gmail.com">timchen678@gmail.com</a> ·
+        <a href="https://github.com/Tim-Chen-Yen-Ting">GitHub</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Tim Chen Yen-Ting</p>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
