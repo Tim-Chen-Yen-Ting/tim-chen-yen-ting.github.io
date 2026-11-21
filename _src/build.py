@@ -45,7 +45,7 @@ def img_thumb(src, alt, cls=""):
     return f'<span class="thumb {cls}"><img src="assets/img/{src}" alt="{alt}" loading="lazy"></span>'
 
 
-def dialog(key, emoji_title, hook, img, sections, links_html, note=None, diagram=None, demo=False):
+def dialog(key, emoji_title, hook, img, sections, links_html=None, note=None, diagram=None, demo=False):
     out = [f'  <dialog class="modal" id="d-{key}" aria-labelledby="t-{key}">',
            '    <form method="dialog"><button class="close" aria-label="Close">×</button></form>']
     if img:
@@ -57,11 +57,12 @@ def dialog(key, emoji_title, hook, img, sections, links_html, note=None, diagram
         out.append(body)
         if diagram and i == 2:
             out.append(diagram)
-    if demo:
-        out.append("    " + H3(len(sections) + 1, "Demo &amp; code", "Demo 與原始碼"))
-    else:
-        out.append("    " + H3(len(sections) + 1, "Code", "原始碼"))
-    out.append(f'    <p class="links">{links_html}</p>')
+    if links_html:
+        if demo:
+            out.append("    " + H3(len(sections) + 1, "Demo &amp; code", "Demo 與原始碼"))
+        else:
+            out.append("    " + H3(len(sections) + 1, "Code", "原始碼"))
+        out.append(f'    <p class="links">{links_html}</p>')
     if note:
         out.append("    " + note)
     out.append("  </dialog>")
@@ -84,20 +85,20 @@ head = f"""<!DOCTYPE html>
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body data-tab="about">
+<body data-tab="home">
   <!-- Masthead: only shown on the About (home) tab. The tab bar below it sticks to the top on scroll. -->
   <div class="masthead">
     <div class="hero">
       <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
       <div>
-        <p class="eyebrow">{T("Hi, I'm Tim.", "嗨，我是 Tim。")}</p>
+        <p class="eyebrow">{T("Yen-Ting (Tim) Chen", "陳彥廷 (Tim)")}</p>
         <h1>{T("I build AI systems, then try very hard to prove they work.", "我打造 AI 系統，然後拚命證明它們真的有用。")}</h1>
         {P("Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.",
            "主要是多代理人模擬、LLM 評測，還有一款規則不會洩漏你秘密的西洋棋變體。", "tagline")}
-        {P("Legal name: Yen-Ting Chen, but I go by Tim. Tim is also on my passport as an alternative name, so both work. (HR, you're welcome.)",
-           "本名陳彥廷，但我都叫 Tim。Tim 也登記在我的護照上作為別名，所以兩個都通用。（人資同仁，不客氣。）", "name-note")}
+        <p class="hero-meta">{T("UCLA · Statistics &amp; Data Science · March 2027", "UCLA · 統計與資料科學 · 2027 年 3 月")}</p>
         <p class="links">
           {btn("#projects", "See what I've built", "看看我做了什麼")}
+          {btn("assets/resumes/YenTing_Tim_Chen_CV.pdf", "Résumé", "履歷", True)}
           {btn("https://github.com/Tim-Chen-Yen-Ting", "GitHub", "GitHub", True)}
           {btn("https://www.linkedin.com/in/yen-ting-tim-chen-303276329", "LinkedIn", "LinkedIn", True)}
         </p>
@@ -107,9 +108,9 @@ head = f"""<!DOCTYPE html>
 
   <div class="tabbar">
     <div class="tabbar-inner">
-      <a class="logo" href="#about">{T("Tim Chen", "陳彥廷 (Tim)")}</a>
+      <a class="logo" href="#home">{T("Tim Chen", "陳彥廷 (Tim)")}</a>
       <nav id="tabs" aria-label="Sections">
-        <a href="#about">{T("About", "關於我")}</a>
+        <a href="#home">{T("Home", "首頁")}</a>
         <a href="#projects">{T("Projects", "專案")}</a>
         <a href="#personal">{T("Personal", "個人")}</a>
         <a href="#contact">{T("Contact", "聯絡")}</a>
@@ -126,7 +127,32 @@ head = f"""<!DOCTYPE html>
 
 about = f"""
     <!-- ===================== 1. ABOUT ===================== -->
-    <section class="panel" id="panel-about" aria-label="About">
+    <section class="panel" id="panel-home" aria-label="Home">
+      <div class="block selected">
+        <h2>{T("Selected work", "精選作品")}</h2>
+        {P("Two things worth a look if you only have a minute.", "如果你只有一分鐘，看這兩樣就夠了。", "meta")}
+        <div class="selected-lead">
+          <img src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
+          <div>
+            <h3>🏠 Civilizism</h3>
+            {hook("What if you simulated one person really well, then simulated a lot of them?", "如果你把一個人模擬得夠好，再模擬很多個，會怎樣？")}
+            {P("A social simulation where nobody scripts the outcome. The model proposes actions, and a personality engine decides which one happens.", "一個沒人編劇本的社會模擬。模型負責提議行動，由人格引擎決定哪一個真的發生。")}
+            <p class="links">{btn("https://civilizism.vercel.app/viewer", "Watch a replay", "觀看回放")} <button type="button" class="button ghost" data-open="d-civilizism">{T("Full story", "完整故事")}</button></p>
+          </div>
+        </div>
+        <div class="selected-work-job">
+          <div class="job-head">
+            <h3>🧪 {T("Phygtl · Agentic Systems Engineering Intern", "Phygtl · Agentic Systems Engineering 實習生")}</h3>
+            <span class="date">{T("Summer 2026", "2026 夏季")}</span>
+          </div>
+          <ul class="two-lines">
+            <li>{T("Sole author of <strong>five evaluation pipelines</strong> for an AI concierge, built from scratch and still running when I left.", "獨自完成 AI 管家的<strong>五條評測管線</strong>，從零開始，我離開時仍在運作。")}</li>
+            <li>{T("Proposed an <strong>intent consolidation</strong> and tested it on a <strong>1,547-utterance</strong> set; the CEO and AI lead adopted it.", "提出<strong>意圖合併</strong>方案，並用 <strong>1,547 句</strong>測試集驗證；CEO 與 AI 負責人採納了它。")}</li>
+          </ul>
+          <p class="links"><button type="button" class="button ghost" data-open="d-phygtl">{T("Read the full story", "閱讀完整故事")}</button></p>
+        </div>
+      </div>
+
       <div class="two-col">
         <div class="block">
           <h2>{T("Overview", "概覽")}</h2>
@@ -143,21 +169,6 @@ about = f"""
           {P("That's two and a half years. I'm calling it efficiency, not a cry for help.", "兩年半。我稱之為效率，不是求救訊號。")}
           {chips([T("Major GPA 3.96", "主修 GPA 3.96"), T("Latin Honors candidate", "拉丁榮譽候選"), T("Dean's Honors List", "院長榮譽榜")])}
         </div>
-      </div>
-
-      <div class="block job">
-        <div class="job-head">
-          <h2>🧪 {T("Phygtl · Agentic Systems Engineering Intern", "Phygtl · Agentic Systems Engineering 實習生")}</h2>
-          <span class="date">{T("Summer 2026", "2026 夏季")}</span>
-        </div>
-        {hook("What happens when nobody can tell if the last change made your AI better or worse?",
-              "當沒人說得出上一次改動讓你的 AI 變好還是變差，會發生什麼事？")}
-        {P("Phygtl is an early-stage startup with an AI concierge named Lana, and when I got there, &quot;is Lana better or worse after this change?&quot; was answered mostly by hope. (Totally normal for a young product. Also how you get surprised later.) So I built the answer: five evaluation pipelines, from scratch, solo, still running when I left.",
-           "Phygtl 是一間早期新創，產品是名叫 Lana 的 AI 管家。我到職時，「這次改動讓 Lana 變好還是變差？」主要靠希望來回答。（對年輕產品來說很正常，也是日後會嚇到你的原因。）所以我做了答案：五條評測管線，從零開始、獨自完成，我離開時仍在運作。")}
-        {P("The idea behind all of it is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like &quot;warm, but not sycophantic?&quot;, go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)",
-           "核心想法是依「失敗方式」拆分每一項檢查。如果正確答案在設計上就已知（禁用詞、刻意埋進去的個資），就用純程式碼檢查，因為不穩定的檢查會毒害部署閘門。只有真正主觀的問題，例如「溫暖但不諂媚嗎？」，才交給 LLM 評審。而且每項檢查都附帶一個故意塞入違規的測試，因為如果檢查不可能失敗，全綠的結果就毫無意義。（對，我替我的測試寫了測試，而且我一點都不愧疚。）")}
-        {P("The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged, tested the claim on a 1,547-utterance set I built for it, and the CEO and AI lead adopted the change. Turns out &quot;I have a test set&quot; is a very persuasive sentence.",
-           "我最自豪的是：我主張把產品裡一堆重疊的意圖（intent）合併，用我為此建的 1,547 句測試集驗證了這個主張，CEO 和 AI 負責人最後採納了。事實證明「我有測試集」是非常有說服力的一句話。")}
       </div>
 """
 
@@ -427,6 +438,31 @@ contact = f"""
 
 # ============================================================ DIALOGS =======
 dialogs = []
+
+dialogs.append(dialog(
+    "phygtl", "🧪 Phygtl · " + T("Agentic Systems Engineering Intern", "Agentic Systems Engineering 實習生"),
+    hook("What happens when nobody can tell if the last change made your AI better or worse?", "當沒人說得出上一次改動讓你的 AI 變好還是變差，會發生什麼事？"),
+    None,
+    [
+        ("The problem", "問題",
+         P("Phygtl is an early-stage startup with an AI concierge named Lana, and when I got there, &quot;is Lana better or worse after this change?&quot; was answered mostly by hope. (Totally normal for a young product. Also how you get surprised later.)",
+           "Phygtl 是一間早期新創，產品是名叫 Lana 的 AI 管家。我到職時，「這次改動讓 Lana 變好還是變差？」主要靠希望來回答。（對年輕產品來說很正常，也是日後會嚇到你的原因。）")),
+        ("My solution", "我的解法",
+         P("I was the only person building the fix: <strong>five evaluation pipelines</strong>, from scratch. Core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged. A nightly run covers every persona across every scenario, and a pull-request gate blocks a deploy on any regression above 5% or any new hard failure.",
+           "我是唯一負責補上這塊的人：從零打造<strong>五條評測管線</strong>。核心對話評測、資訊擷取與個資檢查、配對與解鎖流程、對話政策與安全，以及自動分流其他管線標出的問題。每晚的排程會跑完每個角色在每個情境下的組合，而 pull request 閘門會在任何指標退步超過 5%、或出現任何新的硬性失敗時擋下部署。")),
+        ("Challenges &amp; fun stories", "挑戰與趣事",
+         P("The core idea is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like &quot;warm, but not sycophantic?&quot;, go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)",
+           "核心想法是依「失敗方式」拆分每一項檢查。如果正確答案在設計上就已知（禁用詞、刻意埋進去的個資），就用純程式碼檢查，因為不穩定的檢查會毒害部署閘門。只有真正主觀的問題，例如「溫暖但不諂媚嗎？」，才交給 LLM 評審。而且每項檢查都附帶一個故意塞入違規的測試，因為如果檢查不可能失敗，全綠的結果就毫無意義。（對，我替我的測試寫了測試，而且我一點都不愧疚。）") + "\n" +
+         P("I kept the judge model off the product's own model family, so it never grades its own kind. And the triage tool collapsed a 729-row human-review queue by re-deriving evidence from stored transcripts instead of asking a second LLM, then measured itself against 51 human-labeled rows rather than just asserting it was right.",
+           "我讓評審模型和產品使用的模型家族分開，這樣它就不會替自己人打分數。而分流工具把 729 筆待人工審核的佇列收斂掉，靠的是從儲存的對話紀錄重新推導證據、而不是再問一個 LLM，並且拿 51 筆人工標註的資料來衡量自己，而不是光說自己是對的。") + "\n" +
+         P("The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged. I wrote the proposal down in a dated document before testing it, then checked it on a 1,547-utterance set I built for the purpose, which broke a 39.9% baseline pass rate into three distinct root causes. The CEO approved it and the AI lead adopted it. Turns out &quot;I have a test set&quot; is a very persuasive sentence.",
+           "我最自豪的是：我主張把產品裡一堆重疊的意圖（intent）合併。我先把提案寫進一份標註日期的文件，再用我為此建的 1,547 句測試集驗證，把 39.9% 的基準通過率拆解成三個不同的根本原因。CEO 核准了，AI 負責人採納了。事實證明「我有測試集」是非常有說服力的一句話。")),
+        ("Tech stack &amp; what I learned", "技術堆疊與我學到的",
+         chips(["Python", "pytest", "GitHub Actions", "LLM-as-judge", "Protocol-typed ports"]) + "\n" +
+         P("Evaluation is a design problem, not a testing afterthought: the checks have to be able to fail, and the judge needs something outside itself to be calibrated against. Working in a codebase with no conventions also meant writing them, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.",
+           "評測是設計問題，不是事後才補的測試：檢查必須有可能失敗，評審也需要有個自身以外的東西來校準。在一個沒有慣例的程式碼庫裡工作，也代表慣例得由我來寫，所以我寫了給 agent 看的慣例文件，以及每個測試框架的 README。我的角色只負責評測，所以當我發現真正的產品缺陷時，我會把每一個都寫成交接給負責它的工程師。")),
+    ],
+))
 
 dialogs.append(dialog(
     "civilizism", "🏠 Civilizism",

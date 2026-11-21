@@ -4,8 +4,9 @@
   var ids = panels.map(function (p) { return p.id.replace("panel-", ""); });
 
   function show() {
-    var id = (location.hash || "#about").slice(1);
-    if (ids.indexOf(id) === -1) id = "about";
+    var id = (location.hash || "#home").slice(1);
+    if (id === "about") id = "home"; // old links still work
+    if (ids.indexOf(id) === -1) id = "home";
     document.body.setAttribute("data-tab", id);
     panels.forEach(function (p) { p.classList.toggle("active", p.id === "panel-" + id); });
     tabLinks.forEach(function (a) {

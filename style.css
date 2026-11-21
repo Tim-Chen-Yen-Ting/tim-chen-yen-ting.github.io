@@ -29,8 +29,8 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
 
 /* ---------- header / tabs ---------- */
 .masthead { max-width: 1040px; margin: 0 auto; padding: 2.5rem 1.5rem 1.8rem; }
-.js body:not([data-tab="about"]) .masthead { display: none; }
-.name-note { color: var(--muted); font-size: 0.92rem; max-width: 38rem; }
+.js body:not([data-tab="home"]) .masthead { display: none; }
+.hero-meta { color: var(--muted); font-size: 1rem; letter-spacing: 0.02em; margin: 0 0 0.4rem; }
 .tabbar {
   position: sticky; top: 0; z-index: 20;
   background: rgba(11, 15, 20, 0.88);
@@ -241,7 +241,23 @@ footer {
   nav { order: 3; width: 100%; flex-wrap: wrap; }
   main { padding: 0 1rem 2.5rem; }
   .hero { flex-direction: column; align-items: flex-start; }
-  .two-col, .gallery, .facts, .downloads, .glance { grid-template-columns: 1fr; }
+  .two-col, .gallery, .facts, .downloads, .glance, .selected-lead { grid-template-columns: 1fr; }
   .cheat-row { grid-template-columns: 1fr; gap: 0.1rem; }
   dialog.modal { padding: 1.2rem 1.1rem 1.6rem; }
 }
+
+/* ---------- home: selected work ---------- */
+.selected-lead {
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.5rem; align-items: center;
+  margin-top: 1rem; padding: 1.1rem; background: var(--surface-2);
+  border: 1px solid var(--accent); border-radius: 14px;
+}
+.selected-lead img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; }
+.selected-lead h3 { margin: 0 0 0.2rem; font-size: 1.4rem; }
+.selected-work-job { margin-top: 1rem; padding: 1.1rem 1.3rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; }
+.selected-work-job h3 { margin: 0; font-size: 1.1rem; }
+.two-lines { margin: 0.7rem 0 0; padding-left: 1.2rem; }
+.two-lines li { margin-bottom: 0.45rem; }
+button.button { font: inherit; font-size: 0.95rem; cursor: pointer; }
+
+.selected + .two-col { margin-top: 1.2rem; }

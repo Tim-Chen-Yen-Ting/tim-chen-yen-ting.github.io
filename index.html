@@ -9,20 +9,20 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body data-tab="about">
+<body data-tab="home">
   <!-- Masthead: only shown on the About (home) tab. The tab bar below it sticks to the top on scroll. -->
   <div class="masthead">
     <div class="hero">
       <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
       <div>
-        <p class="eyebrow"><span lang="en">Hi, I'm Tim.</span><span lang="zh-Hant">嗨，我是 Tim。</span></p>
+        <p class="eyebrow"><span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></p>
         <h1><span lang="en">I build AI systems, then try very hard to prove they work.</span><span lang="zh-Hant">我打造 AI 系統，然後拚命證明它們真的有用。</span></h1>
         <p class="tagline" lang="en">Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.</p>
 <p class="tagline" lang="zh-Hant">主要是多代理人模擬、LLM 評測，還有一款規則不會洩漏你秘密的西洋棋變體。</p>
-        <p class="name-note" lang="en">Legal name: Yen-Ting Chen, but I go by Tim. Tim is also on my passport as an alternative name, so both work. (HR, you're welcome.)</p>
-<p class="name-note" lang="zh-Hant">本名陳彥廷，但我都叫 Tim。Tim 也登記在我的護照上作為別名，所以兩個都通用。（人資同仁，不客氣。）</p>
+        <p class="hero-meta"><span lang="en">UCLA · Statistics &amp; Data Science · March 2027</span><span lang="zh-Hant">UCLA · 統計與資料科學 · 2027 年 3 月</span></p>
         <p class="links">
           <a class="button" href="#projects"><span lang="en">See what I've built</span><span lang="zh-Hant">看看我做了什麼</span></a>
+          <a class="button ghost" href="assets/resumes/YenTing_Tim_Chen_CV.pdf"><span lang="en">Résumé</span><span lang="zh-Hant">履歷</span></a>
           <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting"><span lang="en">GitHub</span><span lang="zh-Hant">GitHub</span></a>
           <a class="button ghost" href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329"><span lang="en">LinkedIn</span><span lang="zh-Hant">LinkedIn</span></a>
         </p>
@@ -32,9 +32,9 @@
 
   <div class="tabbar">
     <div class="tabbar-inner">
-      <a class="logo" href="#about"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
+      <a class="logo" href="#home"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
       <nav id="tabs" aria-label="Sections">
-        <a href="#about"><span lang="en">About</span><span lang="zh-Hant">關於我</span></a>
+        <a href="#home"><span lang="en">Home</span><span lang="zh-Hant">首頁</span></a>
         <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
         <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
         <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
@@ -49,7 +49,35 @@
   <main>
 
     <!-- ===================== 1. ABOUT ===================== -->
-    <section class="panel" id="panel-about" aria-label="About">
+    <section class="panel" id="panel-home" aria-label="Home">
+      <div class="block selected">
+        <h2><span lang="en">Selected work</span><span lang="zh-Hant">精選作品</span></h2>
+        <p class="meta" lang="en">Two things worth a look if you only have a minute.</p>
+<p class="meta" lang="zh-Hant">如果你只有一分鐘，看這兩樣就夠了。</p>
+        <div class="selected-lead">
+          <img src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
+          <div>
+            <h3>🏠 Civilizism</h3>
+            <p class="hook" lang="en">What if you simulated one person really well, then simulated a lot of them?</p>
+<p class="hook" lang="zh-Hant">如果你把一個人模擬得夠好，再模擬很多個，會怎樣？</p>
+            <p lang="en">A social simulation where nobody scripts the outcome. The model proposes actions, and a personality engine decides which one happens.</p>
+<p lang="zh-Hant">一個沒人編劇本的社會模擬。模型負責提議行動，由人格引擎決定哪一個真的發生。</p>
+            <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer"><span lang="en">Watch a replay</span><span lang="zh-Hant">觀看回放</span></a> <button type="button" class="button ghost" data-open="d-civilizism"><span lang="en">Full story</span><span lang="zh-Hant">完整故事</span></button></p>
+          </div>
+        </div>
+        <div class="selected-work-job">
+          <div class="job-head">
+            <h3>🧪 <span lang="en">Phygtl · Agentic Systems Engineering Intern</span><span lang="zh-Hant">Phygtl · Agentic Systems Engineering 實習生</span></h3>
+            <span class="date"><span lang="en">Summer 2026</span><span lang="zh-Hant">2026 夏季</span></span>
+          </div>
+          <ul class="two-lines">
+            <li><span lang="en">Sole author of <strong>five evaluation pipelines</strong> for an AI concierge, built from scratch and still running when I left.</span><span lang="zh-Hant">獨自完成 AI 管家的<strong>五條評測管線</strong>，從零開始，我離開時仍在運作。</span></li>
+            <li><span lang="en">Proposed an <strong>intent consolidation</strong> and tested it on a <strong>1,547-utterance</strong> set; the CEO and AI lead adopted it.</span><span lang="zh-Hant">提出<strong>意圖合併</strong>方案，並用 <strong>1,547 句</strong>測試集驗證；CEO 與 AI 負責人採納了它。</span></li>
+          </ul>
+          <p class="links"><button type="button" class="button ghost" data-open="d-phygtl"><span lang="en">Read the full story</span><span lang="zh-Hant">閱讀完整故事</span></button></p>
+        </div>
+      </div>
+
       <div class="two-col">
         <div class="block">
           <h2><span lang="en">Overview</span><span lang="zh-Hant">概覽</span></h2>
@@ -68,21 +96,6 @@
 <p lang="zh-Hant">兩年半。我稱之為效率，不是求救訊號。</p>
           <p class="chips"><span><span lang="en">Major GPA 3.96</span><span lang="zh-Hant">主修 GPA 3.96</span></span><span><span lang="en">Latin Honors candidate</span><span lang="zh-Hant">拉丁榮譽候選</span></span><span><span lang="en">Dean's Honors List</span><span lang="zh-Hant">院長榮譽榜</span></span></p>
         </div>
-      </div>
-
-      <div class="block job">
-        <div class="job-head">
-          <h2>🧪 <span lang="en">Phygtl · Agentic Systems Engineering Intern</span><span lang="zh-Hant">Phygtl · Agentic Systems Engineering 實習生</span></h2>
-          <span class="date"><span lang="en">Summer 2026</span><span lang="zh-Hant">2026 夏季</span></span>
-        </div>
-        <p class="hook" lang="en">What happens when nobody can tell if the last change made your AI better or worse?</p>
-<p class="hook" lang="zh-Hant">當沒人說得出上一次改動讓你的 AI 變好還是變差，會發生什麼事？</p>
-        <p lang="en">Phygtl is an early-stage startup with an AI concierge named Lana, and when I got there, &quot;is Lana better or worse after this change?&quot; was answered mostly by hope. (Totally normal for a young product. Also how you get surprised later.) So I built the answer: five evaluation pipelines, from scratch, solo, still running when I left.</p>
-<p lang="zh-Hant">Phygtl 是一間早期新創，產品是名叫 Lana 的 AI 管家。我到職時，「這次改動讓 Lana 變好還是變差？」主要靠希望來回答。（對年輕產品來說很正常，也是日後會嚇到你的原因。）所以我做了答案：五條評測管線，從零開始、獨自完成，我離開時仍在運作。</p>
-        <p lang="en">The idea behind all of it is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like &quot;warm, but not sycophantic?&quot;, go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)</p>
-<p lang="zh-Hant">核心想法是依「失敗方式」拆分每一項檢查。如果正確答案在設計上就已知（禁用詞、刻意埋進去的個資），就用純程式碼檢查，因為不穩定的檢查會毒害部署閘門。只有真正主觀的問題，例如「溫暖但不諂媚嗎？」，才交給 LLM 評審。而且每項檢查都附帶一個故意塞入違規的測試，因為如果檢查不可能失敗，全綠的結果就毫無意義。（對，我替我的測試寫了測試，而且我一點都不愧疚。）</p>
-        <p lang="en">The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged, tested the claim on a 1,547-utterance set I built for it, and the CEO and AI lead adopted the change. Turns out &quot;I have a test set&quot; is a very persuasive sentence.</p>
-<p lang="zh-Hant">我最自豪的是：我主張把產品裡一堆重疊的意圖（intent）合併，用我為此建的 1,547 句測試集驗證了這個主張，CEO 和 AI 負責人最後採納了。事實證明「我有測試集」是非常有說服力的一句話。</p>
       </div>
 
       <div class="block">
@@ -397,6 +410,30 @@
   </footer>
 
   <!-- ===================== PROJECT DIALOGS ===================== -->
+
+  <dialog class="modal" id="d-phygtl" aria-labelledby="t-phygtl">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="t-phygtl">🧪 Phygtl · <span lang="en">Agentic Systems Engineering Intern</span><span lang="zh-Hant">Agentic Systems Engineering 實習生</span></h2>
+    <p class="hook" lang="en">What happens when nobody can tell if the last change made your AI better or worse?</p>
+<p class="hook" lang="zh-Hant">當沒人說得出上一次改動讓你的 AI 變好還是變差，會發生什麼事？</p>
+    <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>
+<p lang="en">Phygtl is an early-stage startup with an AI concierge named Lana, and when I got there, &quot;is Lana better or worse after this change?&quot; was answered mostly by hope. (Totally normal for a young product. Also how you get surprised later.)</p>
+<p lang="zh-Hant">Phygtl 是一間早期新創，產品是名叫 Lana 的 AI 管家。我到職時，「這次改動讓 Lana 變好還是變差？」主要靠希望來回答。（對年輕產品來說很正常，也是日後會嚇到你的原因。）</p>
+    <h3><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h3>
+<p lang="en">I was the only person building the fix: <strong>five evaluation pipelines</strong>, from scratch. Core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged. A nightly run covers every persona across every scenario, and a pull-request gate blocks a deploy on any regression above 5% or any new hard failure.</p>
+<p lang="zh-Hant">我是唯一負責補上這塊的人：從零打造<strong>五條評測管線</strong>。核心對話評測、資訊擷取與個資檢查、配對與解鎖流程、對話政策與安全，以及自動分流其他管線標出的問題。每晚的排程會跑完每個角色在每個情境下的組合，而 pull request 閘門會在任何指標退步超過 5%、或出現任何新的硬性失敗時擋下部署。</p>
+    <h3><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h3>
+<p lang="en">The core idea is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like &quot;warm, but not sycophantic?&quot;, go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)</p>
+<p lang="zh-Hant">核心想法是依「失敗方式」拆分每一項檢查。如果正確答案在設計上就已知（禁用詞、刻意埋進去的個資），就用純程式碼檢查，因為不穩定的檢查會毒害部署閘門。只有真正主觀的問題，例如「溫暖但不諂媚嗎？」，才交給 LLM 評審。而且每項檢查都附帶一個故意塞入違規的測試，因為如果檢查不可能失敗，全綠的結果就毫無意義。（對，我替我的測試寫了測試，而且我一點都不愧疚。）</p>
+<p lang="en">I kept the judge model off the product's own model family, so it never grades its own kind. And the triage tool collapsed a 729-row human-review queue by re-deriving evidence from stored transcripts instead of asking a second LLM, then measured itself against 51 human-labeled rows rather than just asserting it was right.</p>
+<p lang="zh-Hant">我讓評審模型和產品使用的模型家族分開，這樣它就不會替自己人打分數。而分流工具把 729 筆待人工審核的佇列收斂掉，靠的是從儲存的對話紀錄重新推導證據、而不是再問一個 LLM，並且拿 51 筆人工標註的資料來衡量自己，而不是光說自己是對的。</p>
+<p lang="en">The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged. I wrote the proposal down in a dated document before testing it, then checked it on a 1,547-utterance set I built for the purpose, which broke a 39.9% baseline pass rate into three distinct root causes. The CEO approved it and the AI lead adopted it. Turns out &quot;I have a test set&quot; is a very persuasive sentence.</p>
+<p lang="zh-Hant">我最自豪的是：我主張把產品裡一堆重疊的意圖（intent）合併。我先把提案寫進一份標註日期的文件，再用我為此建的 1,547 句測試集驗證，把 39.9% 的基準通過率拆解成三個不同的根本原因。CEO 核准了，AI 負責人採納了。事實證明「我有測試集」是非常有說服力的一句話。</p>
+    <h3><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h3>
+<p class="chips"><span>Python</span><span>pytest</span><span>GitHub Actions</span><span>LLM-as-judge</span><span>Protocol-typed ports</span></p>
+<p lang="en">Evaluation is a design problem, not a testing afterthought: the checks have to be able to fail, and the judge needs something outside itself to be calibrated against. Working in a codebase with no conventions also meant writing them, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.</p>
+<p lang="zh-Hant">評測是設計問題，不是事後才補的測試：檢查必須有可能失敗，評審也需要有個自身以外的東西來校準。在一個沒有慣例的程式碼庫裡工作，也代表慣例得由我來寫，所以我寫了給 agent 看的慣例文件，以及每個測試框架的 README。我的角色只負責評測，所以當我發現真正的產品缺陷時，我會把每一個都寫成交接給負責它的工程師。</p>
+  </dialog>
 
   <dialog class="modal" id="d-civilizism" aria-labelledby="t-civilizism">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
