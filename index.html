@@ -49,12 +49,13 @@
       <h2>Work</h2>
       <article class="job">
         <div class="job-head">
-          <h3>Phygtl · Agentic Systems Engineering Intern</h3>
+          <h3>🧪 Phygtl · Agentic Systems Engineering Intern</h3>
           <span class="date">Summer 2026</span>
         </div>
-        <p>Phygtl is an early-stage startup with an AI concierge named Lana. When I joined, "did that change make Lana better or worse?" had no real answer, which is normal for a young product and exactly the kind of thing that bites later. I was the only person building the fix: five evaluation pipelines, from scratch, still running when I left.</p>
+        <p class="hook">What happens when nobody can tell if the last change made your AI better or worse?</p>
+        <p>Phygtl is an early-stage startup with an AI concierge named Lana, and when I got there, "is Lana better or worse after this change?" was answered mostly by hope. (Totally normal for a young product. Also how you get surprised later.) So I built the answer: five evaluation pipelines, from scratch, solo, still running when I left.</p>
         <p>The idea behind all of it is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like "warm, but not sycophantic?", go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)</p>
-        <p>The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged, tested the claim on a 1,547-utterance set I built for it, and the CEO and AI lead adopted the change.</p>
+        <p>The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged, tested the claim on a 1,547-utterance set I built for it, and the CEO and AI lead adopted the change. Turns out "I have a test set" is a very persuasive sentence.</p>
       </article>
     </section>
 
@@ -64,11 +65,11 @@
       <article class="project featured">
         <img src="assets/img/civilizism.png" alt="Civilizism replay viewer with an agent's emotion and biology panel open next to the housemates' chat log" loading="lazy">
         <div class="project-body">
-          <h3>Civilizism</h3>
-          <p class="hook">What if you simulated one person really well, then simulated a lot of them? 🏠</p>
-          <p>It's a social simulation where nobody scripts the outcome. Each agent perceives, remembers, reflects and plans, and whatever beliefs and relationships form are a side effect.</p>
-          <p>The catch with LLM agents is that they drift. My first four housemates snacked all day, paced between the kitchen and the living room, and once tried to blend smoothies from ingredients that didn't exist. (I'm told this is relatable.) So now the model only <em>proposes</em> actions, and a utility engine built on personality psychology decides which one happens. Character is enforced by code, not by prompting: a wild horse is only a good ride if you put a mathematical rein on it.</p>
-          <p>I'm checking the whole thing against Milgram, Asch, Robbers Cave and the Stanford Prison Experiment, with predictions written down before any run so I can't cheat. The harness is done; the scored runs are still pending.</p>
+          <h3>🏠 Civilizism</h3>
+          <p class="hook">What if you simulated one person really well, then simulated a lot of them?</p>
+          <p>It's a social simulation where nobody scripts the outcome. Each agent perceives, remembers, reflects and plans, and whatever beliefs and relationships form are a side effect and the surprise my product gives me in return.</p>
+          <p>The catch with LLM agents is that they drift based on vibes. My first four housemates snacked all day, paced between the kitchen and the living room, and once tried to blend smoothies from ingredients that didn't exist. (I'm told this is relatable.) So now the model only <em>proposes</em> actions, and a utility engine built on personality psychology decides which one happens. Character is enforced by code, not by prompting: a wild horse is only a good ride if you put a mathematical rein on it.</p>
+          <p>I'm checking the whole thing against Milgram, Asch, Robbers Cave and the Stanford Prison Experiment, with predictions written down before any run so I can't cheat. The harness is done; the scored runs are still pending...waiting on the day I feel like letting my laptop running through an entire night and hopefully not burning down while I sleep through it.</p>
           <p class="chips"><span>Python</span><span>React</span><span>multi-agent</span><span>embeddings</span></p>
           <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer">Watch a replay</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Civilizism">Public repo</a></p>
           <p class="note">The core code is private, and I'm happy to share it on request. It runs on two engines I also wrote: <a href="https://github.com/Tim-Chen-Yen-Ting/STEME">STEME</a> for semantic scoring and <a href="https://github.com/Tim-Chen-Yen-Ting/BLOC">BLOC</a> for clustering beliefs.</p>
@@ -78,57 +79,61 @@
       <article class="project">
         <img src="assets/img/stratego.png" alt="A Stratego-Chess game against the bot, with the public record showing a bomb fizzle" loading="lazy">
         <div class="project-body">
-          <h3>Stratego-Chess <span class="zh">行軍西洋棋</span></h3>
-          <p class="hook">Chess movement. Secret Stratego ranks. Trust no pawn. ♟️</p>
-          <p>A game I designed: every piece moves like a chess piece, but also carries a hidden rank that decides what it beats. You can see how an enemy piece moves, never what it can capture. It is not chess: there's no checkmate, the king is just a piece, and passing is always legal. If you came to castle your way to safety, welcome.</p>
+          <h3>♟️ Stratego-Chess <span class="zh">行軍西洋棋</span></h3>
+          <p class="hook">What if chess no longer has a 100% capture rate?</p>
+          <p>Welcome to the child of Chess and Stratego: every piece moves like a chess piece, but also carries a hidden rank that decides what it beats. You can see how an enemy piece moves, never what it can capture. It is not chess: there's no checkmate, the king is just a piece, and passing is always legal. If you came to castle your way to safety, welcome.</p>
           <p>The fun engineering problem is information. The rules, and even the server's messages, are built so nothing can leak a hidden rank. The bot keeps a running probability for what each of your pieces might be, and plays a little randomly on purpose, because a predictable bot leaks its own ranks. There's also a plain-URL interface so a chatbot can play by fetching links.</p>
+          <p>No friends? No worries. I've got a bot for you to play with, and the game is LLM friendly once you swap <code>/g/</code> with <code>/llm/</code> in the url too!</p>
           <p class="chips"><span>TypeScript</span><span>Fastify</span><span>React</span><span>WebSockets</span></p>
           <p class="links"><a class="button" href="https://stratego-chess.onrender.com/">Play it</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/stratego-chess">Code</a></p>
-          <p class="note">It's on free hosting, so the first load after a quiet spell can take up to a minute.</p>
+          <p class="note">It's on free hosting, so the first load after a quiet spell can take up to a minute. Go stretch.</p>
         </div>
       </article>
 
       <article class="project">
         <img src="assets/img/whenwhere.png" alt="WhenWhere showing the Los Angeles and Taipei overlap on a world map" loading="lazy">
         <div class="project-body">
-          <h3>WhenWhere</h3>
-          <p class="hook">A meeting planner for people who live in more than one timezone.</p>
-          <p>It started as a tool for me, because doing LA-to-Taipei math in my head was getting old. Add cities to a day/night map, say when each person is free, and it shows when everyone overlaps. Every other city on the map turns green or red depending on whether it could still join.</p>
-          <p>Daylight saving and half-hour timezones are handled properly, which is exactly where most tools quietly give up.</p>
+          <h3>⏰ WhenWhere</h3>
+          <p class="hook">What if you need to find some time to meet with your friend on the other side of the globe?</p>
+          <p>It started as a tool for me, because doing LA-to-Taipei math in my head was getting old and I'm lazy. Add cities to a day/night map, say when each person is free, and it shows when everyone overlaps. Every other city on the map turns green or red depending on whether it could still join. A simple time conversion available too.</p>
+          <p>Daylight saving and half-hour timezones are handled properly, so you can trust this more than the old fashioned clock on your wall...as long as you can find your city on the map.</p>
           <p class="chips"><span>Python</span><span>FastAPI</span><span>Leaflet</span></p>
           <p class="links"><a class="button" href="https://whenwhere-65it.onrender.com/">Try it</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/WhenWhere">Code</a></p>
-          <p class="note">Free hosting, so it may take a moment to wake up.</p>
+          <p class="note">Free hosting again, so it may take a moment to wake up.</p>
         </div>
       </article>
 
       <article class="project stacked">
         <img src="assets/img/statuscard.png" alt="Claude Code Status Card: Working, Needs Approval and Done cards, plus the icon and color menus" loading="lazy">
         <div class="project-body">
-          <h3>Claude Code Status Card</h3>
-          <p class="hook">A tiny widget so I always know which Claude Code session is waiting on me.</p>
-          <p>With several sessions open, I kept losing track of which one had finished and which was quietly stuck. So: one always-on-top card per session. Blue is working, red needs me, green is done. Click a card to jump to that repo's VS Code window, and a sound plays when something changes. Each session also gets its own animal and color, which is unnecessary and I stand by it.</p>
+          <h3>🔔 Claude Code Status Card</h3>
+          <p class="hook">What if you could tell which Claude Code session is waiting on you without alt-tabbing through all of them?</p>
+          <p>With several sessions open, I kept losing track of which one had finished and which was quietly stuck. So: one always-on-top card per session. Blue is working, red means "come here", green is done. Click a card to jump to that repo's VS Code window, and a sound plays when something changes. Each session also gets its own animal and color, which is unnecessary and I stand by it.</p>
           <p>Favorite bug: log rotation briefly left an empty file, the widget read that as "start over", and dead sessions came back to life. I was, technically, the necromancer. The fix was an atomic rename.</p>
           <p class="chips"><span>Electron</span><span>Node</span><span>Claude Code hooks</span></p>
           <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card">Code</a></p>
-          <p class="note">Known limitation: the red "needs approval" state is inferred rather than signalled, so it's unreliable now that Claude Code defaults to Auto mode.</p>
+          <p class="note">Known issue: the red "needs approval" state is inferred rather than signalled, and it's been unreliable since Claude Code defaulted to Auto mode. Turns out the best way to fix approval prompts is to have fewer of them.</p>
         </div>
       </article>
 
       <h3 class="subhead">Smaller things</h3>
       <div class="cards">
         <article class="card">
-          <h3>Cold Email Automator</h3>
-          <p>The pipeline I use on my own job search. It researches who to contact, drafts a note built around something specific about them, sends it, and tracks replies. Works with Claude, GPT or Gemini. Yes, I automated the job hunt; someone still has to read the replies.</p>
+          <h3>📬 Cold Email Automator</h3>
+          <p class="hook">What if the job hunt did its own legwork?</p>
+          <p>It's the pipeline I use on my own job search: researches who to contact, drafts a note built around something specific about them, sends it, and tracks replies. Works with Claude, GPT or Gemini. Yes, I automated the job hunt; someone still has to read the replies.</p>
           <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator">Code →</a></p>
         </article>
         <article class="card">
-          <h3>Past Messages Analyzer</h3>
-          <p>Turns my old Messenger and Instagram exports into a database and tracks how a friendship's tone drifts over time. The AI only sees summary statistics unless I opt in, because they're my friends' messages. Weirdly emotional for a stats project.</p>
+          <h3>💬 Past Messages Analyzer</h3>
+          <p class="hook">What if you could watch a friendship's tone drift over time?</p>
+          <p>It turns my old Messenger and Instagram exports into a database and tracks the drift. The AI only sees summary statistics unless I opt in, because they're my friends' messages. Weirdly emotional for a stats project.</p>
           <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis">Code →</a></p>
         </article>
         <article class="card">
-          <h3>Personal Knowledge Base</h3>
-          <p>A tool I built for a non-technical user: drop in documents, ask questions across them, and get an audit of where their knowledge has gaps. Nothing humbles you like a list of what you haven't read.</p>
+          <h3>📚 Personal Knowledge Base</h3>
+          <p class="hook">What if your notes could tell you what you're missing?</p>
+          <p>I built this for a non-technical user: drop in documents, ask questions across them, and get an audit of where the gaps are. Nothing humbles you like a list of what you haven't read.</p>
           <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager">Code →</a></p>
         </article>
       </div>
@@ -137,9 +142,10 @@
     <section id="beyond">
       <h2>Beyond code</h2>
       <article class="card wide">
-        <h3>《未然？已然。》 <span class="zh">The Unobserved</span></h3>
+        <h3>📖 《未然？已然。》 <span class="zh">The Unobserved</span></h3>
+        <p class="hook">What if your power depended on how sharply you understood reality?</p>
         <p class="meta">An original fantasy novel · Traditional Chinese · in progress</p>
-        <p>In this world your power depends on how sharply you understand reality, and every attack on a living opponent gets turned into a hallucination. Their body stays untouched until you break their mind first. At the center are a boy who sealed away his ability to feel, and a girl who senses every possibility, including the ones she kills by choosing.</p>
+        <p>In this world, every attack on a living opponent gets turned into a hallucination, so their body stays untouched until you break their mind first. At the center are a boy who sealed away his ability to feel, and a girl who senses every possibility, including the ones she kills by choosing.</p>
         <p>Right now it's a world, a cast, and a storyboard through the first arc, planned to run past 800,000 words. The prose is the part I'm putting off. (The plan is AI help filling in between my beats, with me reviewing, and the repo says so openly.)</p>
         <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved">Read the world design →</a></p>
       </article>
