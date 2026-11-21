@@ -693,5 +693,14 @@ tail = """
 """
 
 html = head + about + projects + personal + contact + tail
-Path(__file__).resolve().parent.parent.joinpath("index.html").write_text(html, encoding="utf-8")
+
+# Cache-busting: append a content hash so browsers re-download CSS/JS whenever they change
+# (GitHub Pages lets browsers cache files for 10 minutes, which made fixes look "not deployed").
+import hashlib
+root = Path(__file__).resolve().parent.parent
+for name in ("style.css", "script.js"):
+    h = hashlib.md5((root / name).read_bytes()).hexdigest()[:8]
+    html = html.replace(f'href="{name}"', f'href="{name}?v={h}"').replace(f'src="{name}"', f'src="{name}?v={h}"')
+
+root.joinpath("index.html").write_text(html, encoding="utf-8")
 print("wrote index.html", len(html), "chars")
