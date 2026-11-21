@@ -352,12 +352,14 @@ cheat = "".join([
     fact_row("Languages", "語言", "English and Mandarin Chinese (Traditional)", "英文與中文（繁體）"),
     fact_row("Graduating", "畢業時間", "March 2027, UCLA, B.S. Statistics &amp; Data Science", "2027 年 3 月，UCLA 統計與資料科學學士"),
     fact_row("Available", "可到職時間", "From April 2027", "2027 年 4 月起"),
-    fact_row("Work authorization", "工作許可", "Authorized to work in the US via F-1 OPT and STEM OPT, with no visa sponsorship needed during that period", "透過 F-1 OPT 與 STEM OPT 取得在美工作授權，該期間不需要簽證擔保"),
     fact_row("Looking for", "正在尋找", "Software, AI engineering, or data roles", "軟體、AI 工程或資料相關職位"),
     fact_row("Most recent role", "最近的職位", "Agentic Systems Engineering Intern, Phygtl (summer 2026)", "Phygtl 的 Agentic Systems Engineering 實習生（2026 夏季）"),
 ])
 
 faqs = "".join([
+    faq("Are you authorized to work in the US? Do you need sponsorship?", "你有在美國工作的許可嗎？需要簽證擔保嗎？",
+        "Yes, I'm authorized to work in the US through F-1 OPT and STEM OPT, and I don't need visa sponsorship. Happy to talk through the details in an interview.",
+        "有，我透過 F-1 OPT 與 STEM OPT 取得在美國工作的授權，而且不需要簽證擔保。細節很樂意在面試時聊。"),
     faq("Which resume should I read?", "我該看哪一份履歷？",
         "Hiring for software? Grab the software one. Forward-deployed or customer-facing engineering? The forward-deployed one. Stats or data science? The last one. Can't decide? The full CV has all of it, and I won't be offended by the length.",
         "找軟體工程師？看軟體那份。Forward-deployed 或貼近客戶的工程？看 forward-deployed 那份。統計或資料科學？看最後一份。下不了決定？完整 CV 什麼都有，我不會介意它很長。"),
