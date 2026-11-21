@@ -5,167 +5,428 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tim (Yen-Ting) Chen</title>
   <meta name="description" content="Tim (Yen-Ting) Chen: UCLA Statistics &amp; Data Science. I build AI systems, then try very hard to prove they work.">
+  <meta name="color-scheme" content="dark">
+  <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="#top">Tim Chen</a>
-    <nav>
-      <a href="#work">Work</a>
+    <a class="logo" href="#about">Tim Chen</a>
+    <nav id="tabs" aria-label="Sections">
+      <a href="#about">About</a>
       <a href="#projects">Projects</a>
-      <a href="#beyond">Beyond code</a>
+      <a href="#personal">Personal</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
-      <div>
-        <p class="eyebrow">Hi, I'm Tim.</p>
-        <h1>I build AI systems, then try very hard to prove they work.</h1>
-        <p class="tagline">Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets. Statistics &amp; Data Science at UCLA, graduating March 2027.</p>
-        <p class="links">
-          <a class="button" href="#projects">See what I've built</a>
-          <a class="button ghost" href="assets/resumes/YenTing_Tim_Chen_CV.pdf">CV</a>
-          <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting">GitHub</a>
-          <a class="button ghost" href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329">LinkedIn</a>
-        </p>
+  <main>
+
+    <!-- ===================== 1. ABOUT ===================== -->
+    <section class="panel" id="about" aria-label="About">
+      <div class="hero">
+        <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
+        <div>
+          <p class="eyebrow">Hi, I'm Tim.</p>
+          <h1>I build AI systems, then try very hard to prove they work.</h1>
+          <p class="tagline">Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.</p>
+          <p class="links">
+            <a class="button" href="#projects">See what I've built</a>
+            <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting">GitHub</a>
+            <a class="button ghost" href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329">LinkedIn</a>
+          </p>
+        </div>
       </div>
-    </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)</p>
-      <p>I split my time between Los Angeles and Taiwan, write fiction in Traditional Chinese, and played volleyball libero, the position where your whole job is diving at things so somebody else looks good. I'm looking for software, AI engineering, or data roles, and I'm happy to talk about any of the three.</p>
-      <p class="resumes">Resumes by role:
-        <a href="assets/resumes/YenTing_Tim_Chen_Resume_SWE.pdf">Software</a> ·
-        <a href="assets/resumes/YenTing_Tim_Chen_Resume_FDE.pdf">Forward-deployed</a> ·
-        <a href="assets/resumes/YenTing_Tim_Chen_Resume_StatsDS.pdf">Stats / Data Science</a>
-      </p>
-    </section>
+      <div class="two-col">
+        <div class="block">
+          <h2>Overview</h2>
+          <p>I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)</p>
+          <p>I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.</p>
+        </div>
+        <div class="block">
+          <h2>Education</h2>
+          <p class="edu-school">UCLA</p>
+          <p>B.S. Statistics &amp; Data Science, minor in Data Science Engineering</p>
+          <p class="edu-dates">Sept 2024 – Mar 2027</p>
+          <p>That's two and a half years. I'm calling it efficiency, not a cry for help.</p>
+          <p class="chips"><span>Major GPA 3.96</span><span>Latin Honors candidate</span><span>Dean's Honors List</span></p>
+        </div>
+      </div>
 
-    <section id="work">
-      <h2>Work</h2>
-      <article class="job">
+      <div class="block job">
         <div class="job-head">
-          <h3>🧪 Phygtl · Agentic Systems Engineering Intern</h3>
+          <h2>🧪 Phygtl · Agentic Systems Engineering Intern</h2>
           <span class="date">Summer 2026</span>
         </div>
         <p class="hook">What happens when nobody can tell if the last change made your AI better or worse?</p>
         <p>Phygtl is an early-stage startup with an AI concierge named Lana, and when I got there, "is Lana better or worse after this change?" was answered mostly by hope. (Totally normal for a young product. Also how you get surprised later.) So I built the answer: five evaluation pipelines, from scratch, solo, still running when I left.</p>
         <p>The idea behind all of it is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like "warm, but not sycophantic?", go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)</p>
         <p>The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged, tested the claim on a 1,547-utterance set I built for it, and the CEO and AI lead adopted the change. Turns out "I have a test set" is a very persuasive sentence.</p>
-      </article>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-
-      <article class="project featured">
-        <img src="assets/img/civilizism.png" alt="Civilizism replay viewer with an agent's emotion and biology panel open next to the housemates' chat log" loading="lazy">
-        <div class="project-body">
-          <h3>🏠 Civilizism</h3>
-          <p class="hook">What if you simulated one person really well, then simulated a lot of them?</p>
-          <p>It's a social simulation where nobody scripts the outcome. Each agent perceives, remembers, reflects and plans, and whatever beliefs and relationships form are a side effect and the surprise my product gives me in return.</p>
-          <p>The catch with LLM agents is that they drift based on vibes. My first four housemates snacked all day, paced between the kitchen and the living room, and once tried to blend smoothies from ingredients that didn't exist. (I'm told this is relatable.) So now the model only <em>proposes</em> actions, and a utility engine built on personality psychology decides which one happens. Character is enforced by code, not by prompting: a wild horse is only a good ride if you put a mathematical rein on it.</p>
-          <p>I'm checking the whole thing against Milgram, Asch, Robbers Cave and the Stanford Prison Experiment, with predictions written down before any run so I can't cheat. The harness is done; the scored runs are still pending...waiting on the day I feel like letting my laptop running through an entire night and hopefully not burning down while I sleep through it.</p>
-          <p class="chips"><span>Python</span><span>React</span><span>multi-agent</span><span>embeddings</span></p>
-          <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer">Watch a replay</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Civilizism">Public repo</a></p>
-          <p class="note">The core code is private, and I'm happy to share it on request. It runs on two engines I also wrote: <a href="https://github.com/Tim-Chen-Yen-Ting/STEME">STEME</a> for semantic scoring and <a href="https://github.com/Tim-Chen-Yen-Ting/BLOC">BLOC</a> for clustering beliefs.</p>
-        </div>
-      </article>
-
-      <article class="project">
-        <img src="assets/img/stratego.png" alt="A Stratego-Chess game against the bot, with the public record showing a bomb fizzle" loading="lazy">
-        <div class="project-body">
-          <h3>♟️ Stratego-Chess <span class="zh">行軍西洋棋</span></h3>
-          <p class="hook">What if chess no longer has a 100% capture rate?</p>
-          <p>Welcome to the child of Chess and Stratego: every piece moves like a chess piece, but also carries a hidden rank that decides what it beats. You can see how an enemy piece moves, never what it can capture. It is not chess: there's no checkmate, the king is just a piece, and passing is always legal. If you came to castle your way to safety, welcome.</p>
-          <p>The fun engineering problem is information. The rules, and even the server's messages, are built so nothing can leak a hidden rank. The bot keeps a running probability for what each of your pieces might be, and plays a little randomly on purpose, because a predictable bot leaks its own ranks. There's also a plain-URL interface so a chatbot can play by fetching links.</p>
-          <p>No friends? No worries. I've got a bot for you to play with, and the game is LLM friendly once you swap <code>/g/</code> with <code>/llm/</code> in the url too!</p>
-          <p class="chips"><span>TypeScript</span><span>Fastify</span><span>React</span><span>WebSockets</span></p>
-          <p class="links"><a class="button" href="https://stratego-chess.onrender.com/">Play it</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/stratego-chess">Code</a></p>
-          <p class="note">It's on free hosting, so the first load after a quiet spell can take up to a minute. Go stretch.</p>
-        </div>
-      </article>
-
-      <article class="project">
-        <img src="assets/img/whenwhere.png" alt="WhenWhere showing the Los Angeles and Taipei overlap on a world map" loading="lazy">
-        <div class="project-body">
-          <h3>⏰ WhenWhere</h3>
-          <p class="hook">What if you need to find some time to meet with your friend on the other side of the globe?</p>
-          <p>It started as a tool for me, because doing LA-to-Taipei math in my head was getting old and I'm lazy. Add cities to a day/night map, say when each person is free, and it shows when everyone overlaps. Every other city on the map turns green or red depending on whether it could still join. A simple time conversion available too.</p>
-          <p>Daylight saving and half-hour timezones are handled properly, so you can trust this more than the old fashioned clock on your wall...as long as you can find your city on the map.</p>
-          <p class="chips"><span>Python</span><span>FastAPI</span><span>Leaflet</span></p>
-          <p class="links"><a class="button" href="https://whenwhere-65it.onrender.com/">Try it</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/WhenWhere">Code</a></p>
-          <p class="note">Free hosting again, so it may take a moment to wake up.</p>
-        </div>
-      </article>
-
-      <article class="project stacked">
-        <img src="assets/img/statuscard.png" alt="Claude Code Status Card: Working, Needs Approval and Done cards, plus the icon and color menus" loading="lazy">
-        <div class="project-body">
-          <h3>🔔 Claude Code Status Card</h3>
-          <p class="hook">What if you could tell which Claude Code session is waiting on you without alt-tabbing through all of them?</p>
-          <p>With several sessions open, I kept losing track of which one had finished and which was quietly stuck. So: one always-on-top card per session. Blue is working, red means "come here", green is done. Click a card to jump to that repo's VS Code window, and a sound plays when something changes. Each session also gets its own animal and color, which is unnecessary and I stand by it.</p>
-          <p>Favorite bug: log rotation briefly left an empty file, the widget read that as "start over", and dead sessions came back to life. I was, technically, the necromancer. The fix was an atomic rename.</p>
-          <p class="chips"><span>Electron</span><span>Node</span><span>Claude Code hooks</span></p>
-          <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card">Code</a></p>
-          <p class="note">Known issue: the red "needs approval" state is inferred rather than signalled, and it's been unreliable since Claude Code defaulted to Auto mode. Turns out the best way to fix approval prompts is to have fewer of them.</p>
-        </div>
-      </article>
-
-      <h3 class="subhead">Smaller things</h3>
-      <div class="cards">
-        <article class="card">
-          <h3>📬 Cold Email Automator</h3>
-          <p class="hook">What if the job hunt did its own legwork?</p>
-          <p>It's the pipeline I use on my own job search: researches who to contact, drafts a note built around something specific about them, sends it, and tracks replies. Works with Claude, GPT or Gemini. Yes, I automated the job hunt; someone still has to read the replies.</p>
-          <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator">Code →</a></p>
-        </article>
-        <article class="card">
-          <h3>💬 Past Messages Analyzer</h3>
-          <p class="hook">What if you could watch a friendship's tone drift over time?</p>
-          <p>It turns my old Messenger and Instagram exports into a database and tracks the drift. The AI only sees summary statistics unless I opt in, because they're my friends' messages. Weirdly emotional for a stats project.</p>
-          <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis">Code →</a></p>
-        </article>
-        <article class="card">
-          <h3>📚 Personal Knowledge Base</h3>
-          <p class="hook">What if your notes could tell you what you're missing?</p>
-          <p>I built this for a non-technical user: drop in documents, ask questions across them, and get an audit of where the gaps are. Nothing humbles you like a list of what you haven't read.</p>
-          <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager">Code →</a></p>
-        </article>
       </div>
     </section>
 
-    <section id="beyond">
-      <h2>Beyond code</h2>
-      <article class="card wide">
+    <!-- ===================== 2. PROJECTS ===================== -->
+    <section class="panel" id="projects" aria-label="Projects">
+      <h2 class="panel-title">Projects</h2>
+      <p class="panel-sub">Click anything for the full story: the problem, the fix, and the bugs that made me question my life choices.</p>
+
+      <div class="gallery">
+
+        <button class="tile" data-open="d-civilizism">
+          <span class="thumb"><img src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy"></span>
+          <span class="tile-body">
+            <span class="tile-title">🏠 Civilizism</span>
+            <span class="tile-q">What if you simulated one person really well, then simulated a lot of them?</span>
+            <span class="tile-a">A social simulation where nobody scripts the outcome. Beliefs and relationships are just a side effect.</span>
+            <span class="tile-more">Open →</span>
+          </span>
+        </button>
+
+        <button class="tile" data-open="d-stratego">
+          <span class="thumb"><img src="assets/img/stratego.png" alt="Stratego-Chess game screenshot" loading="lazy"></span>
+          <span class="tile-body">
+            <span class="tile-title">♟️ Stratego-Chess <span class="zh">行軍西洋棋</span></span>
+            <span class="tile-q">What if chess no longer has a 100% capture rate?</span>
+            <span class="tile-a">The child of Chess and Stratego. Pieces move like chess, but secret ranks decide who wins the fight.</span>
+            <span class="tile-more">Open →</span>
+          </span>
+        </button>
+
+        <button class="tile" data-open="d-whenwhere">
+          <span class="thumb"><img src="assets/img/whenwhere.png" alt="WhenWhere world map" loading="lazy"></span>
+          <span class="tile-body">
+            <span class="tile-title">⏰ WhenWhere</span>
+            <span class="tile-q">What if you need to find some time to meet a friend on the other side of the globe?</span>
+            <span class="tile-a">A day/night map that shows when everyone overlaps, and who else could still join.</span>
+            <span class="tile-more">Open →</span>
+          </span>
+        </button>
+
+        <button class="tile" data-open="d-statuscard">
+          <span class="thumb contain"><img src="assets/img/statuscard.png" alt="Claude Code Status Card" loading="lazy"></span>
+          <span class="tile-body">
+            <span class="tile-title">🔔 Claude Code Status Card</span>
+            <span class="tile-q">What if you could tell which Claude Code session needs you without alt-tabbing through all of them?</span>
+            <span class="tile-a">A tiny always-on-top card per session: blue is working, red is "come here", green is done.</span>
+            <span class="tile-more">Open →</span>
+          </span>
+        </button>
+
+        <button class="tile" data-open="d-steme">
+          <span class="thumb art art-steme" aria-hidden="true">🧠</span>
+          <span class="tile-body">
+            <span class="tile-title">🧠 STEME &amp; BLOC</span>
+            <span class="tile-q">What if you could turn "sincerity" into a number without calling an LLM every time?</span>
+            <span class="tile-a">Two research engines under Civilizism: semantic scoring and incremental belief clustering.</span>
+            <span class="tile-more">Open →</span>
+          </span>
+        </button>
+
+        <button class="tile" data-open="d-coldemail">
+          <span class="thumb art art-email" aria-hidden="true">📬</span>
+          <span class="tile-body">
+            <span class="tile-title">📬 Cold Email Automator</span>
+            <span class="tile-q">What if the job hunt did its own legwork?</span>
+            <span class="tile-a">Researches who to contact, drafts a note around something specific, sends it, tracks replies.</span>
+            <span class="tile-more">Open →</span>
+          </span>
+        </button>
+
+        <button class="tile" data-open="d-messages">
+          <span class="thumb art art-messages" aria-hidden="true">💬</span>
+          <span class="tile-body">
+            <span class="tile-title">💬 Past Messages Analyzer</span>
+            <span class="tile-q">What if you could watch a friendship's tone drift over time?</span>
+            <span class="tile-a">Turns old Messenger and Instagram exports into a database and tracks the drift. Weirdly emotional for stats.</span>
+            <span class="tile-more">Open →</span>
+          </span>
+        </button>
+
+        <button class="tile" data-open="d-pkb">
+          <span class="thumb art art-pkb" aria-hidden="true">📚</span>
+          <span class="tile-body">
+            <span class="tile-title">📚 Personal Knowledge Base</span>
+            <span class="tile-q">What if your notes could tell you what you're missing?</span>
+            <span class="tile-a">Drop in documents, ask questions across them, and get an audit of where the gaps are.</span>
+            <span class="tile-more">Open →</span>
+          </span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3. PERSONAL ===================== -->
+    <section class="panel" id="personal" aria-label="Personal">
+      <h2 class="panel-title">The non-work me</h2>
+      <p class="panel-sub">Strong opinions, held loosely. Mostly about anime and food.</p>
+
+      <article class="block novel">
         <h3>📖 《未然？已然。》 <span class="zh">The Unobserved</span></h3>
         <p class="hook">What if your power depended on how sharply you understood reality?</p>
         <p class="meta">An original fantasy novel · Traditional Chinese · in progress</p>
         <p>In this world, every attack on a living opponent gets turned into a hallucination, so their body stays untouched until you break their mind first. At the center are a boy who sealed away his ability to feel, and a girl who senses every possibility, including the ones she kills by choosing.</p>
         <p>Right now it's a world, a cast, and a storyboard through the first arc, planned to run past 800,000 words. The prose is the part I'm putting off. (The plan is AI help filling in between my beats, with me reviewing, and the repo says so openly.)</p>
-        <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved">Read the world design →</a></p>
+        <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved">Read the world design</a></p>
       </article>
+
+      <h3 class="subhead">Favorites</h3>
+      <div class="facts">
+        <article class="fact">
+          <p class="fact-label">🏐 Sport</p>
+          <p>Volleyball. I play like trash, but who can reject a sport that gives you a valid excuse to roll on the floor? Also, Haikyu is fire.</p>
+        </article>
+        <article class="fact">
+          <p class="fact-label">🏴‍☠️ Anime</p>
+          <p>One Piece. The only anime better than One Piece is One Piece before the time skip. After the time skip... 這不好說... Oda, I know you can do better.</p>
+        </article>
+        <article class="fact">
+          <p class="fact-label">📚 Light novel</p>
+          <p>No Game No Life. Yuu Kamiya, where is the new volume? It's been ten years. Also, your books are a bit too smart for me, but that's what 鬥智 is.</p>
+        </article>
+        <article class="fact">
+          <p class="fact-label">🎤 Artist</p>
+          <p>The globally renowned pick: JJ Lin (林俊傑). The hot take: 任然 (Ren Ran), no hesitation. I have a 15-hour Spotify playlist of only Ren Ran songs, and I didn't even know Spotify had that many.</p>
+        </article>
+        <article class="fact">
+          <p class="fact-label">🍜 Food</p>
+          <p>滷味, no hesitation. 炒麵 is a close second. In the US the closest thing is malatang, which is somehow expensive, so my US pick is Chick-fil-A. Thinking about it is making me want some right now.</p>
+        </article>
+        <article class="fact">
+          <p class="fact-label">🐻 School</p>
+          <p>U! C! L! A! Fight, fight, fight! I'm convinced the eight clap is written in our DNA.</p>
+        </article>
+        <article class="fact">
+          <p class="fact-label">💬 Quote</p>
+          <p>"We do these things not because they are easy, but because we thought they were going to be easy." John F. Kennedy did not say this. Maciej Cegłowski did.</p>
+        </article>
+        <article class="fact">
+          <p class="fact-label">😴 Spare time</p>
+          <p>Sleep and reading light novels when I'm broke, whiskey tasting when I'm rich. I'm a college student, so you can guess which one wins.</p>
+        </article>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2>Say hi</h2>
-      <p>Email is the fastest way to reach me. I split my time between the US and Taiwan, so phone reception is a coin flip.</p>
+    <!-- ===================== 4. CONTACT ===================== -->
+    <section class="panel" id="contact" aria-label="Contact">
+      <h2 class="panel-title">Say hi</h2>
+      <p class="panel-sub">Email is the fastest way to reach me. I split my time between the US and Taiwan, so phone reception is a coin flip.</p>
+
       <p class="links">
         <a class="button" href="mailto:timchen56789@gmail.com">Email</a>
         <a class="button ghost" href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329">LinkedIn</a>
         <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting">GitHub</a>
       </p>
+
+      <h3 class="subhead">Resumes</h3>
+      <p class="panel-sub">Same person, three framings. Grab whichever fits the role.</p>
+      <div class="downloads">
+        <a class="download" href="assets/resumes/YenTing_Tim_Chen_Resume_SWE.pdf"><strong>Software engineering</strong><span>PDF</span></a>
+        <a class="download" href="assets/resumes/YenTing_Tim_Chen_Resume_FDE.pdf"><strong>Forward-deployed engineering</strong><span>PDF</span></a>
+        <a class="download" href="assets/resumes/YenTing_Tim_Chen_Resume_StatsDS.pdf"><strong>Statistics &amp; data science</strong><span>PDF</span></a>
+        <a class="download" href="assets/resumes/YenTing_Tim_Chen_CV.pdf"><strong>Full CV</strong><span>PDF · everything, all of it</span></a>
+      </div>
     </section>
+
   </main>
 
   <footer>
     <p>&copy; <span id="year"></span> Tim (Yen-Ting) Chen · UCLA, B.S. Statistics &amp; Data Science, 2027</p>
   </footer>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <!-- ===================== PROJECT DIALOGS ===================== -->
+
+  <dialog class="modal" id="d-civilizism" aria-labelledby="t-civilizism">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <img class="modal-img" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
+    <h2 id="t-civilizism">🏠 Civilizism</h2>
+    <p class="hook">What if you simulated one person really well, then simulated a lot of them?</p>
+
+    <h3><span>1</span> The problem</h3>
+    <p>Most social simulations hardcode the outcome: the rules say how groups behave, and, surprise, they behave that way. I wanted the opposite. Build one believable individual, then see whether groups, beliefs and norms show up on their own.</p>
+
+    <h3><span>2</span> My solution</h3>
+    <p>Agents that perceive, remember, reflect and plan, with memory as the hub of everything. Whatever beliefs and relationships form are a side effect and the surprise my product gives me in return. The model only <em>proposes</em> actions; a deterministic utility engine called SHAPE scores each one against 43 personality coefficients (Schwartz values plus HEXACO traits) and decides which actually happens. Character is enforced by code, not by prompting: a wild horse is only a good ride if you put a mathematical rein on it.</p>
+    <img class="modal-diagram" src="assets/img/Civilizism_Info_Flow.png" alt="Civilizism information flow diagram" loading="lazy">
+
+    <h3><span>3</span> Challenges &amp; fun stories</h3>
+    <p>LLM agents drift based on vibes. My first four housemates snacked all day, paced between the kitchen and the living room, and once tried to blend smoothies from ingredients that didn't exist. (I'm told this is relatable.) Then they started hiding their sadness behind cheerful small talk, and I had to ask whether that was a bug or a personality trait. Humans do it constantly, so I refused to hardcode a fix and put the control in code instead.</p>
+    <p>The validation story is the nerdy one: I'm checking the whole thing against Milgram, Asch, Robbers Cave and the Stanford Prison Experiment, with predictions written down before any run so I can't cheat. The Stanford case is built so that a <em>null</em> result agrees with the modern reading of that study. The harness is done; the scored runs are still pending...waiting on the day I feel like letting my laptop run through an entire night and hopefully not burning down while I sleep through it.</p>
+
+    <h3><span>4</span> Tech stack &amp; what I learned</h3>
+    <p class="chips"><span>Python</span><span>NumPy</span><span>sentence-transformers</span><span>LiteLLM + Instructor</span><span>Pydantic</span><span>React</span></p>
+    <p>I built the cognitive architecture from first principles because no existing agent framework had an abstraction that fit, so the whole codebase leans on a handful of libraries. Along the way I learned that memory design matters more than prompt design: memories decay on two independent clocks, so rehearsal can keep one alive but never make it immortal. I also learned that watching a simulation beats reading its JSON, which is why there's a replay viewer.</p>
+
+    <h3><span>5</span> Demo &amp; code</h3>
+    <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer">Watch a replay</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Civilizism">Public repo</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/STEME">STEME</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/BLOC">BLOC</a></p>
+    <p class="note">The core simulation code is private, and I'm happy to share it on request.</p>
+  </dialog>
+
+  <dialog class="modal" id="d-stratego" aria-labelledby="t-stratego">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <img class="modal-img" src="assets/img/stratego.png" alt="Stratego-Chess game screenshot" loading="lazy">
+    <h2 id="t-stratego">♟️ Stratego-Chess <span class="zh">行軍西洋棋</span></h2>
+    <p class="hook">What if chess no longer has a 100% capture rate?</p>
+
+    <h3><span>1</span> The problem</h3>
+    <p>Chess is perfect information: everything is on the board. Stratego is all hidden information, but its pieces just shuffle forward one square at a time. What happens if you put the secrets onto chess movement?</p>
+
+    <h3><span>2</span> My solution</h3>
+    <p>Welcome to the child of Chess and Stratego. Every piece moves like a chess piece (public), but also carries a hidden rank (secret) that decides what it beats. You can see how an enemy piece moves, never what it can capture. It is not chess: there's no checkmate, the king is just a piece, and passing is always legal. If you came to castle your way to safety, welcome.</p>
+    <p>No friends? No worries. There's a bot to play against, and the game is LLM friendly: swap <code>/g/</code> with <code>/llm/</code> in the URL and a chatbot can play by fetching plain links.</p>
+
+    <h3><span>3</span> Challenges &amp; fun stories</h3>
+    <p>The fun problem is that information leaks everywhere. If the game announced "equal rank" and "bomb" differently, the announcement itself would reveal a hidden piece, so both read as the same mutual destruction. Engineers and the flag are both immune to bombs, because an immunity only one piece had would point right at it. If your setup timer runs out, the server deals you a random legal army, since a predictable default is a leaked army.</p>
+    <p>The bot is a particle filter that keeps a running probability for what each of your pieces might be, and it plays a little randomly on purpose: a deterministic bot leaks its own ranks over enough games just by which move it reliably picks.</p>
+
+    <h3><span>4</span> Tech stack &amp; what I learned</h3>
+    <p class="chips"><span>TypeScript</span><span>Fastify 5</span><span>Socket.IO</span><span>React 19</span><span>Vite</span><span>Zustand</span><span>Vitest</span></p>
+    <p>A four-package monorepo: a zero-dependency rules engine that is the only place a rule is decided, a server, a client, and the bot. The biggest lesson was to make a leak <em>structurally impossible</em>. Hidden ranks leave the server through exactly one function, so there's no display filter to forget about.</p>
+
+    <h3><span>5</span> Demo &amp; code</h3>
+    <p class="links"><a class="button" href="https://stratego-chess.onrender.com/">Play it</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/stratego-chess">Code</a></p>
+    <p class="note">It's on free hosting, so the first load after a quiet spell can take up to a minute. Go stretch.</p>
+  </dialog>
+
+  <dialog class="modal" id="d-whenwhere" aria-labelledby="t-whenwhere">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <img class="modal-img" src="assets/img/whenwhere.png" alt="WhenWhere world map" loading="lazy">
+    <h2 id="t-whenwhere">⏰ WhenWhere</h2>
+    <p class="hook">What if you need to find some time to meet a friend on the other side of the globe?</p>
+
+    <h3><span>1</span> The problem</h3>
+    <p>I kept doing LA-to-Taipei math in my head, and it's a worse problem than it sounds: only one of the two places does daylight saving, so the offset between them changes twice a year. And I'm lazy.</p>
+
+    <h3><span>2</span> My solution</h3>
+    <p>Add cities to a day/night map, say when each person is free, and it shows when everyone overlaps. Every other city on the map turns green or red depending on whether it could still join. There's also a simple point-in-time converter. Daylight saving and half-hour timezones are handled properly, so you can trust this more than the old fashioned clock on your wall...as long as you can find your city on the map.</p>
+
+    <h3><span>3</span> Challenges &amp; fun stories</h3>
+    <p>For cities far enough apart, the real overlap can land on <em>adjacent calendar days</em>, so "same local window" has to be treated as a recurring daily pattern, not the date you typed. And the map itself fought me: Russia, Fiji and Antarctica drew spurious bands across the whole world because their polygons cross the antimeridian and the map library doesn't wrap. I had to split the rings.</p>
+    <p>Custom cities were another puzzle. Their timezone is inferred from the nearest known city, longitude first, since timezones are basically longitude bands, with a distance cutoff so a far-away neighbor's political quirks (looking at you, Adelaide) don't come along.</p>
+
+    <h3><span>4</span> Tech stack &amp; what I learned</h3>
+    <p class="chips"><span>Python</span><span>FastAPI</span><span>Leaflet</span><span>Intl API</span><span>pytest</span><span>Render</span></p>
+    <p>The timezone math runs in the browser, mirroring a tested backend, so most interactions need no round trip. I came out knowing far more about IANA timezones than I ever wanted to.</p>
+
+    <h3><span>5</span> Demo &amp; code</h3>
+    <p class="links"><a class="button" href="https://whenwhere-65it.onrender.com/">Try it</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/WhenWhere">Code</a></p>
+    <p class="note">Free hosting again, so it may take a moment to wake up.</p>
+  </dialog>
+
+  <dialog class="modal" id="d-statuscard" aria-labelledby="t-statuscard">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <img class="modal-img" src="assets/img/statuscard.png" alt="Claude Code Status Card" loading="lazy">
+    <h2 id="t-statuscard">🔔 Claude Code Status Card</h2>
+    <p class="hook">What if you could tell which Claude Code session needs you without alt-tabbing through all of them?</p>
+
+    <h3><span>1</span> The problem</h3>
+    <p>With several Claude Code sessions open, I kept losing track of which one had finished and which was quietly stuck waiting on me.</p>
+
+    <h3><span>2</span> My solution</h3>
+    <p>One always-on-top card per session. Blue is working, red means "come here", green is done. Click a card to jump to that repo's VS Code window, and a sound plays when something changes. Each repo gets its own animal and each session its own color, which is unnecessary and I stand by it. It's fed by global Claude Code hooks, so it doesn't care which editor you use.</p>
+
+    <h3><span>3</span> Challenges &amp; fun stories</h3>
+    <p>Favorite bug: log rotation briefly left an empty file, the widget read that as "start over", and dead sessions came back to life. I was, technically, the necromancer. The fix was an atomic rename.</p>
+    <p>Another: sessions started from different subfolders counted as different repos, so one real project showed up as nine entries with nine icons. Now it walks up to the project root. And on Windows, Claude Code's hook layer eats backslashes in paths, which took an embarrassing amount of time to figure out.</p>
+    <p class="note">Known issue: the red "needs approval" state is inferred rather than signalled, and it's been unreliable since Claude Code defaulted to Auto mode. Turns out the best way to fix approval prompts is to have fewer of them.</p>
+
+    <h3><span>4</span> Tech stack &amp; what I learned</h3>
+    <p class="chips"><span>Electron</span><span>Node.js</span><span>Claude Code hooks</span><span>PowerShell</span></p>
+    <p>I learned how hooks work, why file writes should be atomic, and that fractional display scaling on Windows will quietly grow an invisible clickable region around your window if you let it.</p>
+
+    <h3><span>5</span> Code</h3>
+    <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card">Code</a></p>
+  </dialog>
+
+  <dialog class="modal" id="d-steme" aria-labelledby="t-steme">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="t-steme">🧠 STEME &amp; BLOC</h2>
+    <p class="hook">What if you could turn "sincerity" into a number without calling an LLM every time?</p>
+
+    <h3><span>1</span> The problem</h3>
+    <p>Civilizism constantly has to translate between words and numbers: how sincere is this person, do these two memories express the same belief, are these two beliefs fighting each other? Doing that with an LLM call every time would be slow, expensive and inconsistent.</p>
+
+    <h3><span>2</span> My solution</h3>
+    <p><strong>STEME</strong> (Semantic Transformation &amp; Evaluation Mapping Engine) is the translation layer. It combines calibrated embedding similarity, zero-shot entailment classification, and an emotion classifier, and it can anchor abstract concepts like <em>sincerity</em> using definitions plus polar behavioral examples. <strong>BLOC</strong> (Belief &amp; Label-Oriented Clustering) groups memories into beliefs that drift as new experiences arrive, and flags opposing beliefs as internal conflict.</p>
+
+    <h3><span>3</span> Challenges &amp; fun stories</h3>
+    <p>Raw cosine similarity is a trap: embedding scores crowd into a narrow band, so I had to recalibrate them to get any separation. And clustering by cosine similarity makes centroids crowd together as meaning drifts, so BLOC uses entailment to decide cluster membership instead.</p>
+
+    <h3><span>4</span> Tech stack &amp; what I learned</h3>
+    <p class="chips"><span>Python</span><span>sentence-transformers</span><span>NLI models</span><span>scikit-learn</span></p>
+    <p>STEME scores 0.79–0.91 F1 across four embedding backends, roughly 4× a keyword/TF-IDF baseline, and BLOC hits 0.703 ARI on synthetic streaming data with drifting clusters. What I learned: pick the metric that matches how the thing actually fails.</p>
+
+    <h3><span>5</span> Code</h3>
+    <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/STEME">STEME</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/BLOC">BLOC</a></p>
+  </dialog>
+
+  <dialog class="modal" id="d-coldemail" aria-labelledby="t-coldemail">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="t-coldemail">📬 Cold Email Automator</h2>
+    <p class="hook">What if the job hunt did its own legwork?</p>
+
+    <h3><span>1</span> The problem</h3>
+    <p>Cold outreach works, but the middle is miserable: figuring out who to contact, finding a working address, and writing something that isn't obviously a template.</p>
+
+    <h3><span>2</span> My solution</h3>
+    <p>A pipeline I use on my own job search. Claude researches targets with web search, an email verifier checks the addresses, a draft is written around one specific hook (a recent launch, a piece of news), and the email goes out through Gmail while a Google Sheets dashboard tracks status, bounces and replies. Yes, I automated the job hunt; someone still has to read the replies.</p>
+
+    <h3><span>3</span> Challenges &amp; fun stories</h3>
+    <p>Keeping it from researching the same companies forever (each run is told to skip the 100 most recent), and keeping it cheap: roughly a few cents per sent email depending on the provider. I also made the LLM layer provider-agnostic, so Claude, GPT-4o and Gemini are interchangeable from a config file.</p>
+
+    <h3><span>4</span> Tech stack &amp; what I learned</h3>
+    <p class="chips"><span>Python</span><span>Pydantic</span><span>SQLite</span><span>Gmail API</span><span>Google Sheets API</span><span>Claude / GPT-4o / Gemini</span></p>
+    <p>I learned OAuth the hard way, plus how different the three providers' web-search tools really are.</p>
+
+    <h3><span>5</span> Code</h3>
+    <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator">Code</a></p>
+    <p class="note">Feature-complete and tested. I'm deliberately holding off deploying it until the timing of my job search makes sense.</p>
+  </dialog>
+
+  <dialog class="modal" id="d-messages" aria-labelledby="t-messages">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="t-messages">💬 Past Messages Analyzer</h2>
+    <p class="hook">What if you could watch a friendship's tone drift over time?</p>
+
+    <h3><span>1</span> The problem</h3>
+    <p>Years of messages with the same people, and no real sense of how those relationships changed. Weirdly emotional for a stats project.</p>
+
+    <h3><span>2</span> My solution</h3>
+    <p>A pipeline that ingests Facebook Messenger and Instagram exports into a normalized SQLite database, then layers analysis on top: response latency, sentiment, and rolling drift in vocabulary and tone, with changepoint detection to flag when a relationship's style actually shifts. It reuses BLOC's incremental clustering to track relationship drift in embedding space.</p>
+
+    <h3><span>3</span> Challenges &amp; fun stories</h3>
+    <p>The real design question was privacy. They're my friends' messages, so the AI narration layer only sees summary statistics by default. A close-reading mode exists for statistically flagged anomalies, but it's opt-in and off by default, a deliberate trade of interpretability for privacy.</p>
+
+    <h3><span>4</span> Tech stack &amp; what I learned</h3>
+    <p class="chips"><span>Python</span><span>SQLite</span><span>pandas</span><span>VADER</span><span>SnowNLP</span><span>PELT changepoints</span><span>Jupyter</span></p>
+    <p>I learned that reusing a component from another project (BLOC) is a good test of whether it was designed well, and that you need two sentiment tools if your friends write in two languages.</p>
+
+    <h3><span>5</span> Code</h3>
+    <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis">Code</a></p>
+  </dialog>
+
+  <dialog class="modal" id="d-pkb" aria-labelledby="t-pkb">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="t-pkb">📚 Personal Knowledge Base</h2>
+    <p class="hook">What if your notes could tell you what you're missing?</p>
+
+    <h3><span>1</span> The problem</h3>
+    <p>I built this for a non-technical user with a pile of documents and no way to ask questions across them, or to know what they hadn't covered yet.</p>
+
+    <h3><span>2</span> My solution</h3>
+    <p>Drop in a PDF, Word doc or text file. An LLM turns it into a tagged wiki entry, you can ask questions against the whole knowledge base (or just some topics) with sources cited, and a per-topic "knowledge audit" lists your strengths, gaps and what to read next. Nothing humbles you like a list of what you haven't read.</p>
+
+    <h3><span>3</span> Challenges &amp; fun stories</h3>
+    <p>Left alone, LLM tagging invents near-duplicates ("ml", "machine-learning", "machine learning") until the tags are useless, so each ingest shows the model the existing tags and tells it to reuse them. I also chose to answer questions by loading the relevant entries into the prompt instead of building a vector search. At this scale it's simpler, cheaper and easier to debug, and the sources are exactly what the model saw.</p>
+
+    <h3><span>4</span> Tech stack &amp; what I learned</h3>
+    <p class="chips"><span>Python</span><span>Vercel serverless</span><span>Supabase</span><span>Gemini API</span><span>pdfplumber</span><span>Chart.js</span></p>
+    <p>What I learned: knowing when <em>not</em> to use retrieval is a skill. I also swapped the SDK for plain HTTP calls to keep the serverless bundle small.</p>
+
+    <h3><span>5</span> Code</h3>
+    <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager">Code</a></p>
+  </dialog>
+
+  <script src="script.js"></script>
 </body>
 </html>
