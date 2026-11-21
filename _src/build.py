@@ -98,6 +98,7 @@ JSONLD = json.dumps(_person, ensure_ascii=False)
 SEO_HEAD = f"""<title>{SEO_TITLE}</title>
   <meta name="description" content="{SEO_DESC}">
   <link rel="canonical" href="{SITE}">
+  <meta name="msvalidate.01" content="0DEE81CCF1E363AD6EDBDA8877C09C7D">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
   <meta property="og:title" content="{SEO_TITLE}">
