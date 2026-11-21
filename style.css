@@ -261,3 +261,18 @@ footer {
 button.button { font: inherit; font-size: 0.95rem; cursor: pointer; }
 
 .selected + .two-col { margin-top: 1.2rem; }
+
+/* ---------- clickable selected-work blocks ---------- */
+.clickable { cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; }
+.clickable:hover, .clickable:focus-visible {
+  transform: translateY(-2px); border-color: var(--accent); outline: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+.selected-work-job { display: grid; grid-template-columns: 1fr 190px; gap: 1.5rem; align-items: center; }
+.job-img { width: 100%; border-radius: 12px; border: 1px solid var(--border); display: block; }
+.selected-work-job .hook { margin: 0.5rem 0 0; }
+dialog.modal .modal-img.portrait { width: auto; max-width: 100%; max-height: 420px; margin: 0 auto 0.8rem; }
+@media (max-width: 760px) {
+  .selected-work-job { grid-template-columns: 1fr; }
+  .job-img { max-width: 220px; margin: 0 auto; }
+}

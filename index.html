@@ -54,7 +54,7 @@
         <h2><span lang="en">Selected work</span><span lang="zh-Hant">精選作品</span></h2>
         <p class="meta" lang="en">Two things worth a look if you only have a minute.</p>
 <p class="meta" lang="zh-Hant">如果你只有一分鐘，看這兩樣就夠了。</p>
-        <div class="selected-lead">
+        <div class="selected-lead clickable" role="button" tabindex="0" data-open="d-civilizism">
           <img src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
           <div>
             <h3>🏠 Civilizism</h3>
@@ -65,16 +65,22 @@
             <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer"><span lang="en">Watch a replay</span><span lang="zh-Hant">觀看回放</span></a> <button type="button" class="button ghost" data-open="d-civilizism"><span lang="en">Full story</span><span lang="zh-Hant">完整故事</span></button></p>
           </div>
         </div>
-        <div class="selected-work-job">
-          <div class="job-head">
-            <h3>🧪 <span lang="en">Phygtl · Agentic Systems Engineering Intern</span><span lang="zh-Hant">Phygtl · Agentic Systems Engineering 實習生</span></h3>
-            <span class="date"><span lang="en">Summer 2026</span><span lang="zh-Hant">2026 夏季</span></span>
+        <div class="selected-work-job clickable" role="button" tabindex="0" data-open="d-phygtl">
+          <div class="job-copy">
+            <div class="job-head">
+              <h3>🧪 <span lang="en">Phygtl · Agentic Systems Engineering Intern</span><span lang="zh-Hant">Phygtl · Agentic Systems Engineering 實習生</span></h3>
+              <span class="date"><span lang="en">Summer 2026</span><span lang="zh-Hant">2026 夏季</span></span>
+            </div>
+            <p class="hook" lang="en">Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.</p>
+<p class="hook" lang="zh-Hant">沒有人替 Lana 建過評測，所以我來建。整個 eval 程式碼庫都是我的。</p>
+            <ul class="two-lines">
+              <li><span lang="en">Six simulated AI users with distinct personas talk to Lana every night, and <strong>five evaluation pipelines</strong> check the results.</span><span lang="zh-Hant">六個人格各異的 AI 模擬使用者每晚都會跟 Lana 對話，再由<strong>五條評測管線</strong>檢查結果。</span></li>
+              <li><span lang="en">A CI gate blocks any deploy that makes Lana worse: a <strong>regression above 5%</strong> on any axis, or any new hard failure.</span><span lang="zh-Hant">CI 閘門會擋下任何讓 Lana 變差的部署：任一指標<strong>退步超過 5%</strong>，或出現任何新的硬性失敗。</span></li>
+              <li><span lang="en">An intent consolidation, tested on <strong>1,547 utterances</strong>, adopted by the CEO and AI lead.</span><span lang="zh-Hant">一項意圖合併方案，用 <strong>1,547 句</strong>測試集驗證，獲 CEO 與 AI 負責人採納。</span></li>
+            </ul>
+            <p class="links"><button type="button" class="button ghost" data-open="d-phygtl"><span lang="en">Read the full story</span><span lang="zh-Hant">閱讀完整故事</span></button></p>
           </div>
-          <ul class="two-lines">
-            <li><span lang="en">Sole author of <strong>five evaluation pipelines</strong> for an AI concierge, built from scratch and still running when I left.</span><span lang="zh-Hant">獨自完成 AI 管家的<strong>五條評測管線</strong>，從零開始，我離開時仍在運作。</span></li>
-            <li><span lang="en">Proposed an <strong>intent consolidation</strong> and tested it on a <strong>1,547-utterance</strong> set; the CEO and AI lead adopted it.</span><span lang="zh-Hant">提出<strong>意圖合併</strong>方案，並用 <strong>1,547 句</strong>測試集驗證；CEO 與 AI 負責人採納了它。</span></li>
-          </ul>
-          <p class="links"><button type="button" class="button ghost" data-open="d-phygtl"><span lang="en">Read the full story</span><span lang="zh-Hant">閱讀完整故事</span></button></p>
+          <img class="job-img" src="assets/img/lana.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
         </div>
       </div>
 
@@ -413,16 +419,21 @@
 
   <dialog class="modal" id="d-phygtl" aria-labelledby="t-phygtl">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <img class="modal-img portrait" src="assets/img/lana.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
     <h2 id="t-phygtl">🧪 Phygtl · <span lang="en">Agentic Systems Engineering Intern</span><span lang="zh-Hant">Agentic Systems Engineering 實習生</span></h2>
-    <p class="hook" lang="en">What happens when nobody can tell if the last change made your AI better or worse?</p>
-<p class="hook" lang="zh-Hant">當沒人說得出上一次改動讓你的 AI 變好還是變差，會發生什麼事？</p>
+    <p class="hook" lang="en">How do we know whether Lana is doing what she's supposed to do?</p>
+<p class="hook" lang="zh-Hant">我們怎麼知道 Lana 有沒有在做她該做的事？</p>
     <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>
-<p lang="en">Phygtl is an early-stage startup with an AI concierge named Lana, and when I got there, &quot;is Lana better or worse after this change?&quot; was answered mostly by hope. (Totally normal for a young product. Also how you get surprised later.)</p>
-<p lang="zh-Hant">Phygtl 是一間早期新創，產品是名叫 Lana 的 AI 管家。我到職時，「這次改動讓 Lana 變好還是變差？」主要靠希望來回答。（對年輕產品來說很正常，也是日後會嚇到你的原因。）</p>
+<p lang="en">Lana is Phygtl's AI concierge: a sheep in a bellhop uniform who helps people find something nearby or share something with their neighbors. She's live in production. When I got there, &quot;is Lana better or worse after this change?&quot; was answered mostly by hope, and quality meant someone chatting with her by hand. (Totally normal for a young product. Also how you get surprised later.) Nobody had built evaluation for her, so the whole eval codebase is mine.</p>
+<p lang="zh-Hant">Lana 是 Phygtl 的 AI 管家：一隻穿著飯店服務生制服的小羊，幫人找附近的東西，或和鄰居分享東西。她已經在正式環境上線。我到職時，「這次改動讓 Lana 變好還是變差？」主要靠希望來回答，品質檢查就是有人手動跟她聊天。（對年輕產品來說很正常，也是日後會嚇到你的原因。）沒有人替她建過評測，所以整個 eval 程式碼庫都是我的。</p>
     <h3><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h3>
-<p lang="en">I was the only person building the fix: <strong>five evaluation pipelines</strong>, from scratch. Core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged. A nightly run covers every persona across every scenario, and a pull-request gate blocks a deploy on any regression above 5% or any new hard failure.</p>
-<p lang="zh-Hant">我是唯一負責補上這塊的人：從零打造<strong>五條評測管線</strong>。核心對話評測、資訊擷取與個資檢查、配對與解鎖流程、對話政策與安全，以及自動分流其他管線標出的問題。每晚的排程會跑完每個角色在每個情境下的組合，而 pull request 閘門會在任何指標退步超過 5%、或出現任何新的硬性失敗時擋下部署。</p>
+<p lang="en">My first task was going from manual QA to a simulation environment. Six AI mock users with deliberately different personas talk to Lana about a fixed set of topics <em>every night</em>, like a performance review she can't skip. Then <strong>five evaluation pipelines</strong> read those conversations: core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged.</p>
+<p lang="zh-Hant">我的第一個任務，是從手動 QA 走向模擬環境。六個人格刻意各異的 AI 模擬使用者，<em>每天晚上</em>都會就一組固定的主題跟 Lana 對話，像一場她逃不掉的績效考核。接著由<strong>五條評測管線</strong>讀這些對話：核心對話評測、資訊擷取與個資檢查、配對與解鎖流程、對話政策與安全，以及自動分流其他管線標出的問題。</p>
+<p lang="en">On top of that came regression checks and CI/CD that answer the real question: are we making Lana better or worse? A pull-request gate blocks a deploy on any regression above 5% on an axis, or any new hard failure.</p>
+<p lang="zh-Hant">再往上疊的是回歸檢查與 CI/CD，用來回答真正的問題：我們是讓 Lana 變好還是變差？Pull request 閘門會在任何指標退步超過 5%、或出現任何新的硬性失敗時擋下部署。</p>
     <h3><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h3>
+<p lang="en">Before I trusted any of it, I read the first few dozen conversation histories by hand, counting false negatives and false positives, and used that to tune both the mock users and the checks. Unglamorous, and the reason the rest could be trusted.</p>
+<p lang="zh-Hant">在我信任這一切之前，我親手讀了最初的幾十筆對話紀錄，數出漏報和誤報有多少，並用它來調整模擬使用者和各項檢查。一點也不光鮮，但後面的一切能被信任就是靠它。</p>
 <p lang="en">The core idea is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like &quot;warm, but not sycophantic?&quot;, go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)</p>
 <p lang="zh-Hant">核心想法是依「失敗方式」拆分每一項檢查。如果正確答案在設計上就已知（禁用詞、刻意埋進去的個資），就用純程式碼檢查，因為不穩定的檢查會毒害部署閘門。只有真正主觀的問題，例如「溫暖但不諂媚嗎？」，才交給 LLM 評審。而且每項檢查都附帶一個故意塞入違規的測試，因為如果檢查不可能失敗，全綠的結果就毫無意義。（對，我替我的測試寫了測試，而且我一點都不愧疚。）</p>
 <p lang="en">I kept the judge model off the product's own model family, so it never grades its own kind. And the triage tool collapsed a 729-row human-review queue by re-deriving evidence from stored transcripts instead of asking a second LLM, then measured itself against 51 human-labeled rows rather than just asserting it was right.</p>
@@ -430,9 +441,11 @@
 <p lang="en">The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged. I wrote the proposal down in a dated document before testing it, then checked it on a 1,547-utterance set I built for the purpose, which broke a 39.9% baseline pass rate into three distinct root causes. The CEO approved it and the AI lead adopted it. Turns out &quot;I have a test set&quot; is a very persuasive sentence.</p>
 <p lang="zh-Hant">我最自豪的是：我主張把產品裡一堆重疊的意圖（intent）合併。我先把提案寫進一份標註日期的文件，再用我為此建的 1,547 句測試集驗證，把 39.9% 的基準通過率拆解成三個不同的根本原因。CEO 核准了，AI 負責人採納了。事實證明「我有測試集」是非常有說服力的一句話。</p>
     <h3><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h3>
-<p class="chips"><span>Python</span><span>pytest</span><span>GitHub Actions</span><span>LLM-as-judge</span><span>Protocol-typed ports</span></p>
-<p lang="en">Evaluation is a design problem, not a testing afterthought: the checks have to be able to fail, and the judge needs something outside itself to be calibrated against. Working in a codebase with no conventions also meant writing them, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.</p>
-<p lang="zh-Hant">評測是設計問題，不是事後才補的測試：檢查必須有可能失敗，評審也需要有個自身以外的東西來校準。在一個沒有慣例的程式碼庫裡工作，也代表慣例得由我來寫，所以我寫了給 agent 看的慣例文件，以及每個測試框架的 README。我的角色只負責評測，所以當我發現真正的產品缺陷時，我會把每一個都寫成交接給負責它的工程師。</p>
+<p class="chips"><span>Python</span><span>pytest</span><span>GitHub Actions</span><span>LLM-as-judge</span><span>Simulated users</span><span>Protocol-typed ports</span></p>
+<p lang="en">This is where my vibe coding went from projects to commercial level: code that ran every night, gated real deploys, and that other engineers depended on. That raised the bar for everything: checks that can fail, a judge calibrated against something outside itself, tests for the tests.</p>
+<p lang="zh-Hant">這是我的 vibe coding 從個人專案升級到商用等級的地方：程式碼每晚都在跑、把關真正的部署，而且有其他工程師依賴它。這讓一切標準都被拉高：會失敗的檢查、用自身以外的東西校準的評審、替測試寫的測試。</p>
+<p lang="en">It also meant writing the conventions for a codebase that had none, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.</p>
+<p lang="zh-Hant">這也代表要替一個沒有任何慣例的程式碼庫訂慣例，所以我寫了給 agent 看的慣例文件，以及每個測試框架的 README。我的角色只負責評測，所以當我發現真正的產品缺陷時，我會把每一個都寫成交接給負責它的工程師。</p>
   </dialog>
 
   <dialog class="modal" id="d-civilizism" aria-labelledby="t-civilizism">

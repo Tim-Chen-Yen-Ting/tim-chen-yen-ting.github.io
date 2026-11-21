@@ -21,12 +21,21 @@
   // the browser's own jump-to-hash can land after the script runs; reset once more
   window.addEventListener("load", function () { window.scrollTo(0, 0); });
 
-  // Project dialogs
-  document.querySelectorAll("[data-open]").forEach(function (tile) {
-    tile.addEventListener("click", function () {
-      var d = document.getElementById(tile.getAttribute("data-open"));
-      if (d && d.showModal) d.showModal();
-    });
+  // Project dialogs: any element with data-open opens its dialog (links inside it still work normally)
+  function openFrom(el) {
+    var d = document.getElementById(el.getAttribute("data-open"));
+    if (d && d.showModal && !d.open) d.showModal();
+  }
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("a")) return;
+    var t = e.target.closest("[data-open]");
+    if (t) openFrom(t);
+  });
+  document.addEventListener("keydown", function (e) {
+    if ((e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches('[role="button"][data-open]')) {
+      e.preventDefault();
+      openFrom(e.target);
+    }
   });
   document.querySelectorAll("dialog.modal").forEach(function (d) {
     // click on the backdrop (the dialog element itself) closes it
