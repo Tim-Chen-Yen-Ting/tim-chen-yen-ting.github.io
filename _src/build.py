@@ -351,6 +351,8 @@ cheat = "".join([
     fact_row("Based in", "所在地", "Los Angeles and Taiwan", "洛杉磯與台灣"),
     fact_row("Languages", "語言", "English and Mandarin Chinese (Traditional)", "英文與中文（繁體）"),
     fact_row("Graduating", "畢業時間", "March 2027, UCLA, B.S. Statistics &amp; Data Science", "2027 年 3 月，UCLA 統計與資料科學學士"),
+    fact_row("Available", "可到職時間", "From April 2027", "2027 年 4 月起"),
+    fact_row("Work authorization", "工作許可", "Authorized to work in the US via F-1 OPT and STEM OPT, with no visa sponsorship needed during that period", "透過 F-1 OPT 與 STEM OPT 取得在美工作授權，該期間不需要簽證擔保"),
     fact_row("Looking for", "正在尋找", "Software, AI engineering, or data roles", "軟體、AI 工程或資料相關職位"),
     fact_row("Most recent role", "最近的職位", "Agentic Systems Engineering Intern, Phygtl (summer 2026)", "Phygtl 的 Agentic Systems Engineering 實習生（2026 夏季）"),
 ])
