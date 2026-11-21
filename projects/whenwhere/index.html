@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <title>WhenWhere | Yen-Ting (Tim) Chen</title>
+  <meta name="description" content="What if you need to find some time to meet a friend on the other side of the globe? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://tim-chen-yen-ting.github.io/projects/whenwhere/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
+  <meta property="og:title" content="WhenWhere | Yen-Ting (Tim) Chen">
+  <meta property="og:description" content="What if you need to find some time to meet a friend on the other side of the globe? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta property="og:url" content="https://tim-chen-yen-ting.github.io/projects/whenwhere/">
+  <meta property="og:image" content="https://tim-chen-yen-ting.github.io/assets/img/whenwhere.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "WhenWhere", "description": "What if you need to find some time to meet a friend on the other side of the globe?", "url": "https://tim-chen-yen-ting.github.io/projects/whenwhere/", "image": "https://tim-chen-yen-ting.github.io/assets/img/whenwhere.png", "author": {"@type": "Person", "name": "Yen-Ting Chen", "url": "https://tim-chen-yen-ting.github.io/"}}</script>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css?v=6ae04711">
+</head>
+<body data-title-en="WhenWhere | Yen-Ting (Tim) Chen" data-title-zh="WhenWhere | 陳彥廷 (Tim)">
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#home"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#home"><span lang="en">Home</span><span lang="zh-Hant">首頁</span></a>
+        <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
+        <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
+        <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <article class="project-page">
+      <p class="crumbs"><a href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    <img class="modal-img" src="assets/img/whenwhere.png" alt="WhenWhere world map" loading="lazy">
+    <h2 id="t-whenwhere">⏰ WhenWhere</h2>
+    <p class="hook" lang="en">What if you need to find some time to meet a friend on the other side of the globe?</p>
+<p class="hook" lang="zh-Hant">如果你要跟地球另一端的朋友找時間見面呢？</p>
+    <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>
+<p lang="en">I kept doing LA-to-Taipei math in my head, and it's a worse problem than it sounds: only one of the two places does daylight saving, so the offset between them changes twice a year. And I'm lazy.</p>
+<p lang="zh-Hant">我老是在腦中算洛杉磯到台北的時差，而這問題比聽起來更糟：兩地只有一邊實施日光節約時間，所以兩地的時差一年會變兩次。而且我很懶。</p>
+    <h3><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h3>
+<p lang="en">Add cities to a day/night map, say when each person is free, and it shows when everyone overlaps. Every other city on the map turns green or red depending on whether it could still join. There's also a simple point-in-time converter. Daylight saving and half-hour timezones are handled properly, so you can trust this more than the old fashioned clock on your wall...as long as you can find your city on the map.</p>
+<p lang="zh-Hant">把城市加到日夜地圖上，說出每個人的空檔，它就會顯示大家何時重疊。地圖上其他每座城市會依「還能不能加入」變成綠色或紅色。也有簡單的單一時間點換算。日光節約時間和半小時時區都處理得正確，所以你可以比牆上那個老派時鐘更信任它…只要你找得到你的城市。</p>
+    <h3><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h3>
+<p lang="en">For cities far enough apart, the real overlap can land on <em>adjacent calendar days</em>, so &quot;same local window&quot; has to be treated as a recurring daily pattern, not the date you typed. And the map itself fought me: Russia, Fiji and Antarctica drew spurious bands across the whole world because their polygons cross the antimeridian and the map library doesn't wrap. I had to split the rings.</p>
+<p lang="zh-Hant">對於相隔夠遠的城市，真正的重疊時段可能落在<em>相鄰的兩個日曆日</em>，所以「當地同一時段」必須當成每日重複的模式處理，而不是你輸入的那個日期。地圖本身也跟我作對：俄羅斯、斐濟和南極洲的多邊形跨越換日線，而地圖函式庫不會自動環繞，結果整個世界被畫上莫名其妙的條紋。我只好把多邊形的環切開。</p>
+<p lang="en">Custom cities were another puzzle. Their timezone is inferred from the nearest known city, longitude first, since timezones are basically longitude bands, with a distance cutoff so a far-away neighbor's political quirks (looking at you, Adelaide) don't come along.</p>
+<p lang="zh-Hant">自訂城市又是另一個謎題。它的時區從最近的已知城市推斷，先看經度，因為時區基本上就是經度帶，再加上距離門檻，免得遠方鄰居的政治怪癖（說的就是你，阿德雷德）被一起繼承。</p>
+    <h3><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h3>
+<p class="chips"><span>Python</span><span>FastAPI</span><span>pytz</span><span>Leaflet</span><span>Intl API</span><span>pytest</span><span>Render</span></p>
+<p lang="en">Civilizism taught me how to build my own framework. WhenWhere taught me when <em>not</em> to, because that has another name: reinventing the wheel. Thank god pytz exists, and there are already datasets online. The timezone math also runs in the browser, mirroring a tested backend, so most interactions need no round trip.</p>
+<p lang="zh-Hant">Civilizism 教我怎麼打造自己的框架，WhenWhere 則教我什麼時候<em>不該</em>這麼做，因為那有另一個名字：重新發明輪子。感謝老天有 pytz，線上也早就有現成的資料集。時區計算還會在瀏覽器裡執行，對應一個經過測試的後端，所以多數操作不需要往返伺服器。</p>
+    <h3><span class="num">5</span><span lang="en">Demo &amp; code</span><span lang="zh-Hant">Demo 與原始碼</span></h3>
+    <p class="links"><a class="button" href="https://whenwhere-65it.onrender.com/"><span lang="en">Try it</span><span lang="zh-Hant">試用</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/WhenWhere"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
+    <p class="note" lang="en">Free hosting again, so it may take a moment to wake up.</p>
+<p class="note" lang="zh-Hant">又是免費主機，所以可能需要一點時間醒來。</p>
+      <p class="links"><a class="button ghost" href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+  </footer>
+
+  <script src="script.js?v=1ddb4be2"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <title>Civilizism | Yen-Ting (Tim) Chen</title>
+  <meta name="description" content="What if you simulated one person really well, then simulated a lot of them? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://tim-chen-yen-ting.github.io/projects/civilizism/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
+  <meta property="og:title" content="Civilizism | Yen-Ting (Tim) Chen">
+  <meta property="og:description" content="What if you simulated one person really well, then simulated a lot of them? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta property="og:url" content="https://tim-chen-yen-ting.github.io/projects/civilizism/">
+  <meta property="og:image" content="https://tim-chen-yen-ting.github.io/assets/img/civilizism.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Civilizism", "description": "What if you simulated one person really well, then simulated a lot of them?", "url": "https://tim-chen-yen-ting.github.io/projects/civilizism/", "image": "https://tim-chen-yen-ting.github.io/assets/img/civilizism.png", "author": {"@type": "Person", "name": "Yen-Ting Chen", "url": "https://tim-chen-yen-ting.github.io/"}}</script>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css?v=6ae04711">
+</head>
+<body data-title-en="Civilizism | Yen-Ting (Tim) Chen" data-title-zh="Civilizism | 陳彥廷 (Tim)">
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#home"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#home"><span lang="en">Home</span><span lang="zh-Hant">首頁</span></a>
+        <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
+        <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
+        <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <article class="project-page">
+      <p class="crumbs"><a href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    <img class="modal-img" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
+    <h2 id="t-civilizism">🏠 Civilizism</h2>
+    <p class="hook" lang="en">What if you simulated one person really well, then simulated a lot of them?</p>
+<p class="hook" lang="zh-Hant">如果你把一個人模擬得夠好，再模擬很多個，會怎樣？</p>
+    <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>
+<p lang="en">Most social simulations hardcode the outcome: the rules say how groups behave, and, surprise, they behave that way. I wanted the opposite. Build one believable individual, then see whether groups, beliefs and norms show up on their own.</p>
+<p lang="zh-Hant">大多數社會模擬會把結果寫死：規則規定群體怎麼行為，然後，驚喜，它們真的就那樣行為了。我想要相反的做法：先打造一個可信的個體，再看看群體、信念與規範會不會自己長出來。</p>
+    <h3><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h3>
+<p lang="en">Agents that perceive, remember, reflect and plan, with memory as the hub of everything. Whatever beliefs and relationships form are a side effect and the surprise my product gives me in return. The model only <em>proposes</em> actions; a deterministic utility engine called SHAPE scores each one against 43 personality coefficients (Schwartz values plus HEXACO traits) and decides which actually happens. Character is enforced by code, not by prompting: a wild horse is only a good ride if you put a mathematical rein on it.</p>
+<p lang="zh-Hant">代理人會感知、記憶、反思與規劃，記憶是一切的核心。形成什麼信念和關係，都只是副作用，也是我的產品回饋我的驚喜。模型只負責<em>提議</em>行動；一個叫 SHAPE 的確定性效用引擎，會根據 43 個人格係數（Schwartz 價值觀加 HEXACO 特質）替每個提議打分，並決定真正發生哪一個。性格由程式碼強制執行，而不是靠 prompt：野馬要給它套上一條數學韁繩，才騎得好。</p>
+    <img class="modal-diagram" src="assets/img/Civilizism_Info_Flow.png" alt="Civilizism information flow diagram" loading="lazy">
+    <h3><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h3>
+<p lang="en">LLM agents drift based on vibes. My first four housemates snacked all day, paced between the kitchen and the living room, and once tried to blend smoothies from ingredients that didn't exist. (I'm told this is relatable.) Then they started hiding their sadness behind cheerful small talk, and I had to ask whether that was a bug or a personality trait. Humans do it constantly, so I refused to hardcode a fix and put the control in code instead.</p>
+<p lang="zh-Hant">LLM 代理人會憑感覺漂移。我最早的四個室友整天吃零食、在廚房和客廳之間來回踱步，還有一次試圖用根本不存在的食材打果昔。（聽說這很有共鳴。）後來他們開始用開朗的閒聊掩飾悲傷，我只好自問：這是 bug 還是人格特質？人類天天這樣做，所以我拒絕寫死修正，改把控制放進程式碼。</p>
+<p lang="en">The validation story is the nerdy one: I'm checking the whole thing against Milgram, Asch, Robbers Cave and the Stanford Prison Experiment, with predictions written down before any run so I can't cheat. The Stanford case is built so that a <em>null</em> result agrees with the modern reading of that study. The harness is done; the scored runs are still pending...waiting on the day I feel like letting my laptop run through an entire night and hopefully not burning down while I sleep through it.</p>
+<p lang="zh-Hant">驗證的部分最書呆子：我拿整個系統去對照 Milgram、Asch、Robbers Cave 和史丹佛監獄實驗，而且預測在任何一次跑之前就先寫下，所以我沒辦法作弊。史丹佛那一組的設計，讓<em>虛無</em>結果也符合學界對該研究的現代解讀。測試框架完成了，正式計分的跑次還在等…等我哪天願意讓筆電整晚開著跑，並祈禱它在我睡著時不會燒起來。</p>
+    <h3><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h3>
+<p class="chips"><span>Python</span><span>NumPy</span><span>sentence-transformers</span><span>LiteLLM + Instructor</span><span>Pydantic</span><span>React</span></p>
+<p lang="en">Pydantic saved my life when parsing LLM output with regex was a living hell. This was also my first real step into vibe coding. And modelling humans, drawing on psychology and biology and turning it all into functions and memories, was a living hell of its own kind.</p>
+<p lang="zh-Hant">當用 regex 解析 LLM 輸出簡直是人間煉獄時，Pydantic 救了我一命。這也是我踏進 vibe coding 的第一步。而要模仿人類——從心理學和生物學出發，再把一切變成函式和記憶——本身又是另一種煉獄。</p>
+    <h3><span class="num">5</span><span lang="en">Demo &amp; code</span><span lang="zh-Hant">Demo 與原始碼</span></h3>
+    <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer"><span lang="en">Watch a replay</span><span lang="zh-Hant">觀看回放</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Civilizism"><span lang="en">Public repo</span><span lang="zh-Hant">公開 repo</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/STEME"><span lang="en">STEME</span><span lang="zh-Hant">STEME</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/BLOC"><span lang="en">BLOC</span><span lang="zh-Hant">BLOC</span></a></p>
+    <p class="note" lang="en">The core simulation code is private, and I'm happy to share it on request.</p>
+<p class="note" lang="zh-Hant">核心模擬程式碼是私有的，有需要我很樂意分享。</p>
+      <p class="links"><a class="button ghost" href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+  </footer>
+
+  <script src="script.js?v=1ddb4be2"></script>
+</body>
+</html>

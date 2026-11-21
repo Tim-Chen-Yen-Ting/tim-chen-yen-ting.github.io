@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <title>Claude Code Status Card | Yen-Ting (Tim) Chen</title>
+  <meta name="description" content="What if you could tell which Claude Code session needs you without alt-tabbing through all of them? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://tim-chen-yen-ting.github.io/projects/claude-code-status-card/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
+  <meta property="og:title" content="Claude Code Status Card | Yen-Ting (Tim) Chen">
+  <meta property="og:description" content="What if you could tell which Claude Code session needs you without alt-tabbing through all of them? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta property="og:url" content="https://tim-chen-yen-ting.github.io/projects/claude-code-status-card/">
+  <meta property="og:image" content="https://tim-chen-yen-ting.github.io/assets/img/statuscard.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Claude Code Status Card", "description": "What if you could tell which Claude Code session needs you without alt-tabbing through all of them?", "url": "https://tim-chen-yen-ting.github.io/projects/claude-code-status-card/", "image": "https://tim-chen-yen-ting.github.io/assets/img/statuscard.png", "author": {"@type": "Person", "name": "Yen-Ting Chen", "url": "https://tim-chen-yen-ting.github.io/"}}</script>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css?v=6ae04711">
+</head>
+<body data-title-en="Claude Code Status Card | Yen-Ting (Tim) Chen" data-title-zh="Claude Code Status Card | 陳彥廷 (Tim)">
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#home"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#home"><span lang="en">Home</span><span lang="zh-Hant">首頁</span></a>
+        <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
+        <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
+        <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <article class="project-page">
+      <p class="crumbs"><a href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    <img class="modal-img" src="assets/img/statuscard.png" alt="Claude Code Status Card" loading="lazy">
+    <h2 id="t-statuscard">🔔 Claude Code Status Card</h2>
+    <p class="hook" lang="en">What if you could tell which Claude Code session needs you without alt-tabbing through all of them?</p>
+<p class="hook" lang="zh-Hant">如果你不用切視窗，就知道哪個 Claude Code session 在等你呢？</p>
+    <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>
+<p lang="en">With several Claude Code sessions open, I kept losing track of which one had finished and which was quietly stuck waiting on me.</p>
+<p lang="zh-Hant">同時開著好幾個 Claude Code session 時，我老是搞不清楚哪個已經跑完，哪個正默默卡在那邊等我。</p>
+    <h3><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h3>
+<p lang="en">One always-on-top card per session. Blue is working, red means &quot;come here&quot;, green is done. Click a card to jump to that repo's VS Code window, and a sound plays when something changes. Each repo gets its own animal and each session its own color, which is unnecessary and I stand by it. It's fed by global Claude Code hooks, so it doesn't care which editor you use.</p>
+<p lang="zh-Hant">每個 session 一張置頂小卡。藍色是工作中，紅色代表「快過來」，綠色是完成。點一下卡片就跳到那個 repo 的 VS Code 視窗，狀態改變時還會有音效。每個 repo 有自己的動物、每個 session 有自己的顏色，這完全沒必要，而我堅持。它由全域的 Claude Code hooks 驅動，所以不在乎你用哪個編輯器。</p>
+    <h3><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h3>
+<p lang="en">Favorite bug: log rotation briefly left an empty file, the widget read that as &quot;start over&quot;, and dead sessions came back to life. I was, technically, the necromancer. The fix was an atomic rename.</p>
+<p lang="zh-Hant">最愛的 bug：日誌輪替時短暫留下一個空檔案，小工具把它解讀成「重新開始」，於是死掉的 session 全都復活了。嚴格來說，我是那個死靈法師。修法是原子性的改名。</p>
+<p lang="en">Another: sessions started from different subfolders counted as different repos, so one real project showed up as nine entries with nine icons. Now it walks up to the project root. And on Windows, Claude Code's hook layer eats backslashes in paths, which took an embarrassing amount of time to figure out.</p>
+<p lang="zh-Hant">另一個：從不同子資料夾啟動的 session 會被當成不同的 repo，於是一個真實專案變成九筆紀錄、九個圖示。現在它會往上找到專案根目錄。還有在 Windows 上，Claude Code 的 hook 層會吃掉路徑裡的反斜線，這個問題花了我尷尬的時間才搞懂。</p>
+<p class="note" lang="en">Known issue: the red &quot;needs approval&quot; state is inferred rather than signalled, and it's been unreliable since Claude Code defaulted to Auto mode. Turns out the best way to fix approval prompts is to have fewer of them.</p>
+<p class="note" lang="zh-Hant">已知問題：紅色的「需要核准」狀態是推測出來的，不是被通知的，而自從 Claude Code 預設改成 Auto 模式後，它就不太可靠了。看來修好核准提示的最佳方法，就是讓它們變少。</p>
+    <h3><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h3>
+<p class="chips"><span>Electron</span><span>Node.js</span><span>Claude Code hooks</span><span>PowerShell</span></p>
+<p lang="en">SaaS cannot be done in one day. I learned how hooks work and how to tell repos apart by reading hooks alone. And grinding out improvements took weeks, as a real user of my own tool. Day one I realized I couldn't recall which session was named what. Day two the icons were inconsistent across sessions. Day three I noticed I was still keeping an eye on my monitor, just not alt-tabbing anymore, so I added sound effects on top of the state changes.</p>
+<p lang="zh-Hant">SaaS 不可能一天做完。我學會了 hooks 怎麼運作，也學會只靠讀 hooks 就分辨不同的 repo。而且身為自己工具的真實使用者，打磨改進花了好幾個星期。第一天我發現我記不得哪個 session 叫什麼名字。第二天我發現各個 session 的圖示不一致。第三天我發現自己雖然不再切視窗了，卻還是一直盯著螢幕，所以我在狀態變化之外又加了音效。</p>
+    <h3><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h3>
+    <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
+      <p class="links"><a class="button ghost" href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+  </footer>
+
+  <script src="script.js?v=1ddb4be2"></script>
+</body>
+</html>

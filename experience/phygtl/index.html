@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <title>Phygtl · Agentic Systems Engineering Intern | Yen-Ting (Tim) Chen</title>
+  <meta name="description" content="How do we know whether Lana is doing what she&#x27;s supposed to do? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://tim-chen-yen-ting.github.io/experience/phygtl/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
+  <meta property="og:title" content="Phygtl · Agentic Systems Engineering Intern | Yen-Ting (Tim) Chen">
+  <meta property="og:description" content="How do we know whether Lana is doing what she&#x27;s supposed to do? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta property="og:url" content="https://tim-chen-yen-ting.github.io/experience/phygtl/">
+  <meta property="og:image" content="https://tim-chen-yen-ting.github.io/assets/img/lana.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Phygtl · Agentic Systems Engineering Intern", "description": "How do we know whether Lana is doing what she's supposed to do?", "url": "https://tim-chen-yen-ting.github.io/experience/phygtl/", "image": "https://tim-chen-yen-ting.github.io/assets/img/lana.png", "author": {"@type": "Person", "name": "Yen-Ting Chen", "url": "https://tim-chen-yen-ting.github.io/"}}</script>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css?v=6ae04711">
+</head>
+<body data-title-en="Phygtl · Agentic Systems Engineering Intern | Yen-Ting (Tim) Chen" data-title-zh="Phygtl · Agentic Systems Engineering 實習生 | 陳彥廷 (Tim)">
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#home"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#home"><span lang="en">Home</span><span lang="zh-Hant">首頁</span></a>
+        <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
+        <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
+        <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <article class="project-page">
+      <p class="crumbs"><a href="#home"><span lang="en">← Home</span><span lang="zh-Hant">← 首頁</span></a></p>
+    <img class="modal-img portrait" src="assets/img/lana.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
+    <h2 id="t-phygtl">🧪 Phygtl · <span lang="en">Agentic Systems Engineering Intern</span><span lang="zh-Hant">Agentic Systems Engineering 實習生</span></h2>
+    <p class="hook" lang="en">How do we know whether Lana is doing what she's supposed to do?</p>
+<p class="hook" lang="zh-Hant">我們怎麼知道 Lana 有沒有在做她該做的事？</p>
+    <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>
+<p lang="en">Lana is Phygtl's AI concierge: a sheep in a bellhop uniform who helps people find something nearby or share something with their neighbors. She's live in production. When I got there, &quot;is Lana better or worse after this change?&quot; was answered mostly by hope, and quality meant someone chatting with her by hand. (Totally normal for a young product. Also how you get surprised later.) Nobody had built evaluation for her, so the whole eval codebase is mine.</p>
+<p lang="zh-Hant">Lana 是 Phygtl 的 AI 管家：一隻穿著飯店服務生制服的小羊，幫人找附近的東西，或和鄰居分享東西。她已經在正式環境上線。我到職時，「這次改動讓 Lana 變好還是變差？」主要靠希望來回答，品質檢查就是有人手動跟她聊天。（對年輕產品來說很正常，也是日後會嚇到你的原因。）沒有人替她建過評測，所以整個 eval 程式碼庫都是我的。</p>
+    <h3><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h3>
+<p lang="en">My first task was going from manual QA to a simulation environment. Six AI mock users with deliberately different personas hold <strong>192 conversations</strong> with Lana <em>every night</em> (6 personas × 32 seeds across 7 buckets, each seed testing one specific behavior), like a performance review she can't skip. Then <strong>five evaluation pipelines</strong> read those conversations: core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged.</p>
+<p lang="zh-Hant">我的第一個任務，是從手動 QA 走向模擬環境。六個人格刻意各異的 AI 模擬使用者，<em>每天晚上</em>都會和 Lana 進行 <strong>192 場對話</strong>（6 個人格 × 7 個類別共 32 個種子，每個種子只測一種特定行為），像一場她逃不掉的績效考核。接著由<strong>五條評測管線</strong>讀這些對話：核心對話評測、資訊擷取與個資檢查、配對與解鎖流程、對話政策與安全，以及自動分流其他管線標出的問題。</p>
+<p lang="en">On top of that came regression checks and CI/CD that answer the real question: are we making Lana better or worse? A pull-request gate blocks a deploy on any regression above 5% on an axis, or any new hard failure.</p>
+<p lang="zh-Hant">再往上疊的是回歸檢查與 CI/CD，用來回答真正的問題：我們是讓 Lana 變好還是變差？Pull request 閘門會在任何指標退步超過 5%、或出現任何新的硬性失敗時擋下部署。</p>
+    <h3><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h3>
+<p lang="en">Before I trusted any of it, I let the simulation run one full pass, then went through the results stored in the dev database by hand, labeling every verdict as a true positive, true negative, false positive or false negative, and tuned my tests (the mock users and the checks) accordingly. Unglamorous, and the reason the rest could be trusted. Later, a measured audit found my own mock user breaking character in 13 of 102 conversations (12.7%), and I fixed that so a failure would mean something about Lana, not about my simulator.</p>
+<p lang="zh-Hant">在我信任這一切之前，我先讓模擬完整跑一輪，再手動檢視存在開發資料庫裡的結果，把每一個判定標成真陽性、真陰性、偽陽性或偽陰性，並據此調整我的測試（模擬使用者和各項檢查）。一點也不光鮮，但後面的一切能被信任就是靠它。後來一次量化審查發現，我自己的模擬使用者在 102 場對話中有 13 場（12.7%）出戲，我把它修好，讓失敗代表的是 Lana 的問題，而不是我模擬器的問題。</p>
+<p lang="en">The core idea is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like &quot;warm, but not sycophantic?&quot;, go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)</p>
+<p lang="zh-Hant">核心想法是依「失敗方式」拆分每一項檢查。如果正確答案在設計上就已知（禁用詞、刻意埋進去的個資），就用純程式碼檢查，因為不穩定的檢查會毒害部署閘門。只有真正主觀的問題，例如「溫暖但不諂媚嗎？」，才交給 LLM 評審。而且每項檢查都附帶一個故意塞入違規的測試，因為如果檢查不可能失敗，全綠的結果就毫無意義。（對，我替我的測試寫了測試，而且我一點都不愧疚。）</p>
+<p lang="en">I kept the judge model off the product's own model family, so it never grades its own kind. And the triage tool collapsed a 729-row human-review queue by re-deriving evidence from stored transcripts instead of asking a second LLM, then measured itself against 51 human-labeled rows rather than just asserting it was right.</p>
+<p lang="zh-Hant">我讓評審模型和產品使用的模型家族分開，這樣它就不會替自己人打分數。而分流工具把 729 筆待人工審核的佇列收斂掉，靠的是從儲存的對話紀錄重新推導證據、而不是再問一個 LLM，並且拿 51 筆人工標註的資料來衡量自己，而不是光說自己是對的。</p>
+<p lang="en">The PR gate originally ran 6 personas × 18 seeds = 108 cases on every pull request. I cut it to 3 × 11 = 33, a 69% reduction, based on measured evidence. One seed from the most expensive bucket stayed because it was the only place hallucination ever fired, and I picked personas for contrast, not for failure count, since a gate that overfits to known bugs misses the next one. Nothing was deleted, only deferred to the nightly 192.</p>
+<p lang="zh-Hant">PR 閘門原本每次 pull request 都跑 6 個人格 × 18 個種子 = 108 個案例。我根據量測到的證據，把它縮減成 3 × 11 = 33 個，減少了 69%。最昂貴的類別裡留下了一個種子，因為那是唯一曾經觸發幻覺的地方；人格則是依「差異性」挑選，而不是依失敗次數，因為只針對已知 bug 調整的閘門會漏掉下一個。沒有任何東西被刪除，只是延後到每晚的 192 個案例裡跑。</p>
+<p lang="en">The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged. I wrote the proposal down in a dated document before testing it, then checked it on a 1,547-utterance set I built for the purpose, which broke a 39.9% baseline pass rate into three distinct root causes. The CEO approved it and the AI lead adopted it. Turns out &quot;I have a test set&quot; is a very persuasive sentence.</p>
+<p lang="zh-Hant">我最自豪的是：我主張把產品裡一堆重疊的意圖（intent）合併。我先把提案寫進一份標註日期的文件，再用我為此建的 1,547 句測試集驗證，把 39.9% 的基準通過率拆解成三個不同的根本原因。CEO 核准了，AI 負責人採納了。事實證明「我有測試集」是非常有說服力的一句話。</p>
+    <h3><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h3>
+<p class="chips"><span>Python</span><span>pytest</span><span>GitHub Actions</span><span>LLM-as-judge</span><span>Simulated users</span><span>Protocol-typed ports</span></p>
+<p lang="en">This is where my vibe coding went from projects to commercial level: code that ran every night, gated real deploys, and that other engineers depended on. That raised the bar for everything: checks that can fail, a judge calibrated against something outside itself, tests for the tests.</p>
+<p lang="zh-Hant">這是我的 vibe coding 從個人專案升級到商用等級的地方：程式碼每晚都在跑、把關真正的部署，而且有其他工程師依賴它。這讓一切標準都被拉高：會失敗的檢查、用自身以外的東西校準的評審、替測試寫的測試。</p>
+<p lang="en">It also meant writing the conventions for a codebase that had none, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.</p>
+<p lang="zh-Hant">這也代表要替一個沒有任何慣例的程式碼庫訂慣例，所以我寫了給 agent 看的慣例文件，以及每個測試框架的 README。我的角色只負責評測，所以當我發現真正的產品缺陷時，我會把每一個都寫成交接給負責它的工程師。</p>
+      <p class="links"><a class="button ghost" href="#home"><span lang="en">← Home</span><span lang="zh-Hant">← 首頁</span></a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+  </footer>
+
+  <script src="script.js?v=1ddb4be2"></script>
+</body>
+</html>

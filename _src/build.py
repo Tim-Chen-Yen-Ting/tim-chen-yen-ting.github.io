@@ -45,29 +45,49 @@ def img_thumb(src, alt, cls=""):
     return f'<span class="thumb {cls}"><img src="assets/img/{src}" alt="{alt}" loading="lazy"></span>'
 
 
+# key -> (section, slug); the section becomes the first URL segment: /projects/<slug>/ or /experience/<slug>/
+SLUGS = {
+    "phygtl": ("experience", "phygtl"),
+    "civilizism": ("projects", "civilizism"),
+    "stratego": ("projects", "stratego-chess"),
+    "whenwhere": ("projects", "whenwhere"),
+    "statuscard": ("projects", "claude-code-status-card"),
+    "steme": ("projects", "steme-bloc"),
+    "coldemail": ("projects", "cold-email-automator"),
+    "messages": ("projects", "past-messages-analyzer"),
+    "pkb": ("projects", "personal-knowledge-base"),
+}
+PAGES = {}  # key -> everything needed to render the standalone page
+
+
 def dialog(key, emoji_title, hook, img, sections, links_html=None, note=None, diagram=None, demo=False):
-    out = [f'  <dialog class="modal" id="d-{key}" aria-labelledby="t-{key}">',
-           '    <form method="dialog"><button class="close" aria-label="Close">×</button></form>']
+    section, slug = SLUGS[key]
+    body = []
     if img:
         cls = "modal-img portrait" if img[0] == "lana.png" else "modal-img"
-        out.append(f'    <img class="{cls}" src="assets/img/{img[0]}" alt="{img[1]}" loading="lazy">')
-    out.append(f'    <h2 id="t-{key}">{emoji_title}</h2>')
-    out.append("    " + hook)
-    for i, (en_title, zh_title, body) in enumerate(sections, 1):
-        out.append("    " + H3(i, en_title, zh_title))
-        out.append(body)
+        body.append(f'    <img class="{cls}" src="assets/img/{img[0]}" alt="{img[1]}" loading="lazy">')
+    body.append(f'    <h2 id="t-{key}">{emoji_title}</h2>')
+    body.append("    " + hook)
+    for i, (en_title, zh_title, sec_body) in enumerate(sections, 1):
+        body.append("    " + H3(i, en_title, zh_title))
+        body.append(sec_body)
         if diagram and i == 2:
-            out.append(diagram)
+            body.append(diagram)
     if links_html:
         if demo:
-            out.append("    " + H3(len(sections) + 1, "Demo &amp; code", "Demo 與原始碼"))
+            body.append("    " + H3(len(sections) + 1, "Demo &amp; code", "Demo 與原始碼"))
         else:
-            out.append("    " + H3(len(sections) + 1, "Code", "原始碼"))
-        out.append(f'    <p class="links">{links_html}</p>')
+            body.append("    " + H3(len(sections) + 1, "Code", "原始碼"))
+        body.append(f'    <p class="links">{links_html}</p>')
     if note:
-        out.append("    " + note)
-    out.append("  </dialog>")
-    return "\n".join(out)
+        body.append("    " + note)
+    inner = "\n".join(body)
+    PAGES[key] = dict(inner=inner, title=emoji_title, hook=hook, img=img, section=section, slug=slug)
+    permalink = (f'    <p class="permalink"><a href="{section}/{slug}/">'
+                 f'{T("Open as its own page ↗", "以獨立頁面開啟 ↗")}</a></p>')
+    return (f'  <dialog class="modal" id="d-{key}" data-slug="{slug}" data-section="{section}" aria-labelledby="t-{key}">\n'
+            '    <form method="dialog"><button class="close" aria-label="Close">×</button></form>\n'
+            f'{inner}\n{permalink}\n  </dialog>')
 
 
 def hook(en, zh):
@@ -764,6 +784,7 @@ print("wrote index.html", len(html), "chars")
 # Search + AI-friendly files: robots.txt, sitemap.xml, llms.txt, llms-full.txt
 # =====================================================================
 import re
+import html as html_mod
 from html.parser import HTMLParser
 from urllib.parse import urljoin
 
@@ -771,11 +792,30 @@ root = Path(__file__).resolve().parent.parent
 today = datetime.date.today().isoformat()
 
 (root / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n", encoding="utf-8")
+def _plain(s, lang="en"):
+    """Plain text of one language from a T()/P()-style snippet (used for <title>, descriptions, llms.txt)."""
+    other = "zh-Hant" if lang == "en" else "en"
+    s = re.sub(r'<span lang="%s">.*?</span>' % other, "", s, flags=re.S)
+    s = re.sub(r"<[^>]+>", "", s)
+    s = html_mod.unescape(s)
+    return re.sub(r"^[^\w(]+", "", s).strip()
+
+
+def _hook_text(hook_html):
+    m = re.search(r'<p class="hook" lang="en">(.*?)</p>', hook_html, re.S)
+    return html_mod.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip() if m else ""
+
+
+page_urls = [f"{SITE}{p['section']}/{p['slug']}/" for p in PAGES.values()]
 (root / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     f"  <url><loc>{SITE}</loc><lastmod>{today}</lastmod></url>\n"
-    "</urlset>\n", encoding="utf-8")
+    + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in page_urls)
+    + "</urlset>\n", encoding="utf-8")
+
+CASE_LINKS = "\n".join(
+    f"- [{_plain(p['title'])}]({SITE}{p['section']}/{p['slug']}/): {_hook_text(p['hook'])}" for p in PAGES.values())
 
 SUMMARY = ("UCLA Statistics & Data Science student (B.S., March 2027) who builds multi-agent simulations, "
            "LLM evaluation systems and hidden-information games. Legal name Yen-Ting Chen; goes by Tim (also on his passport as an alternative name). "
@@ -807,6 +847,10 @@ The website is a bilingual (English and Traditional Chinese) portfolio. Everythi
 - [Past Messages Analyzer](https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis): privacy-first analysis of how a friendship's tone drifts over time.
 - [Personal Knowledge Base](https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager): upload documents, ask across them, audit knowledge gaps.
 - [The Unobserved](https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved): original Traditional Chinese fantasy novel in progress (world design and storyboard).
+
+## Case studies (one page per project)
+
+{CASE_LINKS}
 
 ## Résumés
 
@@ -915,3 +959,83 @@ FULL = (f"# Yen-Ting (Tim) Chen\n\n> {SUMMARY}\n\n"
         + _md.markdown() + "\n")
 (root / "llms-full.txt").write_text(FULL, encoding="utf-8")
 print("wrote robots.txt, sitemap.xml, llms.txt, llms-full.txt", len(FULL), "chars")
+
+
+# =====================================================================
+# Standalone, shareable page for every project / the Phygtl case study
+# =====================================================================
+for _key, _p in PAGES.items():
+    _url = f"{SITE}{_p['section']}/{_p['slug']}/"
+    _en, _zh = _plain(_p["title"], "en"), _plain(_p["title"], "zh-Hant")
+    _hook = _hook_text(_p["hook"])
+    _desc = _hook + " A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned."
+    _img = SITE + "assets/img/" + (_p["img"][0] if _p["img"] else "civilizism.png")
+    _ld = json.dumps({
+        "@context": "https://schema.org", "@type": "CreativeWork", "name": _en, "description": _hook, "url": _url,
+        "image": _img, "author": {"@type": "Person", "name": "Yen-Ting Chen", "url": SITE},
+    }, ensure_ascii=False)
+    _back_href, _back_en, _back_zh = (("#projects", "← All projects", "← 所有專案") if _p["section"] == "projects"
+                                      else ("#home", "← Home", "← 首頁"))
+    _title_en = f"{_en} | Yen-Ting (Tim) Chen"
+    _title_zh = f"{_zh} | 陳彥廷 (Tim)"
+    _page = f"""<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <title>{html_mod.escape(_title_en)}</title>
+  <meta name="description" content="{html_mod.escape(_desc)}">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="{_url}">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
+  <meta property="og:title" content="{html_mod.escape(_title_en)}">
+  <meta property="og:description" content="{html_mod.escape(_desc)}">
+  <meta property="og:url" content="{_url}">
+  <meta property="og:image" content="{_img}">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{_ld}</script>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-title-en="{html_mod.escape(_title_en)}" data-title-zh="{html_mod.escape(_title_zh)}">
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#home">{T("Tim Chen", "陳彥廷 (Tim)")}</a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#home">{T("Home", "首頁")}</a>
+        <a href="#projects">{T("Projects", "專案")}</a>
+        <a href="#personal">{T("Personal", "個人")}</a>
+        <a href="#contact">{T("Contact", "聯絡")}</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <article class="project-page">
+      <p class="crumbs"><a href="{_back_href}">{T(_back_en, _back_zh)}</a></p>
+{_p["inner"]}
+      <p class="links"><a class="button ghost" href="{_back_href}">{T(_back_en, _back_zh)}</a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> {T("Yen-Ting (Tim) Chen", "陳彥廷 (Tim)")}&nbsp;·&nbsp;{T("UCLA, B.S. Statistics &amp; Data Science, 2027", "UCLA 統計與資料科學學士，2027")}</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+"""
+    for _name in ("style.css", "script.js"):
+        _h = hashlib.md5((root / _name).read_bytes()).hexdigest()[:8]
+        _page = _page.replace(f'href="{_name}"', f'href="{_name}?v={_h}"').replace(f'src="{_name}"', f'src="{_name}?v={_h}"')
+    _dir = root / _p["section"] / _p["slug"]
+    _dir.mkdir(parents=True, exist_ok=True)
+    (_dir / "index.html").write_text(_page, encoding="utf-8")
+print("wrote", len(PAGES), "standalone pages")

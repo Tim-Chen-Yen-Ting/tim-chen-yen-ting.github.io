@@ -19,7 +19,7 @@
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Yen-Ting Chen", "alternateName": ["Tim Chen", "Yen-Ting (Tim) Chen", "陳彥廷"], "url": "https://tim-chen-yen-ting.github.io/", "image": "https://tim-chen-yen-ting.github.io/assets/img/headshot.jpg", "description": "UCLA Statistics & Data Science student (B.S. 2027) who builds multi-agent simulations, LLM evaluation systems and hidden-information games.", "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of California, Los Angeles"}, "knowsAbout": ["Multi-agent simulation", "LLM evaluation", "Statistics", "Machine learning", "Natural language processing", "Software engineering"], "sameAs": ["https://github.com/Tim-Chen-Yen-Ting", "https://www.linkedin.com/in/tim-chen-yen-ting"]}</script>
   <meta name="color-scheme" content="dark">
   <script>document.documentElement.classList.add("js");</script>
-  <link rel="stylesheet" href="style.css?v=a152555d">
+  <link rel="stylesheet" href="style.css?v=6ae04711">
 </head>
 <body data-tab="home">
   <!-- Masthead: only shown on the About (home) tab. The tab bar below it sticks to the top on scroll. -->
@@ -429,7 +429,7 @@
 
   <!-- ===================== PROJECT DIALOGS ===================== -->
 
-  <dialog class="modal" id="d-phygtl" aria-labelledby="t-phygtl">
+  <dialog class="modal" id="d-phygtl" data-slug="phygtl" data-section="experience" aria-labelledby="t-phygtl">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img portrait" src="assets/img/lana.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
     <h2 id="t-phygtl">🧪 Phygtl · <span lang="en">Agentic Systems Engineering Intern</span><span lang="zh-Hant">Agentic Systems Engineering 實習生</span></h2>
@@ -460,9 +460,10 @@
 <p lang="zh-Hant">這是我的 vibe coding 從個人專案升級到商用等級的地方：程式碼每晚都在跑、把關真正的部署，而且有其他工程師依賴它。這讓一切標準都被拉高：會失敗的檢查、用自身以外的東西校準的評審、替測試寫的測試。</p>
 <p lang="en">It also meant writing the conventions for a codebase that had none, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.</p>
 <p lang="zh-Hant">這也代表要替一個沒有任何慣例的程式碼庫訂慣例，所以我寫了給 agent 看的慣例文件，以及每個測試框架的 README。我的角色只負責評測，所以當我發現真正的產品缺陷時，我會把每一個都寫成交接給負責它的工程師。</p>
+    <p class="permalink"><a href="experience/phygtl/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-civilizism" aria-labelledby="t-civilizism">
+  <dialog class="modal" id="d-civilizism" data-slug="civilizism" data-section="projects" aria-labelledby="t-civilizism">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
     <h2 id="t-civilizism">🏠 Civilizism</h2>
@@ -488,9 +489,10 @@
     <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer"><span lang="en">Watch a replay</span><span lang="zh-Hant">觀看回放</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Civilizism"><span lang="en">Public repo</span><span lang="zh-Hant">公開 repo</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/STEME"><span lang="en">STEME</span><span lang="zh-Hant">STEME</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/BLOC"><span lang="en">BLOC</span><span lang="zh-Hant">BLOC</span></a></p>
     <p class="note" lang="en">The core simulation code is private, and I'm happy to share it on request.</p>
 <p class="note" lang="zh-Hant">核心模擬程式碼是私有的，有需要我很樂意分享。</p>
+    <p class="permalink"><a href="projects/civilizism/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-stratego" aria-labelledby="t-stratego">
+  <dialog class="modal" id="d-stratego" data-slug="stratego-chess" data-section="projects" aria-labelledby="t-stratego">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/stratego.png" alt="Stratego-Chess game screenshot" loading="lazy">
     <h2 id="t-stratego"><span lang="en">♟️ Stratego-Chess</span><span lang="zh-Hant">♟️ 行軍西洋棋 Stratego-Chess</span></h2>
@@ -517,9 +519,10 @@
     <p class="links"><a class="button" href="https://stratego-chess.onrender.com/"><span lang="en">Play it</span><span lang="zh-Hant">開始玩</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/stratego-chess"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
     <p class="note" lang="en">It's on free hosting, so the first load after a quiet spell can take up to a minute. Go stretch.</p>
 <p class="note" lang="zh-Hant">它放在免費主機上，閒置一陣子後第一次載入可能要等到一分鐘。去伸個懶腰吧。</p>
+    <p class="permalink"><a href="projects/stratego-chess/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-whenwhere" aria-labelledby="t-whenwhere">
+  <dialog class="modal" id="d-whenwhere" data-slug="whenwhere" data-section="projects" aria-labelledby="t-whenwhere">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/whenwhere.png" alt="WhenWhere world map" loading="lazy">
     <h2 id="t-whenwhere">⏰ WhenWhere</h2>
@@ -544,9 +547,10 @@
     <p class="links"><a class="button" href="https://whenwhere-65it.onrender.com/"><span lang="en">Try it</span><span lang="zh-Hant">試用</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/WhenWhere"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
     <p class="note" lang="en">Free hosting again, so it may take a moment to wake up.</p>
 <p class="note" lang="zh-Hant">又是免費主機，所以可能需要一點時間醒來。</p>
+    <p class="permalink"><a href="projects/whenwhere/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-statuscard" aria-labelledby="t-statuscard">
+  <dialog class="modal" id="d-statuscard" data-slug="claude-code-status-card" data-section="projects" aria-labelledby="t-statuscard">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/statuscard.png" alt="Claude Code Status Card" loading="lazy">
     <h2 id="t-statuscard">🔔 Claude Code Status Card</h2>
@@ -571,9 +575,10 @@
 <p lang="zh-Hant">SaaS 不可能一天做完。我學會了 hooks 怎麼運作，也學會只靠讀 hooks 就分辨不同的 repo。而且身為自己工具的真實使用者，打磨改進花了好幾個星期。第一天我發現我記不得哪個 session 叫什麼名字。第二天我發現各個 session 的圖示不一致。第三天我發現自己雖然不再切視窗了，卻還是一直盯著螢幕，所以我在狀態變化之外又加了音效。</p>
     <h3><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h3>
     <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
+    <p class="permalink"><a href="projects/claude-code-status-card/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-steme" aria-labelledby="t-steme">
+  <dialog class="modal" id="d-steme" data-slug="steme-bloc" data-section="projects" aria-labelledby="t-steme">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/steme_bloc.png" alt="STEME and BLOC benchmark results" loading="lazy">
     <h2 id="t-steme">🧠 STEME &amp; BLOC</h2>
@@ -594,9 +599,10 @@
 <p lang="zh-Hant">我本來以為 STEME（本質上就是 1-NN）是萬用工具，直到情緒投影把所有東西都推向中心，我才意識到需要另一種分類方法。圖中是真實的基準測試輸出：在一組合成的標註資料上，STEME 於四種嵌入模型的 F1 為 0.79–0.91；在漂移資料上，BLOC 的 ARI 是 0.70，全域 k-means 則是 0.57。</p>
     <h3><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h3>
     <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/STEME"><span lang="en">STEME</span><span lang="zh-Hant">STEME</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/BLOC"><span lang="en">BLOC</span><span lang="zh-Hant">BLOC</span></a></p>
+    <p class="permalink"><a href="projects/steme-bloc/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-coldemail" aria-labelledby="t-coldemail">
+  <dialog class="modal" id="d-coldemail" data-slug="cold-email-automator" data-section="projects" aria-labelledby="t-coldemail">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/coldemail.png" alt="Cold Email Automator pipeline diagram" loading="lazy">
     <h2 id="t-coldemail">📬 Cold Email Automator</h2>
@@ -619,9 +625,10 @@
     <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
     <p class="note" lang="en">Feature-complete and tested. I'm deliberately holding off deploying it until the timing of my job search makes sense.</p>
 <p class="note" lang="zh-Hant">功能完整且經過測試。我刻意先不部署，等到求職的時機合適再說。</p>
+    <p class="permalink"><a href="projects/cold-email-automator/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-messages" aria-labelledby="t-messages">
+  <dialog class="modal" id="d-messages" data-slug="past-messages-analyzer" data-section="projects" aria-labelledby="t-messages">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/messages.png" alt="Past Messages Analyzer pipeline diagram" loading="lazy">
     <h2 id="t-messages">💬 Past Messages Analyzer</h2>
@@ -642,9 +649,10 @@
 <p lang="zh-Hant">毫不意外，當你的朋友用兩種語言傳訊息，你就需要兩套情緒分析工具。另外，歡迎來到心理學的世界：至少根據心理學教科書，我的統計能力正被情緒挑戰著。</p>
     <h3><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h3>
     <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
+    <p class="permalink"><a href="projects/past-messages-analyzer/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-pkb" aria-labelledby="t-pkb">
+  <dialog class="modal" id="d-pkb" data-slug="personal-knowledge-base" data-section="projects" aria-labelledby="t-pkb">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/pkb.png" alt="Personal Knowledge Base chat screen" loading="lazy">
     <h2 id="t-pkb">📚 Personal Knowledge Base</h2>
@@ -665,6 +673,7 @@
 <p lang="zh-Hant">我懂 RAG，而這是我學到什麼時候<em>不該</em>用 RAG 的時刻。還有，英雄所見略同 :) 當我做完這個知識庫，我才發現自己造出了我的 Gemini Notebook。幹得好，過去的我。</p>
     <h3><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h3>
     <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
+    <p class="permalink"><a href="projects/personal-knowledge-base/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
   <dialog class="modal" id="d-resume" aria-labelledby="t-resume">
@@ -700,6 +709,6 @@
     </div>
   </dialog>
 
-  <script src="script.js?v=fb391dc8"></script>
+  <script src="script.js?v=1ddb4be2"></script>
 </body>
 </html>

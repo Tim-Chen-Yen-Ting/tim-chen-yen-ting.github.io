@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <title>STEME &amp; BLOC | Yen-Ting (Tim) Chen</title>
+  <meta name="description" content="What if you could turn &quot;sincerity&quot; into a number without calling an LLM every time? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://tim-chen-yen-ting.github.io/projects/steme-bloc/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
+  <meta property="og:title" content="STEME &amp; BLOC | Yen-Ting (Tim) Chen">
+  <meta property="og:description" content="What if you could turn &quot;sincerity&quot; into a number without calling an LLM every time? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta property="og:url" content="https://tim-chen-yen-ting.github.io/projects/steme-bloc/">
+  <meta property="og:image" content="https://tim-chen-yen-ting.github.io/assets/img/steme_bloc.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "STEME & BLOC", "description": "What if you could turn \"sincerity\" into a number without calling an LLM every time?", "url": "https://tim-chen-yen-ting.github.io/projects/steme-bloc/", "image": "https://tim-chen-yen-ting.github.io/assets/img/steme_bloc.png", "author": {"@type": "Person", "name": "Yen-Ting Chen", "url": "https://tim-chen-yen-ting.github.io/"}}</script>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css?v=6ae04711">
+</head>
+<body data-title-en="STEME &amp; BLOC | Yen-Ting (Tim) Chen" data-title-zh="STEME &amp; BLOC | 陳彥廷 (Tim)">
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#home"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#home"><span lang="en">Home</span><span lang="zh-Hant">首頁</span></a>
+        <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
+        <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
+        <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <article class="project-page">
+      <p class="crumbs"><a href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    <img class="modal-img" src="assets/img/steme_bloc.png" alt="STEME and BLOC benchmark results" loading="lazy">
+    <h2 id="t-steme">🧠 STEME &amp; BLOC</h2>
+    <p class="hook" lang="en">What if you could turn &quot;sincerity&quot; into a number without calling an LLM every time?</p>
+<p class="hook" lang="zh-Hant">如果不用每次呼叫 LLM，就能把「真誠」變成數字呢？</p>
+    <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>
+<p lang="en">Civilizism constantly has to translate between words and numbers: how sincere is this person, do these two memories express the same belief, are these two beliefs fighting each other? Doing that with an LLM call every time would be slow, expensive and inconsistent.</p>
+<p lang="zh-Hant">Civilizism 不斷需要在文字和數字之間轉換：這個人有多真誠？這兩段記憶表達的是同一個信念嗎？這兩個信念彼此衝突嗎？每次都用 LLM 呼叫來做，會又慢、又貴、又不一致。</p>
+    <h3><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h3>
+<p lang="en"><strong>STEME</strong> (Semantic Transformation &amp; Evaluation Mapping Engine) is the translation layer. It combines calibrated embedding similarity, zero-shot entailment classification, and an emotion classifier, and it can anchor abstract concepts like <em>sincerity</em> using definitions plus polar behavioral examples. <strong>BLOC</strong> (Belief &amp; Label-Oriented Clustering) groups memories into beliefs that drift as new experiences arrive, and flags opposing beliefs as internal conflict.</p>
+<p lang="zh-Hant"><strong>STEME</strong>（語意轉換與評估對應引擎）是翻譯層。它結合校準過的嵌入相似度、零樣本蘊含分類，以及情緒分類器，還能用定義加上兩極的行為範例，替<em>真誠</em>這類抽象概念定錨。<strong>BLOC</strong>（信念與標籤導向分群）把記憶分成會隨新經驗漂移的信念，並把彼此對立的信念標記為內在衝突。</p>
+    <h3><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h3>
+<p lang="en">Raw cosine similarity is a trap: embedding scores crowd into a narrow band, so I had to recalibrate them to get any separation. And clustering by cosine similarity makes centroids crowd together as meaning drifts, so BLOC uses entailment to decide cluster membership instead.</p>
+<p lang="zh-Hant">原始的餘弦相似度是個陷阱：嵌入分數會擠在很窄的區間內，所以我得重新校準才能拉開差距。而且用餘弦相似度分群，會讓質心隨語意漂移而擠在一起，所以 BLOC 改用蘊含關係來決定群的歸屬。</p>
+    <h3><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h3>
+<p class="chips"><span>Python</span><span>sentence-transformers</span><span>NLI models</span><span>scikit-learn</span></p>
+<p lang="en">I thought STEME (essentially 1-NN) was a universal tool, until the emotion projection pushed everything toward the center, and I realized I needed a different classification method. The chart shows real benchmark output: STEME scores 0.79–0.91 F1 across four embedding models on a synthetic tagging set, and BLOC gets 0.70 ARI on drifting data versus 0.57 for global k-means.</p>
+<p lang="zh-Hant">我本來以為 STEME（本質上就是 1-NN）是萬用工具，直到情緒投影把所有東西都推向中心，我才意識到需要另一種分類方法。圖中是真實的基準測試輸出：在一組合成的標註資料上，STEME 於四種嵌入模型的 F1 為 0.79–0.91；在漂移資料上，BLOC 的 ARI 是 0.70，全域 k-means 則是 0.57。</p>
+    <h3><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h3>
+    <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/STEME"><span lang="en">STEME</span><span lang="zh-Hant">STEME</span></a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/BLOC"><span lang="en">BLOC</span><span lang="zh-Hant">BLOC</span></a></p>
+      <p class="links"><a class="button ghost" href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+  </footer>
+
+  <script src="script.js?v=1ddb4be2"></script>
+</body>
+</html>

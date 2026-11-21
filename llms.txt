@@ -25,6 +25,18 @@ The website is a bilingual (English and Traditional Chinese) portfolio. Everythi
 - [Personal Knowledge Base](https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager): upload documents, ask across them, audit knowledge gaps.
 - [The Unobserved](https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved): original Traditional Chinese fantasy novel in progress (world design and storyboard).
 
+## Case studies (one page per project)
+
+- [Phygtl · Agentic Systems Engineering Intern](https://tim-chen-yen-ting.github.io/experience/phygtl/): How do we know whether Lana is doing what she's supposed to do?
+- [Civilizism](https://tim-chen-yen-ting.github.io/projects/civilizism/): What if you simulated one person really well, then simulated a lot of them?
+- [Stratego-Chess](https://tim-chen-yen-ting.github.io/projects/stratego-chess/): What if chess no longer has a 100% capture rate?
+- [WhenWhere](https://tim-chen-yen-ting.github.io/projects/whenwhere/): What if you need to find some time to meet a friend on the other side of the globe?
+- [Claude Code Status Card](https://tim-chen-yen-ting.github.io/projects/claude-code-status-card/): What if you could tell which Claude Code session needs you without alt-tabbing through all of them?
+- [STEME & BLOC](https://tim-chen-yen-ting.github.io/projects/steme-bloc/): What if you could turn "sincerity" into a number without calling an LLM every time?
+- [Cold Email Automator](https://tim-chen-yen-ting.github.io/projects/cold-email-automator/): What if the job hunt did its own legwork?
+- [Past Messages Analyzer](https://tim-chen-yen-ting.github.io/projects/past-messages-analyzer/): What if you could watch a friendship's tone drift over time?
+- [Personal Knowledge Base](https://tim-chen-yen-ting.github.io/projects/personal-knowledge-base/): What if your notes could tell you what you're missing?
+
 ## Résumés
 
 - [Software engineering résumé](https://tim-chen-yen-ting.github.io/assets/resumes/YenTing_Tim_Chen_Resume_SWE.pdf)

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../../">
+  <title>Personal Knowledge Base | Yen-Ting (Tim) Chen</title>
+  <meta name="description" content="What if your notes could tell you what you&#x27;re missing? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://tim-chen-yen-ting.github.io/projects/personal-knowledge-base/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Yen-Ting (Tim) Chen">
+  <meta property="og:title" content="Personal Knowledge Base | Yen-Ting (Tim) Chen">
+  <meta property="og:description" content="What if your notes could tell you what you&#x27;re missing? A project story by Yen-Ting (Tim) Chen: the problem, the solution, the challenges and what I learned.">
+  <meta property="og:url" content="https://tim-chen-yen-ting.github.io/projects/personal-knowledge-base/">
+  <meta property="og:image" content="https://tim-chen-yen-ting.github.io/assets/img/pkb.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Personal Knowledge Base", "description": "What if your notes could tell you what you're missing?", "url": "https://tim-chen-yen-ting.github.io/projects/personal-knowledge-base/", "image": "https://tim-chen-yen-ting.github.io/assets/img/pkb.png", "author": {"@type": "Person", "name": "Yen-Ting Chen", "url": "https://tim-chen-yen-ting.github.io/"}}</script>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css?v=6ae04711">
+</head>
+<body data-title-en="Personal Knowledge Base | Yen-Ting (Tim) Chen" data-title-zh="Personal Knowledge Base | 陳彥廷 (Tim)">
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#home"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#home"><span lang="en">Home</span><span lang="zh-Hant">首頁</span></a>
+        <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
+        <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
+        <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <article class="project-page">
+      <p class="crumbs"><a href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    <img class="modal-img" src="assets/img/pkb.png" alt="Personal Knowledge Base chat screen" loading="lazy">
+    <h2 id="t-pkb">📚 Personal Knowledge Base</h2>
+    <p class="hook" lang="en">What if your notes could tell you what you're missing?</p>
+<p class="hook" lang="zh-Hant">如果你的筆記能告訴你還缺什麼呢？</p>
+    <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>
+<p lang="en">I built this for a non-technical user with a pile of documents and no way to ask questions across them, or to know what they hadn't covered yet.</p>
+<p lang="zh-Hant">我替一位非技術背景的使用者做了這個：他有一大堆文件，卻沒辦法跨文件提問，也不知道自己還沒涵蓋什麼。</p>
+    <h3><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h3>
+<p lang="en">Drop in a PDF, Word doc or text file. An LLM turns it into a tagged wiki entry, you can ask questions against the whole knowledge base (or just some topics) with sources cited, and a per-topic &quot;knowledge audit&quot; lists your strengths, gaps and what to read next. Nothing humbles you like a list of what you haven't read. Yes, the front end is ugly. It works.</p>
+<p lang="zh-Hant">丟進 PDF、Word 或文字檔，LLM 會把它變成附標籤的 wiki 條目；你可以對整個知識庫（或只對某些主題）提問並附上出處，每個主題的「知識審計」會列出你的強項、缺口和接下來該讀什麼。沒有什麼比一份「你還沒讀的清單」更能讓人謙卑。對，前端很醜。但它能用。</p>
+    <h3><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h3>
+<p lang="en">Left alone, LLM tagging invents near-duplicates (&quot;ml&quot;, &quot;machine-learning&quot;, &quot;machine learning&quot;) until the tags are useless, so each ingest shows the model the existing tags and tells it to reuse them. I also chose to answer questions by loading the relevant entries into the prompt instead of building a vector search. At this scale it's simpler, cheaper and easier to debug, and the sources are exactly what the model saw.</p>
+<p lang="zh-Hant">放著不管的話，LLM 標註會發明一堆近似重複的標籤（「ml」、「machine-learning」、「machine learning」），直到標籤毫無用處，所以每次匯入都會讓模型看到現有標籤，並要求它重複使用。我也選擇把相關條目直接放進 prompt 來回答問題，而不是做向量搜尋。在這個規模下，這樣更簡單、更便宜、更好除錯，而且出處正好就是模型看到的內容。</p>
+    <h3><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h3>
+<p class="chips"><span>Python</span><span>Vercel serverless</span><span>Supabase</span><span>Gemini API</span><span>pdfplumber</span><span>Chart.js</span></p>
+<p lang="en">I know RAG, and this is when I learned when <em>not</em> to use RAG. Also, great minds think alike :) When I finished building the knowledge base, I realized I had built my own Gemini Notebook. Well done, past me.</p>
+<p lang="zh-Hant">我懂 RAG，而這是我學到什麼時候<em>不該</em>用 RAG 的時刻。還有，英雄所見略同 :) 當我做完這個知識庫，我才發現自己造出了我的 Gemini Notebook。幹得好，過去的我。</p>
+    <h3><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h3>
+    <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
+      <p class="links"><a class="button ghost" href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+  </footer>
+
+  <script src="script.js?v=1ddb4be2"></script>
+</body>
+</html>

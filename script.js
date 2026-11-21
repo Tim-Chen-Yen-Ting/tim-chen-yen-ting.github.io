@@ -4,8 +4,9 @@
   var ids = panels.map(function (p) { return p.id.replace("panel-", ""); });
 
   function show() {
-    var id = (location.hash || "#home").slice(1);
-    if (id === "about") id = "home"; // old links still work
+    var parts = (location.hash || "#home").slice(1).split("/");
+    var id = parts[0], slug = parts[1];
+    if (id === "about" || id === "experience") id = "home"; // old links still work; #experience/phygtl lives on Home
     if (ids.indexOf(id) === -1) id = "home";
     document.body.setAttribute("data-tab", id);
     panels.forEach(function (p) { p.classList.toggle("active", p.id === "panel-" + id); });
@@ -15,6 +16,11 @@
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
     window.scrollTo(0, 0);
+    // Deep link: #projects/civilizism or #experience/phygtl opens that popup
+    if (slug) {
+      var dlg = document.querySelector('dialog.modal[data-slug="' + slug + '"]');
+      if (dlg && !dlg.open && dlg.showModal) dlg.showModal();
+    }
   }
   window.addEventListener("hashchange", show);
   show();
@@ -24,7 +30,11 @@
   // Project dialogs: any element with data-open opens its dialog (links inside it still work normally)
   function openFrom(el) {
     var d = document.getElementById(el.getAttribute("data-open"));
-    if (d && d.showModal && !d.open) d.showModal();
+    if (d && d.showModal && !d.open) {
+      d.showModal();
+      // keep the address bar shareable while a popup is open
+      if (d.dataset.slug && history.replaceState) history.replaceState(null, "", "#" + d.dataset.section + "/" + d.dataset.slug);
+    }
   }
   var openedByKeyboard = false;
   document.addEventListener("click", function (e) {
@@ -50,6 +60,7 @@
     d.addEventListener("close", function () {
       var a = document.activeElement;
       if (!openedByKeyboard && a && a !== document.body && a.blur) a.blur();
+      if (d.dataset.slug && history.replaceState) history.replaceState(null, "", "#" + (document.body.getAttribute("data-tab") || "home"));
     });
   });
 
@@ -60,7 +71,7 @@
     var root = document.documentElement;
     root.setAttribute("data-lang", l);
     root.setAttribute("lang", l);
-    document.title = TITLES[l];
+    document.title = document.body.getAttribute(l === "en" ? "data-title-en" : "data-title-zh") || TITLES[l];
     try { localStorage.setItem("lang", l); } catch (e) {}
   }
   var saved = null;

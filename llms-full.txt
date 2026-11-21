@@ -210,6 +210,8 @@ This is where my vibe coding went from projects to commercial level: code that r
 
 It also meant writing the conventions for a codebase that had none, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.
 
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/experience/phygtl/)
+
 ## 🏠 Civilizism
 
 What if you simulated one person really well, then simulated a lot of them?
@@ -239,6 +241,8 @@ Pydantic saved my life when parsing LLM output with regex was a living hell. Thi
 [Watch a replay](https://civilizism.vercel.app/viewer) [Public repo](https://github.com/Tim-Chen-Yen-Ting/Civilizism) [STEME](https://github.com/Tim-Chen-Yen-Ting/STEME) [BLOC](https://github.com/Tim-Chen-Yen-Ting/BLOC)
 
 The core simulation code is private, and I'm happy to share it on request.
+
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/civilizism/)
 
 ## ♟️ Stratego-Chess
 
@@ -272,6 +276,8 @@ My first step into TypeScript, and my first time seeing client/server lessons up
 
 It's on free hosting, so the first load after a quiet spell can take up to a minute. Go stretch.
 
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/stratego-chess/)
+
 ## ⏰ WhenWhere
 
 What if you need to find some time to meet a friend on the other side of the globe?
@@ -301,6 +307,8 @@ Civilizism taught me how to build my own framework. WhenWhere taught me when not
 [Try it](https://whenwhere-65it.onrender.com/) [Code](https://github.com/Tim-Chen-Yen-Ting/WhenWhere)
 
 Free hosting again, so it may take a moment to wake up.
+
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/whenwhere/)
 
 ## 🔔 Claude Code Status Card
 
@@ -332,6 +340,8 @@ SaaS cannot be done in one day. I learned how hooks work and how to tell repos a
 
 [Code](https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card)
 
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/claude-code-status-card/)
+
 ## 🧠 STEME & BLOC
 
 What if you could turn "sincerity" into a number without calling an LLM every time?
@@ -357,6 +367,8 @@ I thought STEME (essentially 1-NN) was a universal tool, until the emotion proje
 ### Code
 
 [STEME](https://github.com/Tim-Chen-Yen-Ting/STEME) [BLOC](https://github.com/Tim-Chen-Yen-Ting/BLOC)
+
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/steme-bloc/)
 
 ## 📬 Cold Email Automator
 
@@ -386,6 +398,8 @@ I learned OAuth the hard way: Gmail's credentials are not bypassable when you ma
 
 Feature-complete and tested. I'm deliberately holding off deploying it until the timing of my job search makes sense.
 
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/cold-email-automator/)
+
 ## 💬 Past Messages Analyzer
 
 What if you could watch a friendship's tone drift over time?
@@ -412,6 +426,8 @@ Unsurprisingly, you need two sentiment tools when your friends text in two langu
 
 [Code](https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis)
 
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/past-messages-analyzer/)
+
 ## 📚 Personal Knowledge Base
 
 What if your notes could tell you what you're missing?
@@ -437,3 +453,5 @@ I know RAG, and this is when I learned when not to use RAG. Also, great minds th
 ### Code
 
 [Code](https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager)
+
+[Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/personal-knowledge-base/)
