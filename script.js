@@ -31,6 +31,23 @@
     d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
   });
 
+  // Language toggle (EN / 中文), remembered across visits
+  var TITLES = { "en": "Tim (Yen-Ting) Chen", "zh-Hant": "陳彥廷 Tim Chen" };
+  function setLang(l) {
+    if (l !== "en" && l !== "zh-Hant") l = "en";
+    var root = document.documentElement;
+    root.setAttribute("data-lang", l);
+    root.setAttribute("lang", l);
+    document.title = TITLES[l];
+    try { localStorage.setItem("lang", l); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem("lang"); } catch (e) {}
+  setLang(saved || "en");
+  document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang")); });
+  });
+
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 })();

@@ -45,6 +45,18 @@ nav a {
 nav a:hover { color: var(--text); text-decoration: none; }
 nav a.current { background: var(--surface-2); color: var(--text); box-shadow: inset 0 0 0 1px var(--border); }
 
+/* ---------- language ---------- */
+html[data-lang="en"] body [lang="zh-Hant"],
+html[data-lang="zh-Hant"] body [lang="en"] { display: none !important; }
+.lang-toggle { display: flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; flex-shrink: 0; }
+.lang-toggle button {
+  font: inherit; font-size: 0.85rem; padding: 0.3rem 0.8rem; cursor: pointer;
+  background: transparent; color: var(--muted); border: 0;
+}
+.lang-toggle button:hover { color: var(--text); }
+html[data-lang="en"] .lang-toggle [data-set-lang="en"],
+html[data-lang="zh-Hant"] .lang-toggle [data-set-lang="zh-Hant"] { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+
 /* ---------- panels ---------- */
 main { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem 3rem; }
 .panel { padding-top: 2.5rem; }
@@ -66,7 +78,7 @@ main { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem 3rem; }
 .button:hover { text-decoration: none; filter: brightness(1.08); }
 .button.ghost { background: transparent; color: var(--accent); }
 .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.8rem 0; }
-.chips span {
+.chips > span {
   font-size: 0.78rem; color: var(--muted); border: 1px solid var(--border);
   border-radius: 999px; padding: 0.1rem 0.65rem;
 }
@@ -153,8 +165,8 @@ dialog.modal h3 {
   display: flex; align-items: center; gap: 0.6rem;
   font-size: 1.05rem; margin: 1.6rem 0 0.5rem;
 }
-dialog.modal h3 span {
-  display: inline-flex; align-items: center; justify-content: center;
+dialog.modal h3 .num {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
   width: 1.5rem; height: 1.5rem; border-radius: 50%;
   background: var(--accent); color: var(--accent-ink); font-size: 0.8rem; font-weight: 700;
 }
@@ -175,8 +187,10 @@ footer {
 
 /* ---------- small screens ---------- */
 @media (max-width: 760px) {
-  .site-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.7rem 1rem; }
-  nav { flex-wrap: wrap; }
+  .site-header { flex-wrap: wrap; align-items: center; gap: 0.4rem; padding: 0.7rem 1rem; }
+  .logo { order: 1; }
+  .lang-toggle { order: 2; margin-left: auto; }
+  nav { order: 3; width: 100%; flex-wrap: wrap; }
   main { padding: 0 1rem 2.5rem; }
   .hero { flex-direction: column; align-items: flex-start; }
   .two-col, .gallery, .facts, .downloads { grid-template-columns: 1fr; }
