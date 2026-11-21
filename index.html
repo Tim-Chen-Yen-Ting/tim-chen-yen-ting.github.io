@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tim (Yen-Ting) Chen</title>
-  <meta name="description" content="Tim (Yen-Ting) Chen: UCLA Statistics &amp; Data Science. Agentic AI systems, evaluation infrastructure, and a few things I built for fun.">
+  <meta name="description" content="Tim (Yen-Ting) Chen: UCLA Statistics &amp; Data Science. I build AI systems and the tests that keep them honest.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <a class="logo" href="#top">Tim Chen</a>
     <nav>
-      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
       <a href="#projects">Projects</a>
       <a href="#beyond">Beyond code</a>
       <a href="#contact">Contact</a>
@@ -22,12 +22,12 @@
     <section class="hero">
       <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
       <div>
-        <p class="eyebrow">Hi, I'm</p>
-        <h1>Tim (Yen-Ting) Chen</h1>
-        <p class="tagline">I build agentic AI systems and the evaluation infrastructure that keeps them honest. Statistics &amp; Data Science at UCLA (B.S., March 2027).</p>
+        <p class="eyebrow">Hi, I'm Tim.</p>
+        <h1>I build AI systems, then try very hard to prove they work.</h1>
+        <p class="tagline">Agent simulations, LLM evaluation, and a chess variant where the rules can't leak your secrets. Statistics &amp; Data Science at UCLA, graduating March 2027.</p>
         <p class="links">
-          <a class="button" href="#projects">See my work</a>
-          <a class="button ghost" href="assets/resumes/YenTing_Tim_Chen_CV.pdf">CV (PDF)</a>
+          <a class="button" href="#projects">See what I've built</a>
+          <a class="button ghost" href="assets/resumes/YenTing_Tim_Chen_CV.pdf">CV</a>
           <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting">GitHub</a>
           <a class="button ghost" href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329">LinkedIn</a>
         </p>
@@ -36,31 +36,25 @@
 
     <section id="about">
       <h2>About</h2>
-      <p>The thread through everything I make: <strong>put deterministic control around stochastic model output</strong>, and design against failure modes that compound or feed on themselves. That shows up in an LLM eval suite I built from zero at a startup, in a multi-agent simulation where character is enforced by code rather than prompting, and in a hidden-information game where the rules themselves can't leak a secret.</p>
-      <p>I study Statistics &amp; Data Science at UCLA (major GPA 3.96, Latin Honors candidate, minor in Data Science Engineering). I'm based in LA and Taiwan, and I write in English and Traditional Chinese.</p>
-      <p class="resumes">Role-focused resumes:
+      <p>I'm a stats student who keeps ending up building things. The thread running through all of it is that I like putting guardrails around unpredictable systems: language models that drift, simulated people who stop acting like themselves, game rules that accidentally give away a hidden piece.</p>
+      <p>I split my time between Los Angeles and Taiwan. I write fiction in Traditional Chinese, and I played libero (and was vice captain) on my school's volleyball team. Looking for software, AI engineering, or data roles, and happy to talk about any of the three.</p>
+      <p class="resumes">Resumes by role:
         <a href="assets/resumes/YenTing_Tim_Chen_Resume_SWE.pdf">Software</a> ·
         <a href="assets/resumes/YenTing_Tim_Chen_Resume_FDE.pdf">Forward-deployed</a> ·
         <a href="assets/resumes/YenTing_Tim_Chen_Resume_StatsDS.pdf">Stats / Data Science</a>
       </p>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
+    <section id="work">
+      <h2>Work</h2>
       <article class="job">
         <div class="job-head">
-          <h3>Agentic Systems Engineering Intern · Phygtl Inc.</h3>
-          <span class="date">Jun – Sep 2026</span>
+          <h3>Phygtl · Agentic Systems Engineering Intern</h3>
+          <span class="date">Summer 2026</span>
         </div>
-        <p>Sole author of the evaluation suite for Lana, an agentic AI concierge. No such infrastructure existed before; it's now running in production.</p>
-        <ul>
-          <li><strong>Five pipelines, built from zero:</strong> core conversational eval, claim extraction and PII, onion-matcher and ZIP-unlock, conversational policy and safety, and automated triage.</li>
-          <li><strong>Split every check by how it fails.</strong> Anything with known ground truth (banned words, planted PII, deployed SQL formulas) is verified in code. Only genuinely subjective axes go to an LLM judge, which must fail closed and be calibrated against something outside itself.</li>
-          <li><strong>Negative-control selftests:</strong> every harness feeds each mechanical check a planted violation and asserts it hard-fails, because a green run is worthless if the checks are vacuous.</li>
-          <li><strong>Self-calibrating auto-triage</strong> collapsed a 729-row human-review queue, re-deriving evidence from stored transcripts rather than asking a second LLM, and reports its own agreement against 51 human-labeled rows.</li>
-          <li><strong>CI:</strong> a nightly persona × scenario matrix, plus a PR gate that blocks deploys on a &gt;5% axis regression or any new hard failure.</li>
-          <li><strong>Changed the product:</strong> proposed and then validated, against a purpose-built 1,547-utterance test set, a consolidation of the intent taxonomy. Approved by the CEO and adopted by the AI lead.</li>
-        </ul>
+        <p>Phygtl is an early-stage startup with an AI concierge called Lana, and when I joined there was no way to know whether a change made Lana better or worse. I was the only person building that: five evaluation pipelines, from scratch, still running when I left.</p>
+        <p>The idea behind all of it is to split every check by <em>how it can fail</em>. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like "was that warm without being sycophantic?", go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, since a green run means nothing if the check can't fail.</p>
+        <p>The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged, tested the claim on a 1,547-utterance set I built for it, and the CEO and AI lead adopted the change.</p>
       </article>
     </section>
 
@@ -68,88 +62,72 @@
       <h2>Projects</h2>
 
       <article class="project featured">
-        <img src="assets/img/civilizism.png" alt="Civilizism replay viewer showing four housemates moving through a house" loading="lazy">
+        <img src="assets/img/civilizism.png" alt="Civilizism replay viewer with an agent's emotion and biology panel open next to the housemates' chat log" loading="lazy">
         <div class="project-body">
           <h3>Civilizism</h3>
-          <p class="meta">Flagship · multi-agent social simulation · Python, React</p>
-          <p>Social dynamics, belief systems and personality emerge from individual-level cognition, with no scripted social rules. Each agent perceives, remembers, reflects and plans. <em>The LLM proposes; SHAPE decides:</em> every action is scored by a utility gate over 43 personality coefficients (Schwartz values and HEXACO traits), so character is enforced by code, not by prompting.</p>
-          <ul>
-            <li>Memory with two independent decay clocks, so rehearsal can't make a memory immortal</li>
-            <li>Replication harness pairing four scenarios (Milgram, Asch, Robbers Cave, Stanford Prison) with predictions registered before any run exists</li>
-            <li>Research engines <a href="https://github.com/Tim-Chen-Yen-Ting/STEME">STEME</a> (semantic scoring, 0.79–0.91 F1, about 4× a TF-IDF baseline) and <a href="https://github.com/Tim-Chen-Yen-Ting/BLOC">BLOC</a> (incremental belief clustering, 0.703 ARI)</li>
-          </ul>
-          <p class="note">The core simulation code is in a private repo, available on request. The harness is complete; scored replication runs are still pending.</p>
-          <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer">Live replay</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Civilizism">Public repo</a></p>
+          <p class="hook">What if you simulated one person really well, then simulated a lot of them?</p>
+          <p>It's a social simulation where nobody scripts the outcome. Each agent perceives, remembers, reflects and plans, and whatever beliefs and relationships form are a side effect.</p>
+          <p>The catch with LLM agents is that they drift out of character. So here the model only <em>proposes</em> actions, and a utility engine built on personality psychology decides which one happens. Character is enforced by code instead of by prompting. I'm checking the whole thing against Milgram, Asch, Robbers Cave and the Stanford Prison Experiment, with predictions written down before any run.</p>
+          <p class="chips"><span>Python</span><span>React</span><span>multi-agent</span><span>embeddings</span></p>
+          <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer">Watch a replay</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Civilizism">Public repo</a></p>
+          <p class="note">The core code is private, and I'm happy to share it on request. It runs on two engines I also wrote: <a href="https://github.com/Tim-Chen-Yen-Ting/STEME">STEME</a> for semantic scoring and <a href="https://github.com/Tim-Chen-Yen-Ting/BLOC">BLOC</a> for clustering beliefs.</p>
         </div>
       </article>
 
       <article class="project">
-        <img src="assets/img/stratego.png" alt="Stratego-Chess game creation screen" loading="lazy">
+        <img src="assets/img/stratego.png" alt="A Stratego-Chess game against the bot, with the public record showing a bomb fizzle" loading="lazy">
         <div class="project-body">
           <h3>Stratego-Chess <span class="zh">行軍西洋棋</span></h3>
-          <p class="meta">Original game · TypeScript monorepo · Fastify, Socket.IO, React</p>
-          <p>A hidden-information strategy game I designed: chess movement carries Stratego-style secret ranks, and the two layers are deliberately uncoupled. A piece's carrier decides how it moves (public); its rank decides what it beats (secret).</p>
-          <ul>
-            <li>Rules written so their own announcements can't leak a rank</li>
-            <li>Structural redaction: hidden state leaves the server through exactly one serialization function</li>
-            <li>A bot that particle-filters each enemy piece's rank and plays mixed strategies, plus a GET-only interface so LLMs can play by fetching URLs</li>
-          </ul>
+          <p class="hook">Chess movement. Secret Stratego ranks.</p>
+          <p>A game I designed: every piece moves like a chess piece, but it also carries a hidden rank that decides what it beats. You can see how an enemy piece moves, never what it can capture.</p>
+          <p>The fun engineering problem is information. The rules, and even the server's messages, are built so nothing can leak a hidden rank. There's a bot that keeps a running probability for what each of your pieces might be, and a plain-URL interface so a chatbot can play by fetching links.</p>
+          <p class="chips"><span>TypeScript</span><span>Fastify</span><span>React</span><span>WebSockets</span></p>
           <p class="links"><a class="button" href="https://stratego-chess.onrender.com/">Play it</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/stratego-chess">Code</a></p>
-          <p class="note">Free-tier hosting: the first load after idle can take 30–60 seconds.</p>
+          <p class="note">It's on free hosting, so the first load after a quiet spell can take up to a minute.</p>
         </div>
       </article>
 
       <article class="project">
-        <img src="assets/img/whenwhere.png" alt="WhenWhere world map with day/night terminator" loading="lazy">
+        <img src="assets/img/whenwhere.png" alt="WhenWhere showing the Los Angeles and Taipei overlap on a world map" loading="lazy">
         <div class="project-body">
           <h3>WhenWhere</h3>
-          <p class="meta">Full-stack · FastAPI, Leaflet · started as a tool for myself</p>
-          <p>A DST-correct meeting planner for people across continents. Add cities on a live day/night map and see when everyone's local window overlaps, computed as an exact interval intersection, to the minute.</p>
-          <ul>
-            <li>Every one of 338 cities is recolored in real time by whether it could still join the meeting</li>
-            <li>Timezones inferred for custom cities by longitude band first, so half-hour offsets survive</li>
-            <li>17-case pytest suite and a client-side mirror of the backend logic</li>
-          </ul>
+          <p class="hook">A meeting planner for people who live in more than one timezone.</p>
+          <p>It started as a tool for me, scheduling across LA and Taipei. Add cities to a day/night map, say when each person is free, and it shows when everyone overlaps. Every other city on the map turns green or red depending on whether it could still join.</p>
+          <p>Daylight saving and half-hour timezones are handled properly, because that's exactly where most tools quietly get it wrong.</p>
+          <p class="chips"><span>Python</span><span>FastAPI</span><span>Leaflet</span></p>
           <p class="links"><a class="button" href="https://whenwhere-65it.onrender.com/">Try it</a> <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/WhenWhere">Code</a></p>
-          <p class="note">Free-tier hosting: the first load after idle can take 30–50 seconds.</p>
+          <p class="note">Free hosting, so it may take a moment to wake up.</p>
         </div>
       </article>
 
       <article class="project stacked">
-        <img src="assets/img/statuscard.png" alt="Claude Code Status Card: Working, Needs Approval and Done cards, with the icon and color menus" loading="lazy">
+        <img src="assets/img/statuscard.png" alt="Claude Code Status Card: Working, Needs Approval and Done cards, plus the icon and color menus" loading="lazy">
         <div class="project-body">
           <h3>Claude Code Status Card</h3>
-          <p class="meta">Electron · a dev tool I built for myself</p>
-          <p>An always-on-top widget with one card per Claude Code session on my machine, so I can tell at a glance which one needs me without keeping VS Code focused. Blue means working, red means it needs approval or something's wrong, green means it's done and waiting for my next prompt. Each card is named after the start of your latest prompt, so you can tell sessions apart.</p>
-          <ul>
-            <li>Clicking a card jumps to that repo's VS Code window</li>
-            <li>Sound cues on red and green, with a volume slider</li>
-            <li>Icon per repo and color per session, both customizable and remembered across restarts</li>
-            <li>Fed by global Claude Code hooks, not editor integration, and written to fail silently so the widget can never break the session it watches</li>
-            <li>Diagnosed a real reader/writer race: a truncate-before-write let the widget replay its log and resurrect dead sessions. Fixed with an atomic rename.</li>
-          </ul>
+          <p class="hook">A tiny widget so I always know which Claude Code session is waiting on me.</p>
+          <p>With several sessions open, I kept losing track of which one had finished or got stuck. This is an always-on-top card per session: blue is working, red needs me, green is done. Click one to jump to that repo's VS Code window. Each gets its own icon and color, and a sound plays when something changes.</p>
+          <p>Fun bug: log rotation briefly left an empty file, the widget read that as "start over", and dead sessions came back to life. The fix was an atomic rename.</p>
+          <p class="chips"><span>Electron</span><span>Node</span><span>Claude Code hooks</span></p>
           <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/claude-code-status-card">Code</a></p>
-          <p class="note">Approval detection is inferred rather than signalled, and is less reliable now that Claude Code defaults to Auto mode.</p>
+          <p class="note">The red "needs approval" state is inferred rather than signalled, so it's less reliable now that Claude Code defaults to Auto mode.</p>
         </div>
       </article>
 
+      <h3 class="subhead">Smaller things</h3>
       <div class="cards">
         <article class="card">
           <h3>Cold Email Automator</h3>
-          <p class="meta">Python · the pipeline I use on my own job search</p>
-          <p>Researches targets, verifies emails, drafts personalized outreach, sends through Gmail and syncs a Sheets dashboard, with a provider-agnostic LLM layer (Claude, GPT-4o, Gemini).</p>
+          <p>The pipeline I use on my own job search. It researches who to contact, drafts a note built around something specific about them, sends it, and tracks replies. Works with Claude, GPT or Gemini.</p>
           <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator">Code →</a></p>
         </article>
         <article class="card">
           <h3>Past Messages Analyzer</h3>
-          <p class="meta">Python · NLP · privacy-first</p>
-          <p>Ingests message exports into SQLite and tracks how a relationship's style drifts over time (PELT changepoints, reused BLOC clustering). LLM narration sees summary statistics only by default.</p>
+          <p>Turns my old Messenger and Instagram exports into a database and tracks how a friendship's tone drifts over time. The AI only sees summary statistics unless I opt in, because they're my friends' messages.</p>
           <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis">Code →</a></p>
         </article>
         <article class="card">
           <h3>Personal Knowledge Base</h3>
-          <p class="meta">Vercel · Supabase · for a non-technical user</p>
-          <p>Full-stack tool with LLM document ingestion, tag-scoped Q&amp;A with source attribution, and a knowledge-gap audit. I chose tag-scoped context over vector retrieval on purpose, given the data size.</p>
+          <p>A tool I built for a non-technical user: drop in documents, ask questions across them, and get an audit of where their knowledge has gaps.</p>
           <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager">Code →</a></p>
         </article>
       </div>
@@ -159,34 +137,26 @@
       <h2>Beyond code</h2>
       <article class="card wide">
         <h3>《未然？已然。》 <span class="zh">The Unobserved</span></h3>
-        <p class="meta">An original fantasy novel · Traditional Chinese · in progress since April 2026</p>
-        <p>In this world, power comes from how deeply you understand reality, and every skill thrown at a living opponent is absorbed by their energy field and turned into pure hallucination. Their body stays untouched until you break their mind first. Five people bound by politics, trauma and the kind of trust that survives being betrayed, with a boy who sealed away his ability to feel at the center, and a girl who senses every possibility, including the ones she kills by choosing.</p>
-        <p>Planned at 800,000+ words across five or more volumes. The worldbuilding, characters and storyboards are all mine; the story structure is fully outlined.</p>
+        <p class="meta">An original fantasy novel · Traditional Chinese · in progress</p>
+        <p>In this world your power depends on how sharply you understand reality, and every attack on a living opponent gets turned into a hallucination. Their body stays untouched until you break their mind first. At the center are a boy who sealed away his ability to feel, and a girl who senses every possibility, including the ones she kills by choosing.</p>
+        <p>I've been building it since April 2026: the world, the characters and the full storyboard. It's planned to run past 800,000 words.</p>
         <p class="links"><a href="https://github.com/Tim-Chen-Yen-Ting/Design-The_Unobserved">Read the world design →</a></p>
       </article>
-      <p>Before college: Student Council President (elected with 96%), founder of my school's first public MUN conference, co-founder of its first VEX robotics team, math-team leader, and a volleyball libero.</p>
-    </section>
-
-    <section id="education">
-      <h2>Education &amp; honors</h2>
-      <p><strong>UCLA</strong>, B.S. Statistics &amp; Data Science, minor in Data Science Engineering. Expected March 2027. Major GPA 3.96 / 4.00, cumulative 3.90 / 4.00.</p>
-      <p>Dean's Honors List (four terms) · Best Slide Design &amp; Theme, PMI-LA Project Management Case Challenge (2025) · Valedictorian, Hsinchu American School (2024) · AP International Diploma · AMO Gold</p>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
-      <p>The fastest way to reach me is email.</p>
-      <p>
-        <a href="mailto:timchen56789@gmail.com">Email</a> ·
-        <a href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329">LinkedIn</a> ·
-        <a href="https://github.com/Tim-Chen-Yen-Ting">GitHub</a>
+      <h2>Say hi</h2>
+      <p>Email is the fastest way to reach me. I split my time between the US and Taiwan, so phone reception can be patchy.</p>
+      <p class="links">
+        <a class="button" href="mailto:timchen56789@gmail.com">Email</a>
+        <a class="button ghost" href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329">LinkedIn</a>
+        <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting">GitHub</a>
       </p>
-      <p class="note">My phone number is on the CV, but email is more reliable: I split my time between the US and Taiwan and reception varies when I'm abroad.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> Tim (Yen-Ting) Chen</p>
+    <p>&copy; <span id="year"></span> Tim (Yen-Ting) Chen · UCLA, B.S. Statistics &amp; Data Science, 2027</p>
   </footer>
 
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
