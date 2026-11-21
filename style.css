@@ -250,7 +250,7 @@ footer {
 .selected-lead {
   display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.5rem; align-items: center;
   margin-top: 1rem; padding: 1.1rem; background: var(--surface-2);
-  border: 1px solid var(--accent); border-radius: 14px;
+  border: 1px solid var(--border); border-radius: 14px;
 }
 .selected-lead img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; }
 .selected-lead h3 { margin: 0 0 0.2rem; font-size: 1.4rem; }
