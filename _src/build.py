@@ -78,48 +78,55 @@ head = f"""<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tim (Yen-Ting) Chen</title>
-  <meta name="description" content="Tim (Yen-Ting) Chen: UCLA Statistics &amp; Data Science. I build AI systems, then try very hard to prove they work.">
+  <title>Yen-Ting (Tim) Chen</title>
+  <meta name="description" content="Yen-Ting (Tim) Chen: UCLA Statistics &amp; Data Science. I build AI systems, then try very hard to prove they work.">
   <meta name="color-scheme" content="dark">
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header class="site-header">
-    <a class="logo" href="#about">Tim Chen</a>
-    <nav id="tabs" aria-label="Sections">
-      <a href="#about">{T("About", "關於我")}</a>
-      <a href="#projects">{T("Projects", "專案")}</a>
-      <a href="#personal">{T("Personal", "個人")}</a>
-      <a href="#contact">{T("Contact", "聯絡")}</a>
-    </nav>
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button type="button" data-set-lang="en">EN</button>
-      <button type="button" data-set-lang="zh-Hant">中文</button>
+<body data-tab="about">
+  <!-- Masthead: only shown on the About (home) tab. The tab bar below it sticks to the top on scroll. -->
+  <div class="masthead">
+    <div class="hero">
+      <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
+      <div>
+        <p class="eyebrow">{T("Hi, I'm Tim.", "嗨，我是 Tim。")}</p>
+        <h1>{T("I build AI systems, then try very hard to prove they work.", "我打造 AI 系統，然後拚命證明它們真的有用。")}</h1>
+        {P("Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.",
+           "主要是多代理人模擬、LLM 評測，還有一款規則不會洩漏你秘密的西洋棋變體。", "tagline")}
+        {P("Legal name: Yen-Ting Chen, but I go by Tim. Tim is also on my passport as an alternative name, so both work. (HR, you're welcome.)",
+           "本名陳彥廷，但我都叫 Tim。Tim 也登記在我的護照上作為別名，所以兩個都通用。（人資同仁，不客氣。）", "name-note")}
+        <p class="links">
+          {btn("#projects", "See what I've built", "看看我做了什麼")}
+          {btn("https://github.com/Tim-Chen-Yen-Ting", "GitHub", "GitHub", True)}
+          {btn("https://www.linkedin.com/in/yen-ting-tim-chen-303276329", "LinkedIn", "LinkedIn", True)}
+        </p>
+      </div>
     </div>
-  </header>
+  </div>
+
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#about">{T("Tim Chen", "陳彥廷 (Tim)")}</a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#about">{T("About", "關於我")}</a>
+        <a href="#projects">{T("Projects", "專案")}</a>
+        <a href="#personal">{T("Personal", "個人")}</a>
+        <a href="#contact">{T("Contact", "聯絡")}</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
 
   <main>
 """
 
 about = f"""
     <!-- ===================== 1. ABOUT ===================== -->
-    <section class="panel" id="about" aria-label="About">
-      <div class="hero">
-        <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
-        <div>
-          <p class="eyebrow">{T("Hi, I'm Tim.", "嗨，我是 Tim。")}</p>
-          <h1>{T("I build AI systems, then try very hard to prove they work.", "我打造 AI 系統，然後拚命證明它們真的有用。")}</h1>
-          {P("Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.",
-             "主要是多代理人模擬、LLM 評測，還有一款規則不會洩漏你秘密的西洋棋變體。", "tagline")}
-          <p class="links">
-            {btn("#projects", "See what I've built", "看看我做了什麼")}
-            {btn("https://github.com/Tim-Chen-Yen-Ting", "GitHub", "GitHub", True)}
-            {btn("https://www.linkedin.com/in/yen-ting-tim-chen-303276329", "LinkedIn", "LinkedIn", True)}
-          </p>
-        </div>
-      </div>
-
+    <section class="panel" id="panel-about" aria-label="About">
       <div class="two-col">
         <div class="block">
           <h2>{T("Overview", "概覽")}</h2>
@@ -134,7 +141,7 @@ about = f"""
           {P("B.S. Statistics &amp; Data Science, minor in Data Science Engineering", "統計與資料科學學士，輔修資料科學工程")}
           <p class="edu-dates">{T("Sept 2024 – Mar 2027", "2024 年 9 月 – 2027 年 3 月")}</p>
           {P("That's two and a half years. I'm calling it efficiency, not a cry for help.", "兩年半。我稱之為效率，不是求救訊號。")}
-          {chips([T("Major GPA 3.96", "主修 GPA 3.96"), T("Latin Honors candidate", "拉丁榮譽候選"), T("Dean's Honors List", "Dean's Honors List")])}
+          {chips([T("Major GPA 3.96", "主修 GPA 3.96"), T("Latin Honors candidate", "拉丁榮譽候選"), T("Dean's Honors List", "院長榮譽榜")])}
         </div>
       </div>
 
@@ -152,6 +159,77 @@ about = f"""
         {P("The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged, tested the claim on a 1,547-utterance set I built for it, and the CEO and AI lead adopted the change. Turns out &quot;I have a test set&quot; is a very persuasive sentence.",
            "我最自豪的是：我主張把產品裡一堆重疊的意圖（intent）合併，用我為此建的 1,547 句測試集驗證了這個主張，CEO 和 AI 負責人最後採納了。事實證明「我有測試集」是非常有說服力的一句話。")}
       </div>
+"""
+
+
+def glance_item(key, emoji, title, en, zh, badges):
+    return f"""
+        <button class="glance-item" data-open="d-{key}">
+          <span class="glance-emoji" aria-hidden="true">{emoji}</span>
+          <span class="glance-main">
+            <span class="glance-title">{title}</span>
+            <span class="glance-text">{T(en, zh)}</span>
+            <span class="glance-badges">{"".join(f"<i>{b}</i>" for b in badges)}</span>
+          </span>
+        </button>"""
+
+
+glance_items = [
+    glance_item("civilizism", "🏠", "Civilizism",
+                "Multi-agent social simulation where personality is enforced by code, not by prompts.",
+                "多代理人社會模擬：人格由程式碼強制執行，而不是靠 prompt。",
+                ["Python", "React", T("Live replay", "線上回放")]),
+    glance_item("stratego", "♟️", T("Stratego-Chess", "行軍西洋棋"),
+                "An original hidden-information game with a belief-tracking bot and a plain-URL interface for LLMs.",
+                "原創的暗棋遊戲，有追蹤信念的機器人，以及讓 LLM 用純網址對戰的介面。",
+                ["TypeScript", T("Playable", "可試玩")]),
+    glance_item("whenwhere", "⏰", "WhenWhere",
+                "A timezone-correct meeting planner on a live day/night map.",
+                "在即時日夜地圖上、時區正確的會議時間規劃工具。",
+                ["Python", "FastAPI", T("Live demo", "線上展示")]),
+    glance_item("statuscard", "🔔", "Claude Code Status Card",
+                "An always-on-top widget that shows which Claude Code session needs you.",
+                "置頂小工具，告訴你哪個 Claude Code session 在等你。",
+                ["Electron", "Node.js"]),
+    glance_item("steme", "🧠", "STEME &amp; BLOC",
+                "Semantic scoring and belief-clustering engines: 0.79–0.91 F1 and 0.70 ARI on their benchmarks.",
+                "語意評分與信念分群引擎：基準測試 F1 為 0.79–0.91，ARI 為 0.70。",
+                ["Python", "NLP"]),
+    glance_item("coldemail", "📬", "Cold Email Automator",
+                "An end-to-end outreach pipeline that researches, drafts, sends and tracks.",
+                "端到端的開發信流程：研究、撰寫、寄出、追蹤。",
+                ["Python", "Gmail API"]),
+    glance_item("messages", "💬", "Past Messages Analyzer",
+                "Privacy-first analysis of how a friendship's tone drifts over time.",
+                "以隱私為先，分析一段友情的語氣如何隨時間漂移。",
+                ["Python", "NLP"]),
+    glance_item("pkb", "📚", T("Personal Knowledge Base", "個人知識庫"),
+                "Upload documents, ask across them, and audit your knowledge gaps.",
+                "上傳文件、跨文件提問，並審計你的知識缺口。",
+                ["Python", "Supabase"]),
+]
+
+about += f"""
+      <div class="block">
+        <h2>{T("Projects at a glance", "專案一覽")}</h2>
+        {P("The short version, for people skimming. Click any row for the whole story.", "給快速瀏覽的人看的精簡版。點任何一列看完整故事。", "meta")}
+        <div class="glance">{"".join(glance_items)}
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>{T("Toolbox", "工具箱")}</h2>
+        <div class="toolbox">
+          <p class="tool-label">{T("Languages", "程式語言")}</p>
+          {chips(["Python", "TypeScript / JavaScript", "R", "SQL", "HTML / CSS"])}
+          <p class="tool-label">{T("AI &amp; data", "AI 與資料")}</p>
+          {chips([T("LLM APIs (Claude, GPT, Gemini)", "LLM API（Claude、GPT、Gemini）"), "sentence-transformers", "scikit-learn", "XGBoost", "pandas", "NumPy", "Pydantic"])}
+          <p class="tool-label">{T("Backend &amp; infrastructure", "後端與基礎設施")}</p>
+          {chips(["FastAPI", "Node.js / Fastify", "PostgreSQL", "SQLite", "Supabase", "pytest", "GitHub Actions"])}
+          <p class="tool-label">{T("Frontend &amp; deployment", "前端與部署")}</p>
+          {chips(["React", "Electron", "Streamlit", "Vercel", "Render"])}
+        </div>
+      </div>
     </section>
 """
 
@@ -161,7 +239,7 @@ tiles = [
          T("What if you simulated one person really well, then simulated a lot of them?", "如果你把一個人模擬得夠好，再模擬很多個，會怎樣？"),
          T("A social simulation where nobody scripts the outcome. Beliefs and relationships are just a side effect.", "一個沒人編劇本的社會模擬。信念與關係只是副作用。")),
     tile("stratego", img_thumb("stratego.png", "Stratego-Chess game screenshot"),
-         '♟️ Stratego-Chess <span class="zh">行軍西洋棋</span>',
+         T("♟️ Stratego-Chess", "♟️ 行軍西洋棋 Stratego-Chess"),
          T("What if chess no longer has a 100% capture rate?", "如果西洋棋的吃子不再是 100% 成功呢？"),
          T("The child of Chess and Stratego. Pieces move like chess, but secret ranks decide who wins the fight.", "西洋棋和行軍棋的孩子。棋子走法像西洋棋，但暗藏的階級決定誰贏。")),
     tile("whenwhere", img_thumb("whenwhere.png", "WhenWhere world map"),
@@ -192,7 +270,7 @@ tiles = [
 
 projects = f"""
     <!-- ===================== 2. PROJECTS ===================== -->
-    <section class="panel" id="projects" aria-label="Projects">
+    <section class="panel" id="panel-projects" aria-label="Projects">
       <h2 class="panel-title">{T("Projects", "專案")}</h2>
       {P("Click anything for the full story: the problem, the fix, and the bugs that made me question my life choices.",
          "點任何一張卡片看完整故事：問題、解法，還有那些讓我懷疑人生的 bug。", "panel-sub")}
@@ -208,16 +286,16 @@ facts = [
      "Volleyball. I play badly, but who can reject a sport that gives you a valid excuse to roll on the floor? Also, Haikyu is fire.",
      "排球。我打得很爛，但誰能拒絕一個讓你有正當理由在地上打滾的運動？還有，《排球少年》超神。"),
     ("🏴‍☠️", "Anime", "動漫",
-     "One Piece. The only anime better than One Piece is One Piece before the time skip. After the time skip... 這不好說... Oda, I know you can do better.",
+     "One Piece. The only anime better than One Piece is One Piece before the time skip. After the time skip... that's hard to say... Oda, I know you can do better.",
      "《海賊王》。唯一比《海賊王》更好看的動漫，是時間跳躍前的《海賊王》。時間跳躍後嘛…這不好說…尾田老師，我知道你可以更好的。"),
     ("📚", "Light novel", "輕小說",
-     "No Game No Life. Yuu Kamiya, where is the new volume? It's been ten years. Also, your books are a bit too smart for me, but that's what 鬥智 is.",
+     "No Game No Life. Yuu Kamiya, where is the new volume? It's been ten years. Also, your books are a bit too smart for me, but that's what a battle of wits is.",
      "《遊戲人生》。榎宮祐老師，新的一集呢？已經十年了。還有，你的書對我來說有點太聰明了，但這就是鬥智。"),
     ("🎤", "Artist", "歌手",
-     "The globally renowned pick: JJ Lin (林俊傑). The hot take: 任然 (Ren Ran), no hesitation. I have a 15-hour Spotify playlist of only Ren Ran songs, and I didn't even know Spotify had that many.",
+     "The globally renowned pick: JJ Lin. The hot take: Ren Ran, no hesitation. I have a 15-hour Spotify playlist of only Ren Ran songs, and I didn't even know Spotify had that many.",
      "舉世聞名的選擇：林俊傑。冷門的看法：任然，毫不猶豫。我有一個 15 小時、全是任然的 Spotify 歌單，我甚至不知道 Spotify 上有那麼多任然的歌。"),
     ("🍜", "Food", "食物",
-     "滷味, no hesitation. 炒麵 is a close second. In the US the closest thing is malatang, which is somehow expensive, so my US pick is Chick-fil-A. Thinking about it is making me want some right now.",
+     "Lu wei (Taiwanese braised street snacks), no hesitation. Stir-fried noodles are a close second. In the US the closest thing is malatang, which is somehow expensive, so my US pick is Chick-fil-A. Thinking about it is making me want some right now.",
      "滷味，毫不猶豫。炒麵是第二名。在美國最接近的是麻辣燙，但它貴得莫名其妙，所以我的美國首選是 Chick-fil-A。想到這裡我現在就想吃。"),
     ("🐻", "School", "學校",
      "U! C! L! A! Fight, fight, fight! I'm convinced the eight clap is written in our DNA.",
@@ -235,12 +313,12 @@ fact_html = "".join(
 
 personal = f"""
     <!-- ===================== 3. PERSONAL ===================== -->
-    <section class="panel" id="personal" aria-label="Personal">
+    <section class="panel" id="panel-personal" aria-label="Personal">
       <h2 class="panel-title">{T("The non-work me", "工作以外的我")}</h2>
       {P("Strong opinions, held loosely. Mostly about anime and food.", "強烈的意見，鬆鬆地持有。主要關於動漫和食物。", "panel-sub")}
 
       <article class="block novel">
-        <h3>📖 《未然？已然。》 <span class="zh">The Unobserved</span></h3>
+        <h3>{T("📖 The Unobserved", "📖 《未然？已然。》")}</h3>
         {hook("What if your power depended on how sharply you understood reality?", "如果你的力量取決於你對現實理解得多銳利呢？")}
         {P("An original fantasy novel · Traditional Chinese · in progress", "原創奇幻小說 · 繁體中文 · 撰寫中", "meta")}
         {P("In this world, every attack on a living opponent gets turned into a hallucination, so their body stays untouched until you break their mind first. At the center are a boy who sealed away his ability to feel, and a girl who senses every possibility, including the ones she kills by choosing.",
@@ -256,9 +334,48 @@ personal = f"""
     </section>
 """
 
+def faq(q_en, q_zh, a_en, a_zh):
+    return f"""
+        <details class="faq">
+          <summary>{T(q_en, q_zh)}</summary>
+          {P(a_en, a_zh)}
+        </details>"""
+
+
+def fact_row(label_en, label_zh, val_en, val_zh):
+    return f'<div class="cheat-row"><dt>{T(label_en, label_zh)}</dt><dd>{T(val_en, val_zh)}</dd></div>'
+
+
+cheat = "".join([
+    fact_row("Name", "名字", "Yen-Ting (Tim) Chen. Tim is also on my passport as an alternative name.", "陳彥廷，但我都叫 Tim，護照上也有 Tim 這個別名。"),
+    fact_row("Based in", "所在地", "Los Angeles and Taiwan", "洛杉磯與台灣"),
+    fact_row("Languages", "語言", "English and Mandarin Chinese (Traditional)", "英文與中文（繁體）"),
+    fact_row("Graduating", "畢業時間", "March 2027, UCLA, B.S. Statistics &amp; Data Science", "2027 年 3 月，UCLA 統計與資料科學學士"),
+    fact_row("Looking for", "正在尋找", "Software, AI engineering, or data roles", "軟體、AI 工程或資料相關職位"),
+    fact_row("Most recent role", "最近的職位", "Agentic Systems Engineering Intern, Phygtl (summer 2026)", "Phygtl 的 Agentic Systems Engineering 實習生（2026 夏季）"),
+])
+
+faqs = "".join([
+    faq("Which resume should I read?", "我該看哪一份履歷？",
+        "Hiring for software? Grab the software one. Forward-deployed or customer-facing engineering? The forward-deployed one. Stats or data science? The last one. Can't decide? The full CV has all of it, and I won't be offended by the length.",
+        "找軟體工程師？看軟體那份。Forward-deployed 或貼近客戶的工程？看 forward-deployed 那份。統計或資料科學？看最後一份。下不了決定？完整 CV 什麼都有，我不會介意它很長。"),
+    faq("Is Tim your real name?", "Tim 是你的本名嗎？",
+        "My legal name is Yen-Ting Chen. I go by Tim, and Tim is also listed on my passport as an alternative name, so both are real and both work. Use whichever you like.",
+        "我的本名是陳彥廷，但我習慣被叫 Tim，而 Tim 也登記在我的護照上作為別名，所以兩個都是真的、都通用。你喜歡哪個就叫哪個。"),
+    faq("Can I see the private Civilizism code?", "我可以看 Civilizism 的私有程式碼嗎？",
+        "Yes, on request. The public repo has the architecture, devlogs, research engines and sample outputs. The core simulation lives in a private repo, and I'm happy to walk someone through it.",
+        "可以，歡迎提出。公開 repo 有架構文件、開發日誌、研究引擎與範例輸出。核心模擬放在私有 repo 裡，我很樂意帶人走一遍。"),
+    faq("Why is there so much humor on this site?", "為什麼這個網站這麼多玩笑？",
+        "Because my READMEs, devlogs and commit messages are like this too. You'd have found out eventually, and I'd rather you find out before the interview.",
+        "因為我的 README、開發日誌和 commit 訊息也都是這樣。你遲早會發現，我寧可你在面試前就發現。"),
+    faq("Good reasons to email me", "寄信給我的好理由",
+        "You're hiring for software, AI or data roles. You want to see the private Civilizism code. You found a bug in WhenWhere, or you beat my Stratego-Chess bot. You want to settle the One Piece post-timeskip debate. Or you are Yuu Kamiya, and you have news about No Game No Life.",
+        "你在招軟體、AI 或資料相關職位。你想看 Civilizism 的私有程式碼。你在 WhenWhere 找到 bug，或者打贏了我的行軍西洋棋機器人。你想來裁決《海賊王》時間跳躍後的爭議。或者你就是榎宮祐老師，而且帶來了《遊戲人生》的消息。"),
+])
+
 contact = f"""
     <!-- ===================== 4. CONTACT ===================== -->
-    <section class="panel" id="contact" aria-label="Contact">
+    <section class="panel" id="panel-contact" aria-label="Contact">
       <h2 class="panel-title">{T("Say hi", "打聲招呼")}</h2>
       {P("Email is the fastest way to reach me. I split my time between the US and Taiwan, so phone reception is a coin flip.",
          "最快的聯絡方式是電子郵件。我的時間分在美國和台灣之間，所以手機訊號是擲硬幣。", "panel-sub")}
@@ -277,12 +394,30 @@ contact = f"""
         <a class="download" href="assets/resumes/YenTing_Tim_Chen_Resume_StatsDS.pdf"><strong>{T("Statistics &amp; data science", "統計與資料科學")}</strong><span>PDF</span></a>
         <a class="download" href="assets/resumes/YenTing_Tim_Chen_CV.pdf"><strong>{T("Full CV", "完整 CV")}</strong><span>{T("PDF · everything, all of it", "PDF · 全部，一個不漏")}</span></a>
       </div>
+
+      <div class="two-col">
+        <div class="block">
+          <h2>{T("The recruiter cheat sheet", "招募人員速查表")}</h2>
+          <dl class="cheat">{cheat}</dl>
+        </div>
+        <div class="block clocks">
+          <h2>{T("Where &amp; when", "在哪、幾點")}</h2>
+          <div class="clock-row"><span class="clock-city">{T("Los Angeles", "洛杉磯")}</span><span class="clock-time" id="clock-la">--:--</span></div>
+          <div class="clock-row"><span class="clock-city">{T("Taipei", "台北")}</span><span class="clock-time" id="clock-tpe">--:--</span></div>
+          {P("Those are the live local times. Only one of the two does daylight saving, so the gap is 15 or 16 hours depending on the season. If you're scheduling an interview and want an overlap, my WhenWhere project will gladly do the math.",
+             "以上是即時的當地時間。兩地只有一邊實施日光節約時間，所以時差依季節是 15 或 16 小時。如果你要排面試、想找重疊時段，我的 WhenWhere 專案很樂意幫你算。", "note")}
+        </div>
+      </div>
+
+      <h3 class="subhead">{T("Questions you might have", "你可能想問的")}</h3>
+      <div class="faqs">{faqs}
+      </div>
     </section>
 
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> Tim (Yen-Ting) Chen · {T("UCLA, B.S. Statistics &amp; Data Science, 2027", "UCLA 統計與資料科學學士，2027")}</p>
+    <p>&copy; <span id="year"></span> {T("Yen-Ting (Tim) Chen", "陳彥廷 (Tim)")}&nbsp;·&nbsp;{T("UCLA, B.S. Statistics &amp; Data Science, 2027", "UCLA 統計與資料科學學士，2027")}</p>
   </footer>
 """
 
@@ -320,7 +455,7 @@ dialogs.append(dialog(
 ))
 
 dialogs.append(dialog(
-    "stratego", '♟️ Stratego-Chess <span class="zh">行軍西洋棋</span>',
+    "stratego", T("♟️ Stratego-Chess", "♟️ 行軍西洋棋 Stratego-Chess"),
     hook("What if chess no longer has a 100% capture rate?", "如果西洋棋的吃子不再是 100% 成功呢？"),
     ("stratego.png", "Stratego-Chess game screenshot"),
     [

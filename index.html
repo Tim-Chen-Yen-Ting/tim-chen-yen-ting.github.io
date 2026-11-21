@@ -3,46 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tim (Yen-Ting) Chen</title>
-  <meta name="description" content="Tim (Yen-Ting) Chen: UCLA Statistics &amp; Data Science. I build AI systems, then try very hard to prove they work.">
+  <title>Yen-Ting (Tim) Chen</title>
+  <meta name="description" content="Yen-Ting (Tim) Chen: UCLA Statistics &amp; Data Science. I build AI systems, then try very hard to prove they work.">
   <meta name="color-scheme" content="dark">
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header class="site-header">
-    <a class="logo" href="#about">Tim Chen</a>
-    <nav id="tabs" aria-label="Sections">
-      <a href="#about"><span lang="en">About</span><span lang="zh-Hant">關於我</span></a>
-      <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
-      <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
-      <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
-    </nav>
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button type="button" data-set-lang="en">EN</button>
-      <button type="button" data-set-lang="zh-Hant">中文</button>
+<body data-tab="about">
+  <!-- Masthead: only shown on the About (home) tab. The tab bar below it sticks to the top on scroll. -->
+  <div class="masthead">
+    <div class="hero">
+      <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
+      <div>
+        <p class="eyebrow"><span lang="en">Hi, I'm Tim.</span><span lang="zh-Hant">嗨，我是 Tim。</span></p>
+        <h1><span lang="en">I build AI systems, then try very hard to prove they work.</span><span lang="zh-Hant">我打造 AI 系統，然後拚命證明它們真的有用。</span></h1>
+        <p class="tagline" lang="en">Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.</p>
+<p class="tagline" lang="zh-Hant">主要是多代理人模擬、LLM 評測，還有一款規則不會洩漏你秘密的西洋棋變體。</p>
+        <p class="name-note" lang="en">Legal name: Yen-Ting Chen, but I go by Tim. Tim is also on my passport as an alternative name, so both work. (HR, you're welcome.)</p>
+<p class="name-note" lang="zh-Hant">本名陳彥廷，但我都叫 Tim。Tim 也登記在我的護照上作為別名，所以兩個都通用。（人資同仁，不客氣。）</p>
+        <p class="links">
+          <a class="button" href="#projects"><span lang="en">See what I've built</span><span lang="zh-Hant">看看我做了什麼</span></a>
+          <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting"><span lang="en">GitHub</span><span lang="zh-Hant">GitHub</span></a>
+          <a class="button ghost" href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329"><span lang="en">LinkedIn</span><span lang="zh-Hant">LinkedIn</span></a>
+        </p>
+      </div>
     </div>
-  </header>
+  </div>
+
+  <div class="tabbar">
+    <div class="tabbar-inner">
+      <a class="logo" href="#about"><span lang="en">Tim Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span></a>
+      <nav id="tabs" aria-label="Sections">
+        <a href="#about"><span lang="en">About</span><span lang="zh-Hant">關於我</span></a>
+        <a href="#projects"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></a>
+        <a href="#personal"><span lang="en">Personal</span><span lang="zh-Hant">個人</span></a>
+        <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="zh-Hant">中文</button>
+      </div>
+    </div>
+  </div>
 
   <main>
 
     <!-- ===================== 1. ABOUT ===================== -->
-    <section class="panel" id="about" aria-label="About">
-      <div class="hero">
-        <img class="headshot" src="assets/img/headshot.jpg" alt="Photo of Tim Chen" width="140" height="140">
-        <div>
-          <p class="eyebrow"><span lang="en">Hi, I'm Tim.</span><span lang="zh-Hant">嗨，我是 Tim。</span></p>
-          <h1><span lang="en">I build AI systems, then try very hard to prove they work.</span><span lang="zh-Hant">我打造 AI 系統，然後拚命證明它們真的有用。</span></h1>
-          <p class="tagline" lang="en">Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.</p>
-<p class="tagline" lang="zh-Hant">主要是多代理人模擬、LLM 評測，還有一款規則不會洩漏你秘密的西洋棋變體。</p>
-          <p class="links">
-            <a class="button" href="#projects"><span lang="en">See what I've built</span><span lang="zh-Hant">看看我做了什麼</span></a>
-            <a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting"><span lang="en">GitHub</span><span lang="zh-Hant">GitHub</span></a>
-            <a class="button ghost" href="https://www.linkedin.com/in/yen-ting-tim-chen-303276329"><span lang="en">LinkedIn</span><span lang="zh-Hant">LinkedIn</span></a>
-          </p>
-        </div>
-      </div>
-
+    <section class="panel" id="panel-about" aria-label="About">
       <div class="two-col">
         <div class="block">
           <h2><span lang="en">Overview</span><span lang="zh-Hant">概覽</span></h2>
@@ -59,7 +66,7 @@
           <p class="edu-dates"><span lang="en">Sept 2024 – Mar 2027</span><span lang="zh-Hant">2024 年 9 月 – 2027 年 3 月</span></p>
           <p lang="en">That's two and a half years. I'm calling it efficiency, not a cry for help.</p>
 <p lang="zh-Hant">兩年半。我稱之為效率，不是求救訊號。</p>
-          <p class="chips"><span><span lang="en">Major GPA 3.96</span><span lang="zh-Hant">主修 GPA 3.96</span></span><span><span lang="en">Latin Honors candidate</span><span lang="zh-Hant">拉丁榮譽候選</span></span><span><span lang="en">Dean's Honors List</span><span lang="zh-Hant">Dean's Honors List</span></span></p>
+          <p class="chips"><span><span lang="en">Major GPA 3.96</span><span lang="zh-Hant">主修 GPA 3.96</span></span><span><span lang="en">Latin Honors candidate</span><span lang="zh-Hant">拉丁榮譽候選</span></span><span><span lang="en">Dean's Honors List</span><span lang="zh-Hant">院長榮譽榜</span></span></p>
         </div>
       </div>
 
@@ -77,10 +84,96 @@
         <p lang="en">The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged, tested the claim on a 1,547-utterance set I built for it, and the CEO and AI lead adopted the change. Turns out &quot;I have a test set&quot; is a very persuasive sentence.</p>
 <p lang="zh-Hant">我最自豪的是：我主張把產品裡一堆重疊的意圖（intent）合併，用我為此建的 1,547 句測試集驗證了這個主張，CEO 和 AI 負責人最後採納了。事實證明「我有測試集」是非常有說服力的一句話。</p>
       </div>
+
+      <div class="block">
+        <h2><span lang="en">Projects at a glance</span><span lang="zh-Hant">專案一覽</span></h2>
+        <p class="meta" lang="en">The short version, for people skimming. Click any row for the whole story.</p>
+<p class="meta" lang="zh-Hant">給快速瀏覽的人看的精簡版。點任何一列看完整故事。</p>
+        <div class="glance">
+        <button class="glance-item" data-open="d-civilizism">
+          <span class="glance-emoji" aria-hidden="true">🏠</span>
+          <span class="glance-main">
+            <span class="glance-title">Civilizism</span>
+            <span class="glance-text"><span lang="en">Multi-agent social simulation where personality is enforced by code, not by prompts.</span><span lang="zh-Hant">多代理人社會模擬：人格由程式碼強制執行，而不是靠 prompt。</span></span>
+            <span class="glance-badges"><i>Python</i><i>React</i><i><span lang="en">Live replay</span><span lang="zh-Hant">線上回放</span></i></span>
+          </span>
+        </button>
+        <button class="glance-item" data-open="d-stratego">
+          <span class="glance-emoji" aria-hidden="true">♟️</span>
+          <span class="glance-main">
+            <span class="glance-title"><span lang="en">Stratego-Chess</span><span lang="zh-Hant">行軍西洋棋</span></span>
+            <span class="glance-text"><span lang="en">An original hidden-information game with a belief-tracking bot and a plain-URL interface for LLMs.</span><span lang="zh-Hant">原創的暗棋遊戲，有追蹤信念的機器人，以及讓 LLM 用純網址對戰的介面。</span></span>
+            <span class="glance-badges"><i>TypeScript</i><i><span lang="en">Playable</span><span lang="zh-Hant">可試玩</span></i></span>
+          </span>
+        </button>
+        <button class="glance-item" data-open="d-whenwhere">
+          <span class="glance-emoji" aria-hidden="true">⏰</span>
+          <span class="glance-main">
+            <span class="glance-title">WhenWhere</span>
+            <span class="glance-text"><span lang="en">A timezone-correct meeting planner on a live day/night map.</span><span lang="zh-Hant">在即時日夜地圖上、時區正確的會議時間規劃工具。</span></span>
+            <span class="glance-badges"><i>Python</i><i>FastAPI</i><i><span lang="en">Live demo</span><span lang="zh-Hant">線上展示</span></i></span>
+          </span>
+        </button>
+        <button class="glance-item" data-open="d-statuscard">
+          <span class="glance-emoji" aria-hidden="true">🔔</span>
+          <span class="glance-main">
+            <span class="glance-title">Claude Code Status Card</span>
+            <span class="glance-text"><span lang="en">An always-on-top widget that shows which Claude Code session needs you.</span><span lang="zh-Hant">置頂小工具，告訴你哪個 Claude Code session 在等你。</span></span>
+            <span class="glance-badges"><i>Electron</i><i>Node.js</i></span>
+          </span>
+        </button>
+        <button class="glance-item" data-open="d-steme">
+          <span class="glance-emoji" aria-hidden="true">🧠</span>
+          <span class="glance-main">
+            <span class="glance-title">STEME &amp; BLOC</span>
+            <span class="glance-text"><span lang="en">Semantic scoring and belief-clustering engines: 0.79–0.91 F1 and 0.70 ARI on their benchmarks.</span><span lang="zh-Hant">語意評分與信念分群引擎：基準測試 F1 為 0.79–0.91，ARI 為 0.70。</span></span>
+            <span class="glance-badges"><i>Python</i><i>NLP</i></span>
+          </span>
+        </button>
+        <button class="glance-item" data-open="d-coldemail">
+          <span class="glance-emoji" aria-hidden="true">📬</span>
+          <span class="glance-main">
+            <span class="glance-title">Cold Email Automator</span>
+            <span class="glance-text"><span lang="en">An end-to-end outreach pipeline that researches, drafts, sends and tracks.</span><span lang="zh-Hant">端到端的開發信流程：研究、撰寫、寄出、追蹤。</span></span>
+            <span class="glance-badges"><i>Python</i><i>Gmail API</i></span>
+          </span>
+        </button>
+        <button class="glance-item" data-open="d-messages">
+          <span class="glance-emoji" aria-hidden="true">💬</span>
+          <span class="glance-main">
+            <span class="glance-title">Past Messages Analyzer</span>
+            <span class="glance-text"><span lang="en">Privacy-first analysis of how a friendship's tone drifts over time.</span><span lang="zh-Hant">以隱私為先，分析一段友情的語氣如何隨時間漂移。</span></span>
+            <span class="glance-badges"><i>Python</i><i>NLP</i></span>
+          </span>
+        </button>
+        <button class="glance-item" data-open="d-pkb">
+          <span class="glance-emoji" aria-hidden="true">📚</span>
+          <span class="glance-main">
+            <span class="glance-title"><span lang="en">Personal Knowledge Base</span><span lang="zh-Hant">個人知識庫</span></span>
+            <span class="glance-text"><span lang="en">Upload documents, ask across them, and audit your knowledge gaps.</span><span lang="zh-Hant">上傳文件、跨文件提問，並審計你的知識缺口。</span></span>
+            <span class="glance-badges"><i>Python</i><i>Supabase</i></span>
+          </span>
+        </button>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2><span lang="en">Toolbox</span><span lang="zh-Hant">工具箱</span></h2>
+        <div class="toolbox">
+          <p class="tool-label"><span lang="en">Languages</span><span lang="zh-Hant">程式語言</span></p>
+          <p class="chips"><span>Python</span><span>TypeScript / JavaScript</span><span>R</span><span>SQL</span><span>HTML / CSS</span></p>
+          <p class="tool-label"><span lang="en">AI &amp; data</span><span lang="zh-Hant">AI 與資料</span></p>
+          <p class="chips"><span><span lang="en">LLM APIs (Claude, GPT, Gemini)</span><span lang="zh-Hant">LLM API（Claude、GPT、Gemini）</span></span><span>sentence-transformers</span><span>scikit-learn</span><span>XGBoost</span><span>pandas</span><span>NumPy</span><span>Pydantic</span></p>
+          <p class="tool-label"><span lang="en">Backend &amp; infrastructure</span><span lang="zh-Hant">後端與基礎設施</span></p>
+          <p class="chips"><span>FastAPI</span><span>Node.js / Fastify</span><span>PostgreSQL</span><span>SQLite</span><span>Supabase</span><span>pytest</span><span>GitHub Actions</span></p>
+          <p class="tool-label"><span lang="en">Frontend &amp; deployment</span><span lang="zh-Hant">前端與部署</span></p>
+          <p class="chips"><span>React</span><span>Electron</span><span>Streamlit</span><span>Vercel</span><span>Render</span></p>
+        </div>
+      </div>
     </section>
 
     <!-- ===================== 2. PROJECTS ===================== -->
-    <section class="panel" id="projects" aria-label="Projects">
+    <section class="panel" id="panel-projects" aria-label="Projects">
       <h2 class="panel-title"><span lang="en">Projects</span><span lang="zh-Hant">專案</span></h2>
       <p class="panel-sub" lang="en">Click anything for the full story: the problem, the fix, and the bugs that made me question my life choices.</p>
 <p class="panel-sub" lang="zh-Hant">點任何一張卡片看完整故事：問題、解法，還有那些讓我懷疑人生的 bug。</p>
@@ -99,7 +192,7 @@
         <button class="tile" data-open="d-stratego">
           <span class="thumb "><img src="assets/img/stratego.png" alt="Stratego-Chess game screenshot" loading="lazy"></span>
           <span class="tile-body">
-            <span class="tile-title">♟️ Stratego-Chess <span class="zh">行軍西洋棋</span></span>
+            <span class="tile-title"><span lang="en">♟️ Stratego-Chess</span><span lang="zh-Hant">♟️ 行軍西洋棋 Stratego-Chess</span></span>
             <span class="tile-q"><span lang="en">What if chess no longer has a 100% capture rate?</span><span lang="zh-Hant">如果西洋棋的吃子不再是 100% 成功呢？</span></span>
             <span class="tile-a"><span lang="en">The child of Chess and Stratego. Pieces move like chess, but secret ranks decide who wins the fight.</span><span lang="zh-Hant">西洋棋和行軍棋的孩子。棋子走法像西洋棋，但暗藏的階級決定誰贏。</span></span>
             <span class="tile-more"><span lang="en">Open →</span><span lang="zh-Hant">展開 →</span></span>
@@ -163,13 +256,13 @@
     </section>
 
     <!-- ===================== 3. PERSONAL ===================== -->
-    <section class="panel" id="personal" aria-label="Personal">
+    <section class="panel" id="panel-personal" aria-label="Personal">
       <h2 class="panel-title"><span lang="en">The non-work me</span><span lang="zh-Hant">工作以外的我</span></h2>
       <p class="panel-sub" lang="en">Strong opinions, held loosely. Mostly about anime and food.</p>
 <p class="panel-sub" lang="zh-Hant">強烈的意見，鬆鬆地持有。主要關於動漫和食物。</p>
 
       <article class="block novel">
-        <h3>📖 《未然？已然。》 <span class="zh">The Unobserved</span></h3>
+        <h3><span lang="en">📖 The Unobserved</span><span lang="zh-Hant">📖 《未然？已然。》</span></h3>
         <p class="hook" lang="en">What if your power depended on how sharply you understood reality?</p>
 <p class="hook" lang="zh-Hant">如果你的力量取決於你對現實理解得多銳利呢？</p>
         <p class="meta" lang="en">An original fantasy novel · Traditional Chinese · in progress</p>
@@ -190,22 +283,22 @@
         </article>
         <article class="fact">
           <p class="fact-label">🏴‍☠️ <span lang="en">Anime</span><span lang="zh-Hant">動漫</span></p>
-          <p lang="en">One Piece. The only anime better than One Piece is One Piece before the time skip. After the time skip... 這不好說... Oda, I know you can do better.</p>
+          <p lang="en">One Piece. The only anime better than One Piece is One Piece before the time skip. After the time skip... that's hard to say... Oda, I know you can do better.</p>
 <p lang="zh-Hant">《海賊王》。唯一比《海賊王》更好看的動漫，是時間跳躍前的《海賊王》。時間跳躍後嘛…這不好說…尾田老師，我知道你可以更好的。</p>
         </article>
         <article class="fact">
           <p class="fact-label">📚 <span lang="en">Light novel</span><span lang="zh-Hant">輕小說</span></p>
-          <p lang="en">No Game No Life. Yuu Kamiya, where is the new volume? It's been ten years. Also, your books are a bit too smart for me, but that's what 鬥智 is.</p>
+          <p lang="en">No Game No Life. Yuu Kamiya, where is the new volume? It's been ten years. Also, your books are a bit too smart for me, but that's what a battle of wits is.</p>
 <p lang="zh-Hant">《遊戲人生》。榎宮祐老師，新的一集呢？已經十年了。還有，你的書對我來說有點太聰明了，但這就是鬥智。</p>
         </article>
         <article class="fact">
           <p class="fact-label">🎤 <span lang="en">Artist</span><span lang="zh-Hant">歌手</span></p>
-          <p lang="en">The globally renowned pick: JJ Lin (林俊傑). The hot take: 任然 (Ren Ran), no hesitation. I have a 15-hour Spotify playlist of only Ren Ran songs, and I didn't even know Spotify had that many.</p>
+          <p lang="en">The globally renowned pick: JJ Lin. The hot take: Ren Ran, no hesitation. I have a 15-hour Spotify playlist of only Ren Ran songs, and I didn't even know Spotify had that many.</p>
 <p lang="zh-Hant">舉世聞名的選擇：林俊傑。冷門的看法：任然，毫不猶豫。我有一個 15 小時、全是任然的 Spotify 歌單，我甚至不知道 Spotify 上有那麼多任然的歌。</p>
         </article>
         <article class="fact">
           <p class="fact-label">🍜 <span lang="en">Food</span><span lang="zh-Hant">食物</span></p>
-          <p lang="en">滷味, no hesitation. 炒麵 is a close second. In the US the closest thing is malatang, which is somehow expensive, so my US pick is Chick-fil-A. Thinking about it is making me want some right now.</p>
+          <p lang="en">Lu wei (Taiwanese braised street snacks), no hesitation. Stir-fried noodles are a close second. In the US the closest thing is malatang, which is somehow expensive, so my US pick is Chick-fil-A. Thinking about it is making me want some right now.</p>
 <p lang="zh-Hant">滷味，毫不猶豫。炒麵是第二名。在美國最接近的是麻辣燙，但它貴得莫名其妙，所以我的美國首選是 Chick-fil-A。想到這裡我現在就想吃。</p>
         </article>
         <article class="fact">
@@ -227,7 +320,7 @@
     </section>
 
     <!-- ===================== 4. CONTACT ===================== -->
-    <section class="panel" id="contact" aria-label="Contact">
+    <section class="panel" id="panel-contact" aria-label="Contact">
       <h2 class="panel-title"><span lang="en">Say hi</span><span lang="zh-Hant">打聲招呼</span></h2>
       <p class="panel-sub" lang="en">Email is the fastest way to reach me. I split my time between the US and Taiwan, so phone reception is a coin flip.</p>
 <p class="panel-sub" lang="zh-Hant">最快的聯絡方式是電子郵件。我的時間分在美國和台灣之間，所以手機訊號是擲硬幣。</p>
@@ -247,12 +340,55 @@
         <a class="download" href="assets/resumes/YenTing_Tim_Chen_Resume_StatsDS.pdf"><strong><span lang="en">Statistics &amp; data science</span><span lang="zh-Hant">統計與資料科學</span></strong><span>PDF</span></a>
         <a class="download" href="assets/resumes/YenTing_Tim_Chen_CV.pdf"><strong><span lang="en">Full CV</span><span lang="zh-Hant">完整 CV</span></strong><span><span lang="en">PDF · everything, all of it</span><span lang="zh-Hant">PDF · 全部，一個不漏</span></span></a>
       </div>
+
+      <div class="two-col">
+        <div class="block">
+          <h2><span lang="en">The recruiter cheat sheet</span><span lang="zh-Hant">招募人員速查表</span></h2>
+          <dl class="cheat"><div class="cheat-row"><dt><span lang="en">Name</span><span lang="zh-Hant">名字</span></dt><dd><span lang="en">Yen-Ting (Tim) Chen. Tim is also on my passport as an alternative name.</span><span lang="zh-Hant">陳彥廷，但我都叫 Tim，護照上也有 Tim 這個別名。</span></dd></div><div class="cheat-row"><dt><span lang="en">Based in</span><span lang="zh-Hant">所在地</span></dt><dd><span lang="en">Los Angeles and Taiwan</span><span lang="zh-Hant">洛杉磯與台灣</span></dd></div><div class="cheat-row"><dt><span lang="en">Languages</span><span lang="zh-Hant">語言</span></dt><dd><span lang="en">English and Mandarin Chinese (Traditional)</span><span lang="zh-Hant">英文與中文（繁體）</span></dd></div><div class="cheat-row"><dt><span lang="en">Graduating</span><span lang="zh-Hant">畢業時間</span></dt><dd><span lang="en">March 2027, UCLA, B.S. Statistics &amp; Data Science</span><span lang="zh-Hant">2027 年 3 月，UCLA 統計與資料科學學士</span></dd></div><div class="cheat-row"><dt><span lang="en">Looking for</span><span lang="zh-Hant">正在尋找</span></dt><dd><span lang="en">Software, AI engineering, or data roles</span><span lang="zh-Hant">軟體、AI 工程或資料相關職位</span></dd></div><div class="cheat-row"><dt><span lang="en">Most recent role</span><span lang="zh-Hant">最近的職位</span></dt><dd><span lang="en">Agentic Systems Engineering Intern, Phygtl (summer 2026)</span><span lang="zh-Hant">Phygtl 的 Agentic Systems Engineering 實習生（2026 夏季）</span></dd></div></dl>
+        </div>
+        <div class="block clocks">
+          <h2><span lang="en">Where &amp; when</span><span lang="zh-Hant">在哪、幾點</span></h2>
+          <div class="clock-row"><span class="clock-city"><span lang="en">Los Angeles</span><span lang="zh-Hant">洛杉磯</span></span><span class="clock-time" id="clock-la">--:--</span></div>
+          <div class="clock-row"><span class="clock-city"><span lang="en">Taipei</span><span lang="zh-Hant">台北</span></span><span class="clock-time" id="clock-tpe">--:--</span></div>
+          <p class="note" lang="en">Those are the live local times. Only one of the two does daylight saving, so the gap is 15 or 16 hours depending on the season. If you're scheduling an interview and want an overlap, my WhenWhere project will gladly do the math.</p>
+<p class="note" lang="zh-Hant">以上是即時的當地時間。兩地只有一邊實施日光節約時間，所以時差依季節是 15 或 16 小時。如果你要排面試、想找重疊時段，我的 WhenWhere 專案很樂意幫你算。</p>
+        </div>
+      </div>
+
+      <h3 class="subhead"><span lang="en">Questions you might have</span><span lang="zh-Hant">你可能想問的</span></h3>
+      <div class="faqs">
+        <details class="faq">
+          <summary><span lang="en">Which resume should I read?</span><span lang="zh-Hant">我該看哪一份履歷？</span></summary>
+          <p lang="en">Hiring for software? Grab the software one. Forward-deployed or customer-facing engineering? The forward-deployed one. Stats or data science? The last one. Can't decide? The full CV has all of it, and I won't be offended by the length.</p>
+<p lang="zh-Hant">找軟體工程師？看軟體那份。Forward-deployed 或貼近客戶的工程？看 forward-deployed 那份。統計或資料科學？看最後一份。下不了決定？完整 CV 什麼都有，我不會介意它很長。</p>
+        </details>
+        <details class="faq">
+          <summary><span lang="en">Is Tim your real name?</span><span lang="zh-Hant">Tim 是你的本名嗎？</span></summary>
+          <p lang="en">My legal name is Yen-Ting Chen. I go by Tim, and Tim is also listed on my passport as an alternative name, so both are real and both work. Use whichever you like.</p>
+<p lang="zh-Hant">我的本名是陳彥廷，但我習慣被叫 Tim，而 Tim 也登記在我的護照上作為別名，所以兩個都是真的、都通用。你喜歡哪個就叫哪個。</p>
+        </details>
+        <details class="faq">
+          <summary><span lang="en">Can I see the private Civilizism code?</span><span lang="zh-Hant">我可以看 Civilizism 的私有程式碼嗎？</span></summary>
+          <p lang="en">Yes, on request. The public repo has the architecture, devlogs, research engines and sample outputs. The core simulation lives in a private repo, and I'm happy to walk someone through it.</p>
+<p lang="zh-Hant">可以，歡迎提出。公開 repo 有架構文件、開發日誌、研究引擎與範例輸出。核心模擬放在私有 repo 裡，我很樂意帶人走一遍。</p>
+        </details>
+        <details class="faq">
+          <summary><span lang="en">Why is there so much humor on this site?</span><span lang="zh-Hant">為什麼這個網站這麼多玩笑？</span></summary>
+          <p lang="en">Because my READMEs, devlogs and commit messages are like this too. You'd have found out eventually, and I'd rather you find out before the interview.</p>
+<p lang="zh-Hant">因為我的 README、開發日誌和 commit 訊息也都是這樣。你遲早會發現，我寧可你在面試前就發現。</p>
+        </details>
+        <details class="faq">
+          <summary><span lang="en">Good reasons to email me</span><span lang="zh-Hant">寄信給我的好理由</span></summary>
+          <p lang="en">You're hiring for software, AI or data roles. You want to see the private Civilizism code. You found a bug in WhenWhere, or you beat my Stratego-Chess bot. You want to settle the One Piece post-timeskip debate. Or you are Yuu Kamiya, and you have news about No Game No Life.</p>
+<p lang="zh-Hant">你在招軟體、AI 或資料相關職位。你想看 Civilizism 的私有程式碼。你在 WhenWhere 找到 bug，或者打贏了我的行軍西洋棋機器人。你想來裁決《海賊王》時間跳躍後的爭議。或者你就是榎宮祐老師，而且帶來了《遊戲人生》的消息。</p>
+        </details>
+      </div>
     </section>
 
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> Tim (Yen-Ting) Chen · <span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
   </footer>
 
   <!-- ===================== PROJECT DIALOGS ===================== -->
@@ -288,7 +424,7 @@
   <dialog class="modal" id="d-stratego" aria-labelledby="t-stratego">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/stratego.png" alt="Stratego-Chess game screenshot" loading="lazy">
-    <h2 id="t-stratego">♟️ Stratego-Chess <span class="zh">行軍西洋棋</span></h2>
+    <h2 id="t-stratego"><span lang="en">♟️ Stratego-Chess</span><span lang="zh-Hant">♟️ 行軍西洋棋 Stratego-Chess</span></h2>
     <p class="hook" lang="en">What if chess no longer has a 100% capture rate?</p>
 <p class="hook" lang="zh-Hant">如果西洋棋的吃子不再是 100% 成功呢？</p>
     <h3><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h3>

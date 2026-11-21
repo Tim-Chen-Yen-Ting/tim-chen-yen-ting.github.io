@@ -1,12 +1,13 @@
 (function () {
   var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
   var tabLinks = Array.prototype.slice.call(document.querySelectorAll("#tabs a"));
-  var ids = panels.map(function (p) { return p.id; });
+  var ids = panels.map(function (p) { return p.id.replace("panel-", ""); });
 
   function show() {
     var id = (location.hash || "#about").slice(1);
     if (ids.indexOf(id) === -1) id = "about";
-    panels.forEach(function (p) { p.classList.toggle("active", p.id === id); });
+    document.body.setAttribute("data-tab", id);
+    panels.forEach(function (p) { p.classList.toggle("active", p.id === "panel-" + id); });
     tabLinks.forEach(function (a) {
       var on = a.getAttribute("href") === "#" + id;
       a.classList.toggle("current", on);
@@ -32,7 +33,7 @@
   });
 
   // Language toggle (EN / 中文), remembered across visits
-  var TITLES = { "en": "Tim (Yen-Ting) Chen", "zh-Hant": "陳彥廷 Tim Chen" };
+  var TITLES = { "en": "Yen-Ting (Tim) Chen", "zh-Hant": "陳彥廷 (Tim)" };
   function setLang(l) {
     if (l !== "en" && l !== "zh-Hant") l = "en";
     var root = document.documentElement;
@@ -47,6 +48,21 @@
   document.querySelectorAll("[data-set-lang]").forEach(function (b) {
     b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang")); });
   });
+
+  // Live local times for the Contact page
+  function tick() {
+    [["clock-la", "America/Los_Angeles"], ["clock-tpe", "Asia/Taipei"]].forEach(function (c) {
+      var el = document.getElementById(c[0]);
+      if (!el) return;
+      try {
+        el.textContent = new Intl.DateTimeFormat("en-US", {
+          timeZone: c[1], hour: "numeric", minute: "2-digit", weekday: "short"
+        }).format(new Date());
+      } catch (e) { el.textContent = "--:--"; }
+    });
+  }
+  tick();
+  setInterval(tick, 20000);
 
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
