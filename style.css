@@ -276,3 +276,17 @@ dialog.modal .modal-img.portrait { width: auto; max-width: 100%; max-height: 420
   .selected-work-job { grid-template-columns: 1fr; }
   .job-img { max-width: 220px; margin: 0 auto; }
 }
+
+/* ---------- resume picker ---------- */
+.resume-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; margin-top: 1rem; }
+.resume-tile {
+  display: flex; flex-direction: column; gap: 0.35rem; padding: 1.1rem 1.2rem; min-height: 11rem;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; color: var(--text);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.resume-tile:hover, .resume-tile:focus-visible { border-color: var(--accent); transform: translateY(-2px); text-decoration: none; outline: none; }
+.resume-tag { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.resume-title { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
+.resume-blurb { color: var(--muted); font-size: 0.9rem; line-height: 1.45; flex: 1; }
+.resume-dl { color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-top: 0.4rem; }
+@media (max-width: 760px) { .resume-grid { grid-template-columns: 1fr; } .resume-tile { min-height: 0; } }

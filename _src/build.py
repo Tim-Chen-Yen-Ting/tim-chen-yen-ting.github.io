@@ -99,7 +99,7 @@ head = f"""<!DOCTYPE html>
         <p class="hero-meta">{T("UCLA · Statistics &amp; Data Science · March 2027", "UCLA · 統計與資料科學 · 2027 年 3 月")}</p>
         <p class="links">
           {btn("#projects", "See what I've built", "看看我做了什麼")}
-          {btn("assets/resumes/YenTing_Tim_Chen_CV.pdf", "Résumé", "履歷", True)}
+          <button type="button" class="button ghost" data-open="d-resume">{T("Résumé", "履歷")}</button>
           {btn("https://github.com/Tim-Chen-Yen-Ting", "GitHub", "GitHub", True)}
           {btn("https://www.linkedin.com/in/tim-chen-yen-ting", "LinkedIn", "LinkedIn", True)}
         </p>
@@ -681,6 +681,26 @@ dialogs.append(dialog(
     ],
     btn("https://github.com/Tim-Chen-Yen-Ting/Personal-Knowledge-DB-Manager", "Code", "原始碼", True),
 ))
+
+
+def resume_tile(href, title_en, title_zh, blurb_en, blurb_zh, tag_en, tag_zh):
+    return f"""
+      <a class="resume-tile" href="{href}" download>
+        <span class="resume-tag">{T(tag_en, tag_zh)}</span>
+        <span class="resume-title">{T(title_en, title_zh)}</span>
+        <span class="resume-blurb">{T(blurb_en, blurb_zh)}</span>
+        <span class="resume-dl">{T("Download PDF ↓", "下載 PDF ↓")}</span>
+      </a>"""
+
+
+resume_dialog = f"""  <dialog class="modal" id="d-resume" aria-labelledby="t-resume">
+    <form method="dialog"><button class="close" aria-label="Close">×</button></form>
+    <h2 id="t-resume">{T("Pick a résumé", "選一份履歷")}</h2>
+    {P("Same person, three framings, plus the long one. Click a tile to download.", "同一個人，三種包裝，外加那份很長的。點一個方塊就能下載。", "meta")}
+    <div class="resume-grid">{resume_tile("assets/resumes/YenTing_Tim_Chen_Resume_SWE.pdf", "Software engineering", "軟體工程", "Backend, LLM and AI systems.", "後端、LLM 與 AI 系統。", "SWE", "SWE")}{resume_tile("assets/resumes/YenTing_Tim_Chen_Resume_FDE.pdf", "Forward-deployed engineering", "Forward-deployed 工程", "Builds against a real user's problem, then explains the result to them.", "針對真實使用者的問題打造解法，並把結果解釋給他們聽。", "FDE", "FDE")}{resume_tile("assets/resumes/YenTing_Tim_Chen_Resume_StatsDS.pdf", "Statistics &amp; data science", "統計與資料科學", "Causal inference, experimental design, machine learning.", "因果推論、實驗設計、機器學習。", "Stats / DS", "統計 / DS")}{resume_tile("assets/resumes/YenTing_Tim_Chen_CV.pdf", "Full CV", "完整 CV", "Everything, all of it. It is long, you've been warned.", "全部，一個不漏。很長，先說好。", "CV", "CV")}
+    </div>
+  </dialog>"""
+dialogs.append(resume_dialog)
 
 tail = """
   <!-- ===================== PROJECT DIALOGS ===================== -->
