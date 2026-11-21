@@ -186,50 +186,29 @@ about = f"""
       <div class="block selected">
         <h2>{T("Selected work", "精選作品")}</h2>
         {P("Two things worth a look if you only have a minute.", "如果你只有一分鐘，看這兩樣就夠了。", "meta")}
-        <div class="selected-lead clickable" role="button" tabindex="0" data-open="d-civilizism">
-          <img src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
-          <div>
+        <div class="selected-grid">
+          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-civilizism">
+            <img class="thumb-wide" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
             <h3>🏠 Civilizism</h3>
             {hook("What if you simulated one person really well, then simulated a lot of them?", "如果你把一個人模擬得夠好，再模擬很多個，會怎樣？")}
             {P("A social simulation where nobody scripts the outcome. The model proposes actions, and a personality engine decides which one happens.", "一個沒人編劇本的社會模擬。模型負責提議行動，由人格引擎決定哪一個真的發生。")}
             <p class="links">{btn("https://civilizism.vercel.app/viewer", "Watch a replay", "觀看回放")} <button type="button" class="button ghost" data-open="d-civilizism">{T("Full story", "完整故事")}</button></p>
           </div>
-        </div>
-        <div class="selected-work-job clickable" role="button" tabindex="0" data-open="d-phygtl">
-          <div class="job-copy">
-            <div class="job-head">
-              <h3>🧪 {T("Phygtl · Agentic Systems Engineering Intern", "Phygtl · Agentic Systems Engineering 實習生")}</h3>
-              <span class="date">{T("Summer 2026", "2026 夏季")}</span>
-            </div>
+          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl">
+            <img class="thumb-wide" src="assets/img/lana_wide.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
+            <h3>🧪 {T("Phygtl · Agentic Systems Engineering Intern", "Phygtl · Agentic Systems Engineering 實習生")}</h3>
             {hook("Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.", "沒有人替 Lana 建過評測，所以我來建。整個 eval 程式碼庫都是我的。")}
-            <ul class="two-lines">
-              <li>{T("Every night, six simulated AI users hold <strong>192 conversations</strong> with Lana (6 personas × 32 seeds), part of <strong>five evaluation pipelines</strong> I built.", "每晚，六個 AI 模擬使用者會跟 Lana 進行 <strong>192 場對話</strong>（6 個人格 × 32 個種子），這是我建立的<strong>五條評測管線</strong>的一部分。")}</li>
-              <li>{T("A CI gate blocks any deploy that makes Lana worse (a <strong>regression above 5%</strong> on any axis, or any new hard failure), and I cut its per-PR cost <strong>69%</strong> without losing signal.", "CI 閘門會擋下任何讓 Lana 變差的部署（任一指標<strong>退步超過 5%</strong>，或出現任何新的硬性失敗），而且我在不損失訊號的情況下，把每次 PR 的成本<strong>降低了 69%</strong>。")}</li>
-              <li>{T("An intent consolidation, tested on <strong>1,547 utterances</strong>, adopted by the CEO and AI lead.", "一項意圖合併方案，用 <strong>1,547 句</strong>測試集驗證，獲 CEO 與 AI 負責人採納。")}</li>
-            </ul>
+            <div class="stats">
+              <div class="stat"><b>192</b><span>{T("simulated conversations every night", "每晚的模擬對話")}</span></div>
+              <div class="stat"><b>5</b><span>{T("evaluation pipelines, built from scratch", "從零打造的評測管線")}</span></div>
+              <div class="stat"><b>69%</b><span>{T("cheaper PR gate, same safety signal", "PR 閘門成本降低，安全訊號不變")}</span></div>
+              <div class="stat"><b>1,547</b><span>{T("utterances behind the intent merge the CEO adopted", "支撐意圖合併的測試句數，CEO 採納")}</span></div>
+            </div>
             <p class="links"><button type="button" class="button ghost" data-open="d-phygtl">{T("Read the full story", "閱讀完整故事")}</button></p>
           </div>
-          <img class="job-img" src="assets/img/lana.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
         </div>
       </div>
 
-      <div class="two-col">
-        <div class="block">
-          <h2>{T("Overview", "概覽")}</h2>
-          {P("I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)",
-             "我是個統計系學生，老是在做一些沒人拜託我做的東西。共通點是：我喜歡替不可預測的系統套上護欄，例如會漂移的語言模型、演著演著就不像自己的模擬人物，還有不小心洩漏暗棋的遊戲規則。（對，我注意到這個規律了，而且我決定擁抱它。）")}
-          {P("I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.",
-             "我的時間分在洛杉磯和台灣之間，正在找軟體工程、AI 工程或資料相關的工作，三種都很樂意聊。")}
-        </div>
-        <div class="block">
-          <h2>{T("Education", "學歷")}</h2>
-          <p class="edu-school">UCLA</p>
-          {P("B.S. Statistics &amp; Data Science, minor in Data Science Engineering", "統計與資料科學學士，輔修資料科學工程")}
-          <p class="edu-dates">{T("Sept 2024 – Mar 2027", "2024 年 9 月 – 2027 年 3 月")}</p>
-          {P("That's two and a half years. I'm calling it efficiency, not a cry for help.", "兩年半。我稱之為效率，不是求救訊號。")}
-          {chips([T("Major GPA 3.96", "主修 GPA 3.96"), T("Latin Honors candidate", "拉丁榮譽候選"), T("Dean's Honors List", "院長榮譽榜")])}
-        </div>
-      </div>
 """
 
 
@@ -285,6 +264,24 @@ about += f"""
         <h2>{T("Projects at a glance", "專案一覽")}</h2>
         {P("The short version, for people skimming. Click any row for the whole story.", "給快速瀏覽的人看的精簡版。點任何一列看完整故事。", "meta")}
         <div class="glance">{"".join(glance_items)}
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="block">
+          <h2>{T("Overview", "概覽")}</h2>
+          {P("I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)",
+             "我是個統計系學生，老是在做一些沒人拜託我做的東西。共通點是：我喜歡替不可預測的系統套上護欄，例如會漂移的語言模型、演著演著就不像自己的模擬人物，還有不小心洩漏暗棋的遊戲規則。（對，我注意到這個規律了，而且我決定擁抱它。）")}
+          {P("I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.",
+             "我的時間分在洛杉磯和台灣之間，正在找軟體工程、AI 工程或資料相關的工作，三種都很樂意聊。")}
+        </div>
+        <div class="block">
+          <h2>{T("Education", "學歷")}</h2>
+          <p class="edu-school">UCLA</p>
+          {P("B.S. Statistics &amp; Data Science, minor in Data Science Engineering", "統計與資料科學學士，輔修資料科學工程")}
+          <p class="edu-dates">{T("Sept 2024 – Mar 2027", "2024 年 9 月 – 2027 年 3 月")}</p>
+          {P("That's two and a half years. I'm calling it efficiency, not a cry for help.", "兩年半。我稱之為效率，不是求救訊號。")}
+          {chips([T("Major GPA 3.96", "主修 GPA 3.96"), T("Latin Honors candidate", "拉丁榮譽候選"), T("Dean's Honors List", "院長榮譽榜")])}
         </div>
       </div>
 
@@ -976,8 +973,16 @@ for _key, _p in PAGES.items():
     }, ensure_ascii=False)
     _back_href, _back_en, _back_zh = (("#projects", "← All projects", "← 所有專案") if _p["section"] == "projects"
                                       else ("#home", "← Home", "← 首頁"))
+    # one <h1> per page: the project title; its numbered sections become <h2>
+    _inner = (_p["inner"].replace(f'<h2 id="t-{_key}">', f'<h1 id="t-{_key}">').replace("</h2>", "</h1>", 1)
+              .replace("<h3>", "<h2>").replace("</h3>", "</h2>"))
+    _cur_href = "#projects" if _p["section"] == "projects" else "#home"
     _title_en = f"{_en} | Yen-Ting (Tim) Chen"
     _title_zh = f"{_zh} | 陳彥廷 (Tim)"
+    _nav = "\n        ".join(
+        f'<a href="{h}"' + (' class="current" aria-current="page"' if h == _cur_href else "") + f">{T(en, zh)}</a>"
+        for h, en, zh in [("#home", "Home", "首頁"), ("#projects", "Projects", "專案"),
+                          ("#personal", "Personal", "個人"), ("#contact", "Contact", "聯絡")])
     _page = f"""<!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
@@ -999,15 +1004,12 @@ for _key, _p in PAGES.items():
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body data-title-en="{html_mod.escape(_title_en)}" data-title-zh="{html_mod.escape(_title_zh)}">
+<body data-fixed-tab data-title-en="{html_mod.escape(_title_en)}" data-title-zh="{html_mod.escape(_title_zh)}">
   <div class="tabbar">
     <div class="tabbar-inner">
       <a class="logo" href="#home">{T("Tim Chen", "陳彥廷 (Tim)")}</a>
       <nav id="tabs" aria-label="Sections">
-        <a href="#home">{T("Home", "首頁")}</a>
-        <a href="#projects">{T("Projects", "專案")}</a>
-        <a href="#personal">{T("Personal", "個人")}</a>
-        <a href="#contact">{T("Contact", "聯絡")}</a>
+        {_nav}
       </nav>
       <div class="lang-toggle" role="group" aria-label="Language">
         <button type="button" data-set-lang="en">EN</button>
@@ -1019,7 +1021,7 @@ for _key, _p in PAGES.items():
   <main>
     <article class="project-page">
       <p class="crumbs"><a href="{_back_href}">{T(_back_en, _back_zh)}</a></p>
-{_p["inner"]}
+{_inner}
       <p class="links"><a class="button ghost" href="{_back_href}">{T(_back_en, _back_zh)}</a></p>
     </article>
   </main>

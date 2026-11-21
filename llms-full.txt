@@ -28,9 +28,9 @@ A social simulation where nobody scripts the outcome. The model proposes actions
 
 Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.
 
-- Every night, six simulated AI users hold 192 conversations with Lana (6 personas × 32 seeds), part of five evaluation pipelines I built.
-- A CI gate blocks any deploy that makes Lana worse (a regression above 5% on any axis, or any new hard failure), and I cut its per-PR cost 69% without losing signal.
-- An intent consolidation, tested on 1,547 utterances, adopted by the CEO and AI lead.
+## Projects at a glance
+
+The short version, for people skimming. Click any row for the whole story.
 
 ## Overview
 
@@ -49,10 +49,6 @@ Sept 2024 – Mar 2027
 That's two and a half years. I'm calling it efficiency, not a cry for help.
 
 Major GPA 3.96, Latin Honors candidate, Dean's Honors List
-
-## Projects at a glance
-
-The short version, for people skimming. Click any row for the whole story.
 
 ## Toolbox
 

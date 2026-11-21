@@ -4,6 +4,7 @@
   var ids = panels.map(function (p) { return p.id.replace("panel-", ""); });
 
   function show() {
+    if (document.body.hasAttribute("data-fixed-tab")) return; // standalone pages keep their own highlighted tab
     var parts = (location.hash || "#home").slice(1).split("/");
     var id = parts[0], slug = parts[1];
     if (id === "about" || id === "experience") id = "home"; // old links still work; #experience/phygtl lives on Home

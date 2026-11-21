@@ -19,7 +19,7 @@
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Yen-Ting Chen", "alternateName": ["Tim Chen", "Yen-Ting (Tim) Chen", "陳彥廷"], "url": "https://tim-chen-yen-ting.github.io/", "image": "https://tim-chen-yen-ting.github.io/assets/img/headshot.jpg", "description": "UCLA Statistics & Data Science student (B.S. 2027) who builds multi-agent simulations, LLM evaluation systems and hidden-information games.", "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of California, Los Angeles"}, "knowsAbout": ["Multi-agent simulation", "LLM evaluation", "Statistics", "Machine learning", "Natural language processing", "Software engineering"], "sameAs": ["https://github.com/Tim-Chen-Yen-Ting", "https://www.linkedin.com/in/tim-chen-yen-ting"]}</script>
   <meta name="color-scheme" content="dark">
   <script>document.documentElement.classList.add("js");</script>
-  <link rel="stylesheet" href="style.css?v=6ae04711">
+  <link rel="stylesheet" href="style.css?v=35a267de">
 </head>
 <body data-tab="home">
   <!-- Masthead: only shown on the About (home) tab. The tab bar below it sticks to the top on scroll. -->
@@ -66,9 +66,9 @@
         <h2><span lang="en">Selected work</span><span lang="zh-Hant">精選作品</span></h2>
         <p class="meta" lang="en">Two things worth a look if you only have a minute.</p>
 <p class="meta" lang="zh-Hant">如果你只有一分鐘，看這兩樣就夠了。</p>
-        <div class="selected-lead clickable" role="button" tabindex="0" data-open="d-civilizism">
-          <img src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
-          <div>
+        <div class="selected-grid">
+          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-civilizism">
+            <img class="thumb-wide" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
             <h3>🏠 Civilizism</h3>
             <p class="hook" lang="en">What if you simulated one person really well, then simulated a lot of them?</p>
 <p class="hook" lang="zh-Hant">如果你把一個人模擬得夠好，再模擬很多個，會怎樣？</p>
@@ -76,45 +76,22 @@
 <p lang="zh-Hant">一個沒人編劇本的社會模擬。模型負責提議行動，由人格引擎決定哪一個真的發生。</p>
             <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer"><span lang="en">Watch a replay</span><span lang="zh-Hant">觀看回放</span></a> <button type="button" class="button ghost" data-open="d-civilizism"><span lang="en">Full story</span><span lang="zh-Hant">完整故事</span></button></p>
           </div>
-        </div>
-        <div class="selected-work-job clickable" role="button" tabindex="0" data-open="d-phygtl">
-          <div class="job-copy">
-            <div class="job-head">
-              <h3>🧪 <span lang="en">Phygtl · Agentic Systems Engineering Intern</span><span lang="zh-Hant">Phygtl · Agentic Systems Engineering 實習生</span></h3>
-              <span class="date"><span lang="en">Summer 2026</span><span lang="zh-Hant">2026 夏季</span></span>
-            </div>
+          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl">
+            <img class="thumb-wide" src="assets/img/lana_wide.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
+            <h3>🧪 <span lang="en">Phygtl · Agentic Systems Engineering Intern</span><span lang="zh-Hant">Phygtl · Agentic Systems Engineering 實習生</span></h3>
             <p class="hook" lang="en">Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.</p>
 <p class="hook" lang="zh-Hant">沒有人替 Lana 建過評測，所以我來建。整個 eval 程式碼庫都是我的。</p>
-            <ul class="two-lines">
-              <li><span lang="en">Every night, six simulated AI users hold <strong>192 conversations</strong> with Lana (6 personas × 32 seeds), part of <strong>five evaluation pipelines</strong> I built.</span><span lang="zh-Hant">每晚，六個 AI 模擬使用者會跟 Lana 進行 <strong>192 場對話</strong>（6 個人格 × 32 個種子），這是我建立的<strong>五條評測管線</strong>的一部分。</span></li>
-              <li><span lang="en">A CI gate blocks any deploy that makes Lana worse (a <strong>regression above 5%</strong> on any axis, or any new hard failure), and I cut its per-PR cost <strong>69%</strong> without losing signal.</span><span lang="zh-Hant">CI 閘門會擋下任何讓 Lana 變差的部署（任一指標<strong>退步超過 5%</strong>，或出現任何新的硬性失敗），而且我在不損失訊號的情況下，把每次 PR 的成本<strong>降低了 69%</strong>。</span></li>
-              <li><span lang="en">An intent consolidation, tested on <strong>1,547 utterances</strong>, adopted by the CEO and AI lead.</span><span lang="zh-Hant">一項意圖合併方案，用 <strong>1,547 句</strong>測試集驗證，獲 CEO 與 AI 負責人採納。</span></li>
-            </ul>
+            <div class="stats">
+              <div class="stat"><b>192</b><span><span lang="en">simulated conversations every night</span><span lang="zh-Hant">每晚的模擬對話</span></span></div>
+              <div class="stat"><b>5</b><span><span lang="en">evaluation pipelines, built from scratch</span><span lang="zh-Hant">從零打造的評測管線</span></span></div>
+              <div class="stat"><b>69%</b><span><span lang="en">cheaper PR gate, same safety signal</span><span lang="zh-Hant">PR 閘門成本降低，安全訊號不變</span></span></div>
+              <div class="stat"><b>1,547</b><span><span lang="en">utterances behind the intent merge the CEO adopted</span><span lang="zh-Hant">支撐意圖合併的測試句數，CEO 採納</span></span></div>
+            </div>
             <p class="links"><button type="button" class="button ghost" data-open="d-phygtl"><span lang="en">Read the full story</span><span lang="zh-Hant">閱讀完整故事</span></button></p>
           </div>
-          <img class="job-img" src="assets/img/lana.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
         </div>
       </div>
 
-      <div class="two-col">
-        <div class="block">
-          <h2><span lang="en">Overview</span><span lang="zh-Hant">概覽</span></h2>
-          <p lang="en">I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)</p>
-<p lang="zh-Hant">我是個統計系學生，老是在做一些沒人拜託我做的東西。共通點是：我喜歡替不可預測的系統套上護欄，例如會漂移的語言模型、演著演著就不像自己的模擬人物，還有不小心洩漏暗棋的遊戲規則。（對，我注意到這個規律了，而且我決定擁抱它。）</p>
-          <p lang="en">I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.</p>
-<p lang="zh-Hant">我的時間分在洛杉磯和台灣之間，正在找軟體工程、AI 工程或資料相關的工作，三種都很樂意聊。</p>
-        </div>
-        <div class="block">
-          <h2><span lang="en">Education</span><span lang="zh-Hant">學歷</span></h2>
-          <p class="edu-school">UCLA</p>
-          <p lang="en">B.S. Statistics &amp; Data Science, minor in Data Science Engineering</p>
-<p lang="zh-Hant">統計與資料科學學士，輔修資料科學工程</p>
-          <p class="edu-dates"><span lang="en">Sept 2024 – Mar 2027</span><span lang="zh-Hant">2024 年 9 月 – 2027 年 3 月</span></p>
-          <p lang="en">That's two and a half years. I'm calling it efficiency, not a cry for help.</p>
-<p lang="zh-Hant">兩年半。我稱之為效率，不是求救訊號。</p>
-          <p class="chips"><span><span lang="en">Major GPA 3.96</span><span lang="zh-Hant">主修 GPA 3.96</span></span><span><span lang="en">Latin Honors candidate</span><span lang="zh-Hant">拉丁榮譽候選</span></span><span><span lang="en">Dean's Honors List</span><span lang="zh-Hant">院長榮譽榜</span></span></p>
-        </div>
-      </div>
 
       <div class="block">
         <h2><span lang="en">Projects at a glance</span><span lang="zh-Hant">專案一覽</span></h2>
@@ -185,6 +162,26 @@
             <span class="glance-badges"><i>Python</i><i>Supabase</i></span>
           </span>
         </button>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="block">
+          <h2><span lang="en">Overview</span><span lang="zh-Hant">概覽</span></h2>
+          <p lang="en">I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)</p>
+<p lang="zh-Hant">我是個統計系學生，老是在做一些沒人拜託我做的東西。共通點是：我喜歡替不可預測的系統套上護欄，例如會漂移的語言模型、演著演著就不像自己的模擬人物，還有不小心洩漏暗棋的遊戲規則。（對，我注意到這個規律了，而且我決定擁抱它。）</p>
+          <p lang="en">I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.</p>
+<p lang="zh-Hant">我的時間分在洛杉磯和台灣之間，正在找軟體工程、AI 工程或資料相關的工作，三種都很樂意聊。</p>
+        </div>
+        <div class="block">
+          <h2><span lang="en">Education</span><span lang="zh-Hant">學歷</span></h2>
+          <p class="edu-school">UCLA</p>
+          <p lang="en">B.S. Statistics &amp; Data Science, minor in Data Science Engineering</p>
+<p lang="zh-Hant">統計與資料科學學士，輔修資料科學工程</p>
+          <p class="edu-dates"><span lang="en">Sept 2024 – Mar 2027</span><span lang="zh-Hant">2024 年 9 月 – 2027 年 3 月</span></p>
+          <p lang="en">That's two and a half years. I'm calling it efficiency, not a cry for help.</p>
+<p lang="zh-Hant">兩年半。我稱之為效率，不是求救訊號。</p>
+          <p class="chips"><span><span lang="en">Major GPA 3.96</span><span lang="zh-Hant">主修 GPA 3.96</span></span><span><span lang="en">Latin Honors candidate</span><span lang="zh-Hant">拉丁榮譽候選</span></span><span><span lang="en">Dean's Honors List</span><span lang="zh-Hant">院長榮譽榜</span></span></p>
         </div>
       </div>
 
@@ -709,6 +706,6 @@
     </div>
   </dialog>
 
-  <script src="script.js?v=1ddb4be2"></script>
+  <script src="script.js?v=af002183"></script>
 </body>
 </html>
