@@ -41,4 +41,4 @@ I wrote the content and made the decisions. I built the site together with Claud
 ## Elsewhere
 
 - GitHub: [Tim-Chen-Yen-Ting](https://github.com/Tim-Chen-Yen-Ting)
-- LinkedIn: [Yen-Ting (Tim) Chen](https://www.linkedin.com/in/yen-ting-tim-chen-303276329)
+- LinkedIn: [Yen-Ting (Tim) Chen](https://www.linkedin.com/in/tim-chen-yen-ting)

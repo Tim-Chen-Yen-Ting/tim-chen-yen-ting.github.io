@@ -101,7 +101,7 @@ head = f"""<!DOCTYPE html>
           {btn("#projects", "See what I've built", "看看我做了什麼")}
           {btn("assets/resumes/YenTing_Tim_Chen_CV.pdf", "Résumé", "履歷", True)}
           {btn("https://github.com/Tim-Chen-Yen-Ting", "GitHub", "GitHub", True)}
-          {btn("https://www.linkedin.com/in/yen-ting-tim-chen-303276329", "LinkedIn", "LinkedIn", True)}
+          {btn("https://www.linkedin.com/in/tim-chen-yen-ting", "LinkedIn", "LinkedIn", True)}
         </p>
       </div>
     </div>
@@ -403,7 +403,7 @@ contact = f"""
 
       <p class="links">
         {btn("mailto:timchen56789@gmail.com", "Email", "寄信")}
-        {btn("https://www.linkedin.com/in/yen-ting-tim-chen-303276329", "LinkedIn", "LinkedIn", True)}
+        {btn("https://www.linkedin.com/in/tim-chen-yen-ting", "LinkedIn", "LinkedIn", True)}
         {btn("https://github.com/Tim-Chen-Yen-Ting", "GitHub", "GitHub", True)}
       </p>
 
