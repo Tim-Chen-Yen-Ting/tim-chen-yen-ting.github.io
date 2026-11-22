@@ -3,6 +3,9 @@
   var tabLinks = Array.prototype.slice.call(document.querySelectorAll("#tabs a"));
   var ids = panels.map(function (p) { return p.id.replace("panel-", ""); });
 
+  var lastTab = null;
+  var firstShow = true; // the very first call is a page load, not a Back/Forward step
+  var closingFromNav = false; // true while show() is closing a popup because the user navigated
   function show() {
     if (document.body.hasAttribute("data-fixed-tab")) return; // standalone pages keep their own highlighted tab
     var parts = (location.hash || "#home").slice(1).split("/");
@@ -16,17 +19,19 @@
       a.classList.toggle("current", on);
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
-    window.scrollTo(0, 0);
+    if (id !== lastTab) window.scrollTo(0, 0); // only jump to the top when the tab changes, not when a popup closes
+    lastTab = id;
     // Back/forward must not leave a stale popup open: close any popup that does not match the destination
-    document.querySelectorAll("dialog.modal[open]").forEach(function (d) { if (!slug || d.dataset.slug !== slug) d.close(); });
+    document.querySelectorAll("dialog.modal[open]").forEach(function (d) { if (!slug || d.dataset.slug !== slug) { closingFromNav = true; d.close(); } });
     // Deep link: #projects/civilizism or #experience/phygtl opens that popup
     if (slug) {
       var dlg = document.querySelector('dialog.modal[data-slug="' + slug + '"]');
-      if (dlg && !dlg.open && dlg.showModal) dlg.showModal();
+      if (dlg && !dlg.open && dlg.showModal) { dlg.showModal(); dlg._pushed = !firstShow; } // Forward onto a popup entry: closing it should step Back
     }
   }
   window.addEventListener("hashchange", show);
   show();
+  firstShow = false;
   // the browser's own jump-to-hash can land after the script runs; reset once more
   window.addEventListener("load", function () { window.scrollTo(0, 0); });
 
@@ -36,7 +41,8 @@
     if (d && d.showModal && !d.open) {
       d.showModal();
       // keep the address bar shareable while a popup is open
-      if (d.dataset.slug && history.replaceState) history.replaceState(null, "", "#" + d.dataset.section + "/" + d.dataset.slug);
+      // A popup gets its own history entry, so Back closes it and lands on the page underneath
+      if (d.dataset.slug && history.pushState) { history.pushState(null, "", "#" + d.dataset.section + "/" + d.dataset.slug); d._pushed = true; }
     }
   }
   var openedByKeyboard = false;
@@ -63,7 +69,12 @@
     d.addEventListener("close", function () {
       var a = document.activeElement;
       if (!openedByKeyboard && a && a !== document.body && a.blur) a.blur();
-      if (d.dataset.slug && history.replaceState) history.replaceState(null, "", "#" + (document.body.getAttribute("data-tab") || "home"));
+      if (d.dataset.slug) {
+        if (closingFromNav) { d._pushed = false; } // the user already navigated; leave history alone
+        else if (d._pushed && history.back) { d._pushed = false; history.back(); } // undo the entry we pushed
+        else if (history.replaceState) { history.replaceState(null, "", "#" + (document.body.getAttribute("data-tab") || "home")); }
+      }
+      closingFromNav = false;
     });
   });
 
