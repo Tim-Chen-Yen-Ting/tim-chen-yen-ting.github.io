@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@400;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=0407038a">
+  <link rel="stylesheet" href="style.css?v=506dc58b">
 </head>
 <body data-tab="home">
   <!-- Masthead: only shown on the About (home) tab. The tab bar below it sticks to the top on scroll. -->
@@ -77,6 +77,23 @@
 <p class="hook" lang="zh-Hant">如果你把一個人模擬得夠好，再模擬很多個，會怎樣？</p>
             <p lang="en">A social simulation where nobody scripts the outcome. The model proposes actions, and a personality engine decides which one happens.</p>
 <p lang="zh-Hant">一個沒人編劇本的社會模擬。模型負責提議行動，由人格引擎決定哪一個真的發生。</p>
+            <div class="player" id="stageplay">
+              <div class="rooms" aria-hidden="true">
+                <span>LIVING ROOM</span><span>KITCHEN</span><span>BEDROOM</span>
+                <div class="agent" id="agent"><i class="bubble" id="bubble">⏰</i><b>DA</b></div>
+              </div>
+              <div class="readout"><span class="lcd" id="clk">06:30</span><ol class="caps" id="caps" role="status" aria-live="polite"><li data-t="06:30" data-room="2" data-emoji="⏰"><span lang="en">The alarm goes off. A debate with the pillow begins.</span><span lang="zh-Hant">鬧鐘響了。和枕頭的辯論開始。</span></li><li data-t="07:15" data-room="1" data-emoji="🍳"><span lang="en">Cooks breakfast for one, burns it for two.</span><span lang="zh-Hant">做了一人份的早餐，燒焦了兩人份。</span></li><li data-t="09:00" data-room="0" data-emoji="💻"><span lang="en">Does the thing that is technically called work.</span><span lang="zh-Hant">做著理論上叫作「工作」的事。</span></li><li data-t="12:30" data-room="1" data-emoji="🍜"><span lang="en">Lunch. The only meeting everyone attends.</span><span lang="zh-Hant">午餐。唯一全員出席的會議。</span></li><li data-t="16:00" data-room="0" data-emoji="💬"><span lang="en">Chats with a housemate. Trust goes up a little.</span><span lang="zh-Hant">和室友聊天。信任度小幅上升。</span></li><li data-t="20:00" data-room="0" data-emoji="🍿"><span lang="en">Movie marathon. Nobody scripted this.</span><span lang="zh-Hant">電影馬拉松。沒人寫過這段劇本。</span></li><li data-t="23:30" data-room="2" data-emoji="😴"><span lang="en">Sleeps. Fatigue resets, grudges do not.</span><span lang="zh-Hant">睡覺。疲勞歸零，心結不會。</span></li></ol></div>
+              <div class="transport" role="group" aria-label="Replay controls">
+                <button type="button" class="tbtn" data-t="first" aria-label="First stage">|◀</button>
+                <button type="button" class="tbtn" data-t="prev" aria-label="Previous stage">◀◀</button>
+                <button type="button" class="tbtn play" data-t="play" id="playbtn" aria-label="Play">▶</button>
+                <button type="button" class="tbtn" data-t="next" aria-label="Next stage">▶▶</button>
+                <button type="button" class="tbtn" data-t="last" aria-label="Last stage">▶|</button>
+                <input type="range" id="scrub" min="0" max="6" step="1" value="0" aria-label="Stage of the day">
+              </div>
+            </div>
+            <p class="note" lang="en">A toy: seven stages of one made-up day. The real replay viewer is one click away.</p>
+<p class="note" lang="zh-Hant">只是個玩具：一個虛構日子的七個階段。真正的回放檢視器就在旁邊一鍵之遙。</p>
             <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer"><span lang="en">Watch a replay</span><span lang="zh-Hant">觀看回放</span></a> <button type="button" class="button ghost" data-open="d-civilizism"><span lang="en">Full story</span><span lang="zh-Hant">完整故事</span></button></p>
           </div>
           <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl" data-title="C:\WORK\PHYGTL.EXE">
@@ -716,6 +733,6 @@
     </div>
   </dialog>
 
-  <script src="script.js?v=e7bb32ad"></script>
+  <script src="script.js?v=1b00e5db"></script>
 </body>
 </html>

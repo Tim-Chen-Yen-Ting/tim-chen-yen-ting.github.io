@@ -188,6 +188,19 @@ head = f"""<!DOCTYPE html>
   <main>
 """
 
+# Civilizism toy: seven stages of one simulated day. Room 0 = living room, 1 = kitchen, 2 = bedroom.
+STAGES = [
+    ("06:30", 2, "⏰", "The alarm goes off. A debate with the pillow begins.", "鬧鐘響了。和枕頭的辯論開始。"),
+    ("07:15", 1, "🍳", "Cooks breakfast for one, burns it for two.", "做了一人份的早餐，燒焦了兩人份。"),
+    ("09:00", 0, "💻", "Does the thing that is technically called work.", "做著理論上叫作「工作」的事。"),
+    ("12:30", 1, "🍜", "Lunch. The only meeting everyone attends.", "午餐。唯一全員出席的會議。"),
+    ("16:00", 0, "💬", "Chats with a housemate. Trust goes up a little.", "和室友聊天。信任度小幅上升。"),
+    ("20:00", 0, "🍿", "Movie marathon. Nobody scripted this.", "電影馬拉松。沒人寫過這段劇本。"),
+    ("23:30", 2, "😴", "Sleeps. Fatigue resets, grudges do not.", "睡覺。疲勞歸零，心結不會。"),
+]
+_stage_caps = "".join(
+    f'<li data-t="{t}" data-room="{r}" data-emoji="{e}">{T(en, zh)}</li>' for t, r, e, en, zh in STAGES)
+
 about = f"""
     <!-- ===================== 1. ABOUT ===================== -->
     <section class="panel" id="panel-home" aria-label="Home">
@@ -200,6 +213,22 @@ about = f"""
             <h3>🏠 Civilizism</h3>
             {hook("What if you simulated one person really well, then simulated a lot of them?", "如果你把一個人模擬得夠好，再模擬很多個，會怎樣？")}
             {P("A social simulation where nobody scripts the outcome. The model proposes actions, and a personality engine decides which one happens.", "一個沒人編劇本的社會模擬。模型負責提議行動，由人格引擎決定哪一個真的發生。")}
+            <div class="player" id="stageplay">
+              <div class="rooms" aria-hidden="true">
+                <span>LIVING ROOM</span><span>KITCHEN</span><span>BEDROOM</span>
+                <div class="agent" id="agent"><i class="bubble" id="bubble">⏰</i><b>DA</b></div>
+              </div>
+              <div class="readout"><span class="lcd" id="clk">06:30</span><ol class="caps" id="caps" role="status" aria-live="polite">{_stage_caps}</ol></div>
+              <div class="transport" role="group" aria-label="Replay controls">
+                <button type="button" class="tbtn" data-t="first" aria-label="First stage">|◀</button>
+                <button type="button" class="tbtn" data-t="prev" aria-label="Previous stage">◀◀</button>
+                <button type="button" class="tbtn play" data-t="play" id="playbtn" aria-label="Play">▶</button>
+                <button type="button" class="tbtn" data-t="next" aria-label="Next stage">▶▶</button>
+                <button type="button" class="tbtn" data-t="last" aria-label="Last stage">▶|</button>
+                <input type="range" id="scrub" min="0" max="6" step="1" value="0" aria-label="Stage of the day">
+              </div>
+            </div>
+            {P("A toy: seven stages of one made-up day. The real replay viewer is one click away.", "只是個玩具：一個虛構日子的七個階段。真正的回放檢視器就在旁邊一鍵之遙。", "note")}
             <p class="links">{btn("https://civilizism.vercel.app/viewer", "Watch a replay", "觀看回放")} <button type="button" class="button ghost" data-open="d-civilizism">{T("Full story", "完整故事")}</button></p>
           </div>
           <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl" data-title="{_bar('phygtl')}">

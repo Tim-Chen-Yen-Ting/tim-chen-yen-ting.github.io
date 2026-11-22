@@ -22,6 +22,16 @@ What if you simulated one person really well, then simulated a lot of them?
 
 A social simulation where nobody scripts the outcome. The model proposes actions, and a personality engine decides which one happens.
 
+- The alarm goes off. A debate with the pillow begins.
+- Cooks breakfast for one, burns it for two.
+- Does the thing that is technically called work.
+- Lunch. The only meeting everyone attends.
+- Chats with a housemate. Trust goes up a little.
+- Movie marathon. Nobody scripted this.
+- Sleeps. Fatigue resets, grudges do not.
+
+A toy: seven stages of one made-up day. The real replay viewer is one click away.
+
 [Watch a replay](https://civilizism.vercel.app/viewer)
 
 ### 🧪 Phygtl · Agentic Systems Engineering Intern

@@ -197,7 +197,6 @@ button.button { line-height: 1.4; }
 .selected-card .hook { margin: 0.1rem 0 0.5rem; }
 .selected-card p { font-size: 0.92rem; }
 .selected-card .links { margin: auto 0 0.2rem; padding-top: 0.8rem; padding-bottom: 0; }
-.selected-card:first-child .thumb-wide { flex: 1 1 0; height: 0; min-height: 12rem; aspect-ratio: auto; object-fit: contain; object-position: center; background: #0b1118; }
 .thumb-wide {
   width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top;
   border-radius: 6px; border: 1px solid #061a3d; display: block; margin-bottom: 0.9rem;
@@ -379,7 +378,6 @@ footer {
   nav { order: 3; width: 100%; flex-wrap: wrap; }
   main { padding: 0 1rem 2.5rem; }
   .hero { flex-direction: column; align-items: flex-start; }
-  .selected-card:first-child .thumb-wide { flex: none; height: auto; min-height: 0; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
   .hero::after { display: none; }
   .two-col, .gallery, .facts, .downloads, .glance, .selected-grid, .resume-grid { grid-template-columns: 1fr; }
   .cheat-row { grid-template-columns: 1fr; gap: 0.1rem; }
@@ -391,3 +389,26 @@ footer {
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
 }
+
+/* Civilizism toy: a tiny transport bar and a three-room strip */
+.player { margin: 0.7rem 0 0.3rem; padding: 0.6rem; border-radius: 10px; background: linear-gradient(#b5c0d1, #d3dae6); box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35), 0 1px 0 #fff; }
+.rooms { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); height: 84px; border-radius: 6px; overflow: hidden; border: 1px solid #061a3d; box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.55); }
+.rooms > span { font-size: 0.6rem; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.85); padding: 0.25rem 0.4rem; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
+.rooms > span:nth-child(1) { background: #7a4a2a; }
+.rooms > span:nth-child(2) { background: #4d6a4d; border-inline: 1px solid rgba(0, 0, 0, 0.35); }
+.rooms > span:nth-child(3) { background: #b8a078; }
+.agent { position: absolute; left: 16.667%; bottom: 8px; width: 30px; height: 30px; transform: translateX(-50%); transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+.agent b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; font-size: 0.62rem; color: #fff; background: #d9602a; border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
+.playing .agent b { animation: bob 0.5s ease-in-out infinite alternate; }
+@keyframes bob { to { transform: translateY(-5px); } }
+.bubble { position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); font-style: normal; font-size: 1.15rem; line-height: 1; padding: 0.15rem 0.3rem; border-radius: 8px; background: #fff; border: 1px solid var(--edge); box-shadow: 0 2px 0 #5b6f93; white-space: nowrap; }
+.readout { display: flex; gap: 0.6rem; align-items: center; margin-top: 0.55rem; }
+.readout .lcd { font-size: 0.95rem; padding: 0.25rem 0.55rem; flex: none; }
+.caps { list-style: none; margin: 0; padding: 0; font-size: 0.8rem; line-height: 1.4; color: var(--ink); min-height: 2.3em; display: flex; align-items: center; }
+.caps li { display: none; }
+.caps li.on { display: block; }
+.transport { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.55rem; }
+.tbtn { font: inherit; font-size: 0.7rem; font-weight: 700; min-width: 2.1rem; padding: 0.3rem 0.35rem; cursor: pointer; color: var(--ink); background: linear-gradient(#fdfeff, #c3cddd); border: 1px solid var(--edge); border-radius: 7px; box-shadow: 0 3px 0 #5b6f93, inset 0 1px 0 #fff; transition: transform 0.08s ease, box-shadow 0.08s ease; }
+.tbtn.play { background: linear-gradient(#fff3a8, #ffc928 55%, #f0b000); box-shadow: 0 3px 0 #a47200, inset 0 1px 0 #fff; min-width: 2.6rem; }
+.tbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 #5b6f93, inset 0 1px 0 #fff; }
+.transport input[type="range"] { flex: 1; min-width: 0; margin-left: 0.4rem; accent-color: #1f5fc9; cursor: pointer; }

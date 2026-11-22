@@ -97,6 +97,40 @@
   tick();
   setInterval(tick, 20000);
 
+  // Civilizism toy: media-style controls stepping one simulated housemate through seven stages of a day.
+  var pl = document.getElementById("stageplay");
+  if (pl) {
+    pl.addEventListener("click", function (e) { e.stopPropagation(); }); // don't open the card's popup
+    var caps = pl.querySelectorAll("#caps li"), clk = document.getElementById("clk"), agent = document.getElementById("agent"),
+        bub = document.getElementById("bubble"), scrub = document.getElementById("scrub"), pbtn = document.getElementById("playbtn"),
+        cur = 0, timer = null;
+    function go(i) {
+      cur = Math.max(0, Math.min(caps.length - 1, i));
+      caps.forEach(function (li, k) { li.classList.toggle("on", k === cur); });
+      var li = caps[cur];
+      clk.textContent = li.getAttribute("data-t");
+      bub.textContent = li.getAttribute("data-emoji");
+      agent.style.left = (Number(li.getAttribute("data-room")) * 33.333 + 16.667) + "%";
+      scrub.value = cur;
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } pl.classList.remove("playing"); pbtn.textContent = "▶"; pbtn.setAttribute("aria-label", "Play"); }
+    function play() {
+      if (cur >= caps.length - 1) go(0);
+      pl.classList.add("playing"); pbtn.textContent = "❚❚"; pbtn.setAttribute("aria-label", "Pause");
+      timer = setInterval(function () { if (cur >= caps.length - 1) stop(); else go(cur + 1); }, 1700);
+    }
+    pl.querySelectorAll(".tbtn").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var t = b.getAttribute("data-t");
+        if (t === "play") { if (timer) stop(); else play(); return; }
+        stop();
+        go(t === "first" ? 0 : t === "last" ? caps.length - 1 : t === "prev" ? cur - 1 : cur + 1);
+      });
+    });
+    scrub.addEventListener("input", function () { stop(); go(Number(scrub.value)); });
+    go(0);
+  }
+
   // Nightly-eval toy on the Phygtl card: a physical button that counts to 192. It does not call anything.
   var run = document.getElementById("runbtn"), lcd = document.getElementById("lcd"), led = document.getElementById("led");
   if (run && lcd && led) {
