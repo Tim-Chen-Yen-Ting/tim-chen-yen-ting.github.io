@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@400;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=50c77bc5">
+  <link rel="stylesheet" href="style.css?v=f908fcc1">
 </head>
 <body data-fixed-tab data-title-en="Past Messages Analyzer | Yen-Ting (Tim) Chen" data-title-zh="Past Messages Analyzer | 陳彥廷 (Tim)">
   <div class="tabbar">
@@ -45,20 +45,20 @@
     <img class="modal-img" src="assets/img/messages.png" alt="Past Messages Analyzer pipeline diagram" loading="lazy">
     <h1 id="t-messages">💬 Past Messages Analyzer</h1>
     <p class="hook" lang="en">What if you could watch a friendship's tone drift over time?</p>
-<p class="hook" lang="zh-Hant">如果你能看見一段友情的語氣如何隨時間漂移呢？</p>
+<p class="hook" lang="zh-Hant">如果你看得到，一段友情的語氣是怎麼慢慢變的呢？</p>
     <h2><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h2>
 <p lang="en">Years of messages with the same people, and no real sense of how those relationships changed. Weirdly emotional for a stats project.</p>
-<p lang="zh-Hant">和同一群人傳了好幾年的訊息，卻完全不知道這些關係是怎麼變的。對統計專題來說，情緒過於豐富。</p>
+<p lang="zh-Hant">跟同一群人傳了好幾年的訊息，卻完全不知道這些關係是怎麼變的。以統計專題來說，感情有點太多了。</p>
     <h2><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h2>
 <p lang="en">A pipeline that ingests Facebook Messenger and Instagram exports into a normalized SQLite database, then layers analysis on top: response latency, sentiment, and rolling drift in vocabulary and tone, with changepoint detection to flag when a relationship's style actually shifts. It reuses BLOC's incremental clustering to track relationship drift in embedding space.</p>
-<p lang="zh-Hant">一條把 Facebook Messenger 和 Instagram 匯出資料灌進正規化 SQLite 資料庫的流程，再往上疊加分析：回覆延遲、情緒，以及詞彙與語氣的滾動漂移，並用變點偵測標出一段關係的風格何時真的轉變。它重用了 BLOC 的增量分群，在嵌入空間裡追蹤關係漂移。</p>
+<p lang="zh-Hant">一條資料管線，把Facebook Messenger和Instagram匯出的資料，整理進一個SQLite資料庫，再往上做分析：回覆延遲、情緒，還有用詞和語氣隨時間的漂移，並用變點偵測，標出一段關係的風格什麼時候真的變了。它沿用了BLOC的增量分群，在嵌入空間裡追蹤關係的漂移。</p>
     <h2><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h2>
 <p lang="en">The real design question was privacy. They're my friends' messages, so the AI narration layer only sees summary statistics by default. A close-reading mode exists for statistically flagged anomalies, but it's opt-in and off by default, a deliberate trade of interpretability for privacy.</p>
-<p lang="zh-Hant">真正的設計問題是隱私。這些是我朋友的訊息，所以 AI 的敘述層預設只看得到摘要統計。針對統計上被標記的異常有精讀模式，但它需要主動開啟、預設關閉，這是刻意拿可解釋性換隱私。</p>
+<p lang="zh-Hant">真正的設計問題是隱私。這些是我朋友的訊息，所以AI的敘述層預設只看得到統計摘要。對於統計上被標出來的異常，另有一個精讀模式，但需要自己手動打開、預設是關閉的，這是我刻意用可解釋性去換隱私。</p>
     <h2><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h2>
 <p class="chips"><span>Python</span><span>SQLite</span><span>pandas</span><span>VADER</span><span>SnowNLP</span><span>PELT changepoints</span><span>Jupyter</span></p>
 <p lang="en">Unsurprisingly, you need two sentiment tools when your friends text in two languages. Also, welcome to the world of psychology: my stats skills get challenged by sentiment, at least according to the psych textbooks.</p>
-<p lang="zh-Hant">毫不意外，當你的朋友用兩種語言傳訊息，你就需要兩套情緒分析工具。另外，歡迎來到心理學的世界：至少根據心理學教科書，我的統計能力正被情緒挑戰著。</p>
+<p lang="zh-Hant">毫不意外，朋友用兩種語言傳訊息，你就需要兩套情緒分析工具。另外，歡迎來到心理學的世界：至少照心理學教科書說的，我的統計能力正在被情緒挑戰。</p>
     <h2><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h2>
     <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Past-Messages-Analysis"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
       <p class="links"><a class="button ghost" href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
@@ -66,7 +66,7 @@
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA統計與資料科學學士，2027</span></p>
   </footer>
 
   <script src="script.js?v=61359169"></script>

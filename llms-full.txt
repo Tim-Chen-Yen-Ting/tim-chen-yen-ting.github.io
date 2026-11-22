@@ -44,9 +44,9 @@ The short version, for people skimming. Click any row for the whole story.
 
 ## Overview
 
-I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)
+I'm a stats student, though really more of a CS student in a trench coat, building things nobody asked for all day. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed this is thankless. I'm doing it anyway.)
 
-I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.
+I'm in either Los Angeles or Taiwan, a native speaker of both English and Mandarin, and looking for software, AI engineering, or data roles. If you have an opening, let's talk. If you don't, we can still chat.
 
 ## Education
 
@@ -56,7 +56,7 @@ B.S. Statistics & Data Science, minor in Data Science Engineering
 
 Sept 2024 – Mar 2027
 
-That's two and a half years. I'm calling it efficiency, not a cry for help.
+That's two and a half years. Call it graduating early if you insist, but I prefer to call it starting work early :)
 
 Major GPA 3.96, Latin Honors candidate, Dean's Honors List
 
@@ -140,7 +140,7 @@ Email is the fastest way to reach me. I split my time between the US and Taiwan,
 
 ### Resumes
 
-Same person, three framings. Grab whichever fits the role.
+Same person, three framings. Pick whichever you like more, help yourself.
 
 ## The recruiter cheat sheet
 
@@ -188,23 +188,23 @@ How do we know whether Lana is doing what she's supposed to do?
 
 ### The problem
 
-Lana is Phygtl's AI concierge: a sheep in a bellhop uniform who helps people find something nearby or share something with their neighbors. She's live in production. When I got there, "is Lana better or worse after this change?" was answered mostly by hope, and quality meant someone chatting with her by hand. (Totally normal for a young product. Also how you get surprised later.) Nobody had built evaluation for her, so the whole eval codebase is mine.
+Lana is Phygtl's AI concierge: a sheep in a bellhop uniform who helps people find something nearby or share something with their neighbors. When I got there, "is Lana better or worse after this change?" was answered mostly by hope, and quality meant someone chatting with her by hand. (Totally normal for a young product. Also a great way to bury landmines for your future self.) Nobody had built evaluation for her, so the whole eval codebase is mine.
 
 ### My solution
 
-My first task was going from manual QA to a simulation environment. Six AI mock users with deliberately different personas hold 192 conversations with Lana every night (6 personas × 32 seeds across 7 buckets, each seed testing one specific behavior), like a performance review she can't skip. Then five evaluation pipelines read those conversations: core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged.
+My first task was going from manual QA to a simulation environment. I used AI to build six simulated users with deliberately different personas, and they hold 192 conversations with Lana every night (6 personas × 32 seeds across 7 buckets, each seed testing one specific behavior), like a performance review she can't skip (except it happens every night). Then five evaluation pipelines read those conversations: core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged.
 
-On top of that came regression checks and CI/CD that answer the real question: are we making Lana better or worse? A pull-request gate blocks a deploy on any regression above 5% on an axis, or any new hard failure.
+On top of that came regression checks and CI/CD that answer the real question: are we making Lana better or worse? A pull-request gate blocks the push on any regression above 5% on an axis, or any new hard failure. The gate doesn't accept "probably fine", only "confirmed fine"... or at least "confirmed fine, as far as the tests can tell".
 
 ### Challenges & fun stories
 
-Before I trusted any of it, I let the simulation run one full pass, then went through the results stored in the dev database by hand, labeling every verdict as a true positive, true negative, false positive or false negative, and tuned my tests (the mock users and the checks) accordingly. Unglamorous, and the reason the rest could be trusted. Later, a measured audit found my own mock user breaking character in 13 of 102 conversations (12.7%), and I fixed that so a failure would mean something about Lana, not about my simulator.
+Before any of it was fit to ship, I let the simulation run one full pass, then went through the results stored in the dev database by hand, labeling every verdict as a true positive, true negative, false positive or false negative, and tuned my tests and eval content (the simulated users and the checks) accordingly. Not fun, but it's what makes everything after it worth trusting. Later, a measured audit found my own simulated user breaking character in 13 of 102 conversations (12.7%). Once that was fixed, a failure finally meant Lana had a problem, not my simulator.
 
 The core idea is to split every check by how it can fail. If the right answer is known by construction (a banned word, a planted piece of personal data), plain code checks it, because a flaky check poisons a deploy gate. Only the truly subjective questions, like "warm, but not sycophantic?", go to an LLM judge. And every check ships with a test that feeds it a deliberate violation, because a green run means nothing if the check can't fail. (Yes, I wrote tests for my tests. No, I don't feel bad about it.)
 
-I kept the judge model off the product's own model family, so it never grades its own kind. And the triage tool collapsed a 729-row human-review queue by re-deriving evidence from stored transcripts instead of asking a second LLM, then measured itself against 51 human-labeled rows rather than just asserting it was right.
+I kept the judge model off the product's own model family, so it never grades its own kind. (Turns out nepotism works on AI models too.) And the triage tool collapsed a 729-row human-review queue by re-deriving evidence from stored transcripts instead of asking a second LLM, then measured itself against 51 human-labeled rows rather than just asserting it was right.
 
-The PR gate originally ran 6 personas × 18 seeds = 108 cases on every pull request. I cut it to 3 × 11 = 33, a 69% reduction, based on measured evidence. One seed from the most expensive bucket stayed because it was the only place hallucination ever fired, and I picked personas for contrast, not for failure count, since a gate that overfits to known bugs misses the next one. Nothing was deleted, only deferred to the nightly 192.
+The PR gate originally ran 6 personas × 18 seeds = 108 cases on every pull request. I cut it to 3 × 11 = 33, a 69% reduction, based on measured evidence. One seed from the most expensive bucket stayed because it was the only place hallucination ever fired, and I picked personas for contrast, not for failure count, since a gate that overfits to known bugs can't find the unknown ones. Nothing was deleted, only deferred to the nightly 192, instead of making every engineer wait an hour and a half on a PR for each push.
 
 The part I'm proudest of: I argued that a pile of overlapping intents in the product should be merged. I wrote the proposal down in a dated document before testing it, then checked it on a 1,547-utterance set I built for the purpose, which broke a 39.9% baseline pass rate into three distinct root causes. The CEO approved it and the AI lead adopted it. Turns out "I have a test set" is a very persuasive sentence.
 
@@ -214,7 +214,7 @@ Python, pytest, GitHub Actions, LLM-as-judge, Simulated users, Protocol-typed po
 
 This is where my vibe coding went from projects to commercial level: code that ran every night, gated real deploys, and that other engineers depended on. That raised the bar for everything: checks that can fail, a judge calibrated against something outside itself, tests for the tests.
 
-It also meant writing the conventions for a codebase that had none, so I wrote the agent-facing conventions doc and a README for every harness. My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it.
+It also meant inheriting a codebase with no conventions, so I had to write them for myself and whoever comes next: an agent-facing conventions doc and a README for every harness. (Is this what it feels like to be a founding father writing the constitution for your own country? I was an intern.) My role was evaluation only, so when I found real product defects, I wrote each one up for the engineer who owned it. At least I only had to find the bugs, not debug them.
 
 [Open as its own page ↗](https://tim-chen-yen-ting.github.io/experience/phygtl/)
 
@@ -228,11 +228,11 @@ Most social simulations hardcode the outcome: the rules say how groups behave, a
 
 ### My solution
 
-Agents that perceive, remember, reflect and plan, with memory as the hub of everything. Whatever beliefs and relationships form are a side effect and the surprise my product gives me in return. The model only proposes actions; a deterministic utility engine called SHAPE scores each one against 43 personality coefficients (Schwartz values plus HEXACO traits) and decides which actually happens. Character is enforced by code, not by prompting: a wild horse is only a good ride if you put a mathematical rein on it.
+Agents that perceive, remember, reflect and plan, with memory as the hub of everything. Whatever beliefs and relationships form are a side effect and the surprise my product gives me in return. The model only proposes actions; a deterministic utility engine called SHAPE scores each one against 43 personality coefficients (Schwartz values plus HEXACO traits) and decides which actually happens. Character is enforced by code, not by prompting. AI is a powerful wild horse, but it's only a good ride if you put a mathematical rein on it.
 
 ### Challenges & fun stories
 
-LLM agents drift based on vibes. My first four housemates snacked all day, paced between the kitchen and the living room, and once tried to blend smoothies from ingredients that didn't exist. (I'm told this is relatable.) Then they started hiding their sadness behind cheerful small talk, and I had to ask whether that was a bug or a personality trait. Humans do it constantly, so I refused to hardcode a fix and put the control in code instead.
+LLM personalities drift based on vibes. In my earliest experiments, the four simulated housemates spent all day either snacking or on their way to snack, looping between the kitchen and the living room, and once tried to blend smoothies from ingredients that didn't exist. (Facts aside... that lifestyle is honestly tempting.) Then they started hiding their sadness behind cheerful small talk, and I had to ask whether that was a bug or a personality trait. Humans do it constantly, so I refused to hardcode a fix and put the control in code instead.
 
 The validation story is the nerdy one: I'm checking the whole thing against Milgram, Asch, Robbers Cave and the Stanford Prison Experiment, with predictions written down before any run so I can't cheat. The Stanford case is built so that a null result agrees with the modern reading of that study. The harness is done; the scored runs are still pending...waiting on the day I feel like letting my laptop run through an entire night and hopefully not burning down while I sleep through it.
 
@@ -246,7 +246,7 @@ Pydantic saved my life when parsing LLM output with regex was a living hell. Thi
 
 [Watch a replay](https://civilizism.vercel.app/viewer) [Public repo](https://github.com/Tim-Chen-Yen-Ting/Civilizism) [STEME](https://github.com/Tim-Chen-Yen-Ting/STEME) [BLOC](https://github.com/Tim-Chen-Yen-Ting/BLOC)
 
-The core simulation code is private, and I'm happy to share it on request.
+Want to see the core simulation code? DM me, I'm happy to talk shop.
 
 [Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/civilizism/)
 
@@ -260,15 +260,15 @@ Chess is perfect information: everything is on the board. Stratego is all hidden
 
 ### My solution
 
-Welcome to the child of Chess and Stratego. Every piece moves like a chess piece (public), but also carries a hidden rank (secret) that decides what it beats. You can see how an enemy piece moves, never what it can capture. It is not chess: there's no checkmate, the king is just a piece, and passing is always legal. If you came to castle your way to safety, welcome.
+Welcome to the crossbreed of Chess and Stratego. Please don't call it a mutt; it's selective breeding :) Every piece moves like a chess piece (public), but also carries a hidden rank (secret) that decides what it beats. You can see how an enemy piece moves, never what it can capture. It is not chess: there's no checkmate, the king is just a piece, and passing is always legal. If you came to castle your way to safety, suit yourself.
 
-No friends? No worries. There's a bot to play against, and the game is LLM friendly: swap /g/ with /llm/ in the URL and a chatbot can play by fetching plain links.
+No friends, like me? No worries. There's a bot to play against, and the game is friendly to the AI chatbot on your phone: swap /g/ with /llm/ in the URL and the chatbot can play with you by fetching plain links.
 
 ### Challenges & fun stories
 
-The fun problem is that information leaks everywhere. If the game announced "equal rank" and "bomb" differently, the announcement itself would reveal a hidden piece, so both read as the same mutual destruction. Engineers and the flag are both immune to bombs, because an immunity only one piece had would point right at it. If your setup timer runs out, the server deals you a random legal army, since a predictable default is a leaked army.
+The fun problem is that information leaks from places you'd never expect. If the game announced "equal rank" and "bomb" differently, the announcement itself would reveal a hidden piece, so both read as the same mutual destruction. Engineers and the flag are both immune to bombs, because an immunity only one piece had would point right at it. If your setup timer runs out, the server deals you a random legal army, since a predictable default is a leaked army.
 
-The bot is a particle filter that keeps a running probability for what each of your pieces might be, and it plays a little randomly on purpose: a deterministic bot leaks its own ranks over enough games just by which move it reliably picks.
+The bot is a particle filter that keeps a running probability for what each of your pieces might be, and it plays a little randomly on purpose: a deterministic bot leaks its own ranks over enough games just by which move it reliably picks. (Though I may be the only person who will ever play that many bot games.)
 
 ### Tech stack & what I learned
 
@@ -290,7 +290,7 @@ What if you need to find some time to meet a friend on the other side of the glo
 
 ### The problem
 
-I kept doing LA-to-Taipei math in my head, and it's a worse problem than it sounds: only one of the two places does daylight saving, so the offset between them changes twice a year. And I'm lazy.
+As an international student from Taiwan, doing LA-to-Taipei math in my head is daily life. It's a worse problem than it sounds: only one of the two places does daylight saving, so the offset changes twice a year, and one flight can take you from +16 to -16. And I'm lazy.
 
 ### My solution
 
@@ -298,9 +298,9 @@ Add cities to a day/night map, say when each person is free, and it shows when e
 
 ### Challenges & fun stories
 
-For cities far enough apart, the real overlap can land on adjacent calendar days, so "same local window" has to be treated as a recurring daily pattern, not the date you typed. And the map itself fought me: Russia, Fiji and Antarctica drew spurious bands across the whole world because their polygons cross the antimeridian and the map library doesn't wrap. I had to split the rings.
+For cities far enough apart, the real overlap can land on adjacent calendar days, so we can call each other tomorrow, but your tomorrow may not be my tomorrow. "Same local window" has to be treated as a recurring daily pattern, not the date you typed. And the map itself fought me: Russia, Fiji and Antarctica drew spurious bands across the whole world because their polygons cross the antimeridian and the map library doesn't wrap. I had to split the rings.
 
-Custom cities were another puzzle. Their timezone is inferred from the nearest known city, longitude first, since timezones are basically longitude bands, with a distance cutoff so a far-away neighbor's political quirks (looking at you, Adelaide) don't come along.
+A dataset I found online saved me once, but some cities always slip through, so if yours isn't on the map, custom cities are another puzzle. Their timezone is inferred from the nearest known city, longitude first, since timezones are basically longitude bands, with a distance cutoff so a far-away neighbor's political quirks (looking at you, Adelaide) don't come along.
 
 ### Tech stack & what I learned
 
@@ -312,7 +312,7 @@ Civilizism taught me how to build my own framework. WhenWhere taught me when not
 
 [Try it](https://whenwhere-65it.onrender.com/) [Code](https://github.com/Tim-Chen-Yen-Ting/WhenWhere)
 
-Free hosting again, so it may take a moment to wake up.
+Be kind to a broke student: it's a free Render account, you know how it is. Give it a moment to warm up.
 
 [Open as its own page ↗](https://tim-chen-yen-ting.github.io/projects/whenwhere/)
 
@@ -322,7 +322,7 @@ What if you could tell which Claude Code session needs you without alt-tabbing t
 
 ### The problem
 
-With several Claude Code sessions open, I kept losing track of which one had finished and which was quietly stuck waiting on me.
+As a professional vibe coder, multitasking is table stakes. But with several Claude Code sessions open, who knows which one has finished and which is quietly stuck waiting for me to hit approve.
 
 ### My solution
 
@@ -334,7 +334,7 @@ Favorite bug: log rotation briefly left an empty file, the widget read that as "
 
 Another: sessions started from different subfolders counted as different repos, so one real project showed up as nine entries with nine icons. Now it walks up to the project root. And on Windows, Claude Code's hook layer eats backslashes in paths, which took an embarrassing amount of time to figure out.
 
-Known issue: the red "needs approval" state is inferred rather than signalled, and it's been unreliable since Claude Code defaulted to Auto mode. Turns out the best way to fix approval prompts is to have fewer of them.
+Known issue: the red "needs approval" state is inferred from the tool events the hooks report. Back when every action needed a manual click, that warning was genuinely useful. Now that Auto mode is the default, it's mostly a visual that says Claude is working hard for you.
 
 ### Tech stack & what I learned
 
@@ -382,7 +382,7 @@ What if the job hunt did its own legwork?
 
 ### The problem
 
-Cold outreach works, but the middle is miserable: figuring out who to contact, finding a working address, and writing something that isn't obviously a template.
+Can't find a job? Try cold emailing. I'm told it works, if you don't count the middle: figuring out who to contact, finding a working address, and writing something that isn't obviously a template.
 
 ### My solution
 
@@ -390,7 +390,7 @@ A pipeline I use on my own job search. Claude researches targets with web search
 
 ### Challenges & fun stories
 
-Keeping it from researching the same companies forever (each run is told to skip the 100 most recent), and keeping it cheap: roughly a few cents per sent email depending on the provider. I also made the LLM layer provider-agnostic, so Claude, GPT-4o and Gemini are interchangeable from a config file.
+Keeping it from finding the same few companies forever and carpet-bombing the same person, so each run is told to skip the 100 most recent. Then there's cost: roughly a few cents per sent email depending on the provider. I also made the LLM layer provider-agnostic, so Claude, GPT-4o and Gemini are interchangeable from a config file. Keep an eye on API rates, which lately move about as much as the stock market.
 
 ### Tech stack & what I learned
 
@@ -440,7 +440,7 @@ What if your notes could tell you what you're missing?
 
 ### The problem
 
-I built this for a non-technical user with a pile of documents and no way to ask questions across them, or to know what they hadn't covered yet.
+What if you have a pile of documents, no way to ask questions across them, and no idea what you haven't covered yet? Welcome to Personal Knowledge Base, built for a non-technical user.
 
 ### My solution
 

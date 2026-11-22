@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@400;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=50c77bc5">
+  <link rel="stylesheet" href="style.css?v=f908fcc1">
 </head>
 <body data-fixed-tab data-title-en="Cold Email Automator | Yen-Ting (Tim) Chen" data-title-zh="Cold Email Automator | 陳彥廷 (Tim)">
   <div class="tabbar">
@@ -45,30 +45,30 @@
     <img class="modal-img" src="assets/img/coldemail.png" alt="Cold Email Automator pipeline diagram" loading="lazy">
     <h1 id="t-coldemail">📬 Cold Email Automator</h1>
     <p class="hook" lang="en">What if the job hunt did its own legwork?</p>
-<p class="hook" lang="zh-Hant">如果求職的跑腿工作能自己做完呢？</p>
+<p class="hook" lang="zh-Hant">如果求職的跑腿工作，能自己跑完呢？</p>
     <h2><span class="num">1</span><span lang="en">The problem</span><span lang="zh-Hant">問題</span></h2>
-<p lang="en">Cold outreach works, but the middle is miserable: figuring out who to contact, finding a working address, and writing something that isn't obviously a template.</p>
-<p lang="zh-Hant">陌生開發信有效，但中間的過程很痛苦：搞清楚該聯絡誰、找到能用的信箱，還要寫出一封看起來不像模板的信。</p>
+<p lang="en">Can't find a job? Try cold emailing. I'm told it works, if you don't count the middle: figuring out who to contact, finding a working address, and writing something that isn't obviously a template.</p>
+<p lang="zh-Hant">當你實在找不到工作時，不如試試看陌生開發信吧。聽說那是有用的，如果不算過程的話……要想該聯絡誰、找到能用的信箱，還要寫得不像一眼就看得出來是模板。</p>
     <h2><span class="num">2</span><span lang="en">My solution</span><span lang="zh-Hant">我的解法</span></h2>
 <p lang="en">A pipeline I use on my own job search. Claude researches targets with web search, an email verifier checks the addresses, a draft is written around one specific hook (a recent launch, a piece of news), and the email goes out through Gmail while a Google Sheets dashboard tracks status, bounces and replies. Yes, I automated the job hunt; someone still has to read the replies.</p>
-<p lang="zh-Hant">我自己求職時用的流程。Claude 用網路搜尋研究目標，信箱驗證器檢查地址，信件圍繞一個具體的切入點（最近的產品發布、一則新聞）撰寫，再透過 Gmail 寄出，同時由 Google Sheets 儀表板追蹤狀態、退信與回覆。對，我把求職自動化了；回信還是得有人讀。</p>
+<p lang="zh-Hant">這是我自己求職時在用的流程。Claude用網路搜尋去研究目標，信箱驗證器檢查地址有沒有效，然後圍繞一個具體的切入點（最近的新產品、一則新聞）寫信，再透過Gmail寄出，同時用Google Sheets儀表板追蹤狀態、退信和回覆。對，我把求職自動化了；不過回信，還是得有人來讀。</p>
     <h2><span class="num">3</span><span lang="en">Challenges &amp; fun stories</span><span lang="zh-Hant">挑戰與趣事</span></h2>
-<p lang="en">Keeping it from researching the same companies forever (each run is told to skip the 100 most recent), and keeping it cheap: roughly a few cents per sent email depending on the provider. I also made the LLM layer provider-agnostic, so Claude, GPT-4o and Gemini are interchangeable from a config file.</p>
-<p lang="zh-Hant">不讓它永遠重複研究同樣的公司（每次執行都會被告知跳過最近的 100 間），還有控制成本：依供應商不同，每封寄出的信大約幾美分。我也把 LLM 層做成與供應商無關，所以 Claude、GPT-4o 和 Gemini 只要改設定檔就能互換。</p>
+<p lang="en">Keeping it from finding the same few companies forever and carpet-bombing the same person, so each run is told to skip the 100 most recent. Then there's cost: roughly a few cents per sent email depending on the provider. I also made the LLM layer provider-agnostic, so Claude, GPT-4o and Gemini are interchangeable from a config file. Keep an eye on API rates, which lately move about as much as the stock market.</p>
+<p lang="zh-Hant">要避免它永遠只找到同樣的幾間公司，然後一個勁地朝著同一個人信件轟炸，所以每次執行時都需要讓LLM知道要跳過最近的100間。但別忘了成本的問題：依供應商不同，每封寄出去的信大約幾美分。我也把LLM那一層做成不綁特定供應商，所以Claude、GPT-4o和Gemini，改一下設定檔就可以互換。一起盯著最新的API rate吧，最近API rate跟股市差不多上上下下的。</p>
     <h2><span class="num">4</span><span lang="en">Tech stack &amp; what I learned</span><span lang="zh-Hant">技術堆疊與我學到的</span></h2>
 <p class="chips"><span>Python</span><span>Pydantic</span><span>SQLite</span><span>Gmail API</span><span>Google Sheets API</span><span>Claude / GPT-4o / Gemini</span></p>
 <p lang="en">I learned OAuth the hard way: Gmail's credentials are not bypassable when you mass-send from scripts, no matter how clever you feel. Also, my wallet is crying from the API cost.</p>
-<p lang="zh-Hant">我用最痛的方式學會了 OAuth：當你用腳本大量寄信時，Gmail 的憑證機制是繞不過去的，不管你覺得自己多聰明。另外，我的錢包正在為 API 費用哭泣。</p>
+<p lang="zh-Hant">我是吃了苦頭才學會OAuth：用腳本大量寄信的時候，Gmail的憑證機制是繞不過去的，不管你覺得自己有多聰明。還有，我的錢包正在為了API費用哭泣。</p>
     <h2><span class="num">5</span><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></h2>
     <p class="links"><a class="button ghost" href="https://github.com/Tim-Chen-Yen-Ting/Cold-Email-Automator"><span lang="en">Code</span><span lang="zh-Hant">原始碼</span></a></p>
     <p class="note" lang="en">Feature-complete and tested. I'm deliberately holding off deploying it until the timing of my job search makes sense.</p>
-<p class="note" lang="zh-Hant">功能完整且經過測試。我刻意先不部署，等到求職的時機合適再說。</p>
+<p class="note" lang="zh-Hant">功能都做完了，也測過了。我故意先不部署，等求職的時機對了再說。</p>
       <p class="links"><a class="button ghost" href="#projects"><span lang="en">← All projects</span><span lang="zh-Hant">← 所有專案</span></a></p>
     </article>
   </main>
 
   <footer>
-    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA 統計與資料科學學士，2027</span></p>
+    <p>&copy; <span id="year"></span> <span lang="en">Yen-Ting (Tim) Chen</span><span lang="zh-Hant">陳彥廷 (Tim)</span>&nbsp;·&nbsp;<span lang="en">UCLA, B.S. Statistics &amp; Data Science, 2027</span><span lang="zh-Hant">UCLA統計與資料科學學士，2027</span></p>
   </footer>
 
   <script src="script.js?v=61359169"></script>

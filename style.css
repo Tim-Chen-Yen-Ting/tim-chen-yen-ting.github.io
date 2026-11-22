@@ -416,3 +416,11 @@ footer {
 .tbtn.play { background: linear-gradient(#fff3a8, #ffc928 55%, #f0b000); box-shadow: 0 3px 0 #a47200, inset 0 1px 0 #fff; min-width: 2.6rem; }
 .tbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 #5b6f93, inset 0 1px 0 #fff; }
 .transport input[type="range"] { flex: 1; min-width: 0; margin-left: 0.4rem; accent-color: #1f5fc9; cursor: pointer; }
+
+/* "Other language is over there" hint, home hero only */
+.lang-hint { position: absolute; right: 2.2rem; bottom: -1.5rem; display: flex; flex-direction: column; align-items: flex-end; color: var(--accent); pointer-events: none; z-index: 1; }
+.hint-text { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.15rem 0.5rem; border: 1px dashed currentColor; border-radius: 4px; background: rgba(8, 36, 90, 0.55); transform: rotate(-3deg); white-space: nowrap; }
+.hint-arrow { margin-right: 1.4rem; margin-top: -0.1rem; animation: hint-nudge 1.6s ease-in-out infinite; }
+@keyframes hint-nudge { 50% { transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) { .hint-arrow { animation: none; } }
+@media (max-width: 760px) { .lang-hint { display: none; } }
