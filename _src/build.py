@@ -28,9 +28,14 @@ def btn(href, en, zh, ghost=False):
     return f'<a class="{cls}" href="{href}">{T(en, zh)}</a>'
 
 
+def _bar(name):
+    """Title-bar text for a retro-OS window, e.g. C:/WORK/CIVILIZISM.EXE"""
+    return "C:" + chr(92) + "WORK" + chr(92) + name.upper().replace("-", "_") + ".EXE"
+
+
 def tile(key, thumb, title, q, a, extra_class=""):
     return f"""
-        <button class="tile" data-open="d-{key}">
+        <button class="tile" data-open="d-{key}" data-title="{_bar(key)}">
           {thumb}
           <span class="tile-body">
             <span class="tile-title">{title}</span>
@@ -85,7 +90,7 @@ def dialog(key, emoji_title, hook, img, sections, links_html=None, note=None, di
     PAGES[key] = dict(inner=inner, title=emoji_title, hook=hook, img=img, section=section, slug=slug)
     permalink = (f'    <p class="permalink"><a href="{section}/{slug}/">'
                  f'{T("Open as its own page ↗", "以獨立頁面開啟 ↗")}</a></p>')
-    return (f'  <dialog class="modal" id="d-{key}" data-slug="{slug}" data-section="{section}" aria-labelledby="t-{key}">\n'
+    return (f'  <dialog class="modal" id="d-{key}" data-title="{_bar(slug)}" data-slug="{slug}" data-section="{section}" aria-labelledby="t-{key}">\n'
             '    <form method="dialog"><button class="close" aria-label="Close">×</button></form>\n'
             f'{inner}\n{permalink}\n  </dialog>')
 
@@ -138,6 +143,9 @@ head = f"""<!DOCTYPE html>
   {SEO_HEAD}
   <meta name="color-scheme" content="dark">
   <script>document.documentElement.classList.add("js");</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@400;700&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-tab="home">
@@ -187,14 +195,14 @@ about = f"""
         <h2>{T("Selected work", "精選作品")}</h2>
         {P("Two things worth a look if you only have a minute.", "如果你只有一分鐘，看這兩樣就夠了。", "meta")}
         <div class="selected-grid">
-          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-civilizism">
+          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-civilizism" data-title="{_bar('civilizism')}">
             <img class="thumb-wide" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
             <h3>🏠 Civilizism</h3>
             {hook("What if you simulated one person really well, then simulated a lot of them?", "如果你把一個人模擬得夠好，再模擬很多個，會怎樣？")}
             {P("A social simulation where nobody scripts the outcome. The model proposes actions, and a personality engine decides which one happens.", "一個沒人編劇本的社會模擬。模型負責提議行動，由人格引擎決定哪一個真的發生。")}
             <p class="links">{btn("https://civilizism.vercel.app/viewer", "Watch a replay", "觀看回放")} <button type="button" class="button ghost" data-open="d-civilizism">{T("Full story", "完整故事")}</button></p>
           </div>
-          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl">
+          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl" data-title="{_bar('phygtl')}">
             <img class="thumb-wide" src="assets/img/lana_wide.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
             <h3>🧪 {T("Phygtl · Agentic Systems Engineering Intern", "Phygtl · Agentic Systems Engineering 實習生")}</h3>
             {hook("Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.", "沒有人替 Lana 建過評測，所以我來建。整個 eval 程式碼庫都是我的。")}
@@ -204,6 +212,12 @@ about = f"""
               <div class="stat"><b>69%</b><span>{T("cheaper PR gate, same safety signal", "PR 閘門成本降低，安全訊號不變")}</span></div>
               <div class="stat"><b>1,547</b><span>{T("utterances behind the intent merge the CEO adopted", "支撐意圖合併的測試句數，CEO 採納")}</span></div>
             </div>
+            <div class="gizmo">
+              <button type="button" class="button" id="runbtn">{T("Run nightly eval", "執行每晚評測")}</button>
+              <span class="lcd" id="lcd" role="status" aria-live="polite">000 / 192</span>
+              <i class="led" id="led" aria-hidden="true"></i>
+            </div>
+            {P("A toy: it only counts. The real run is 192 conversations a night.", "只是個玩具，只會數數。真正的評測每晚跑 192 場對話。", "note")}
             <p class="links"><button type="button" class="button ghost" data-open="d-phygtl">{T("Read the full story", "閱讀完整故事")}</button></p>
           </div>
         </div>
@@ -268,14 +282,14 @@ about += f"""
       </div>
 
       <div class="two-col">
-        <div class="block">
+        <div class="block" data-title="OVERVIEW.TXT">
           <h2>{T("Overview", "概覽")}</h2>
           {P("I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)",
              "我是個統計系學生，老是在做一些沒人拜託我做的東西。共通點是：我喜歡替不可預測的系統套上護欄，例如會漂移的語言模型、演著演著就不像自己的模擬人物，還有不小心洩漏暗棋的遊戲規則。（對，我注意到這個規律了，而且我決定擁抱它。）")}
           {P("I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.",
              "我的時間分在洛杉磯和台灣之間，正在找軟體工程、AI 工程或資料相關的工作，三種都很樂意聊。")}
         </div>
-        <div class="block">
+        <div class="block" data-title="EDUCATION.DAT">
           <h2>{T("Education", "學歷")}</h2>
           <p class="edu-school">UCLA</p>
           {P("B.S. Statistics &amp; Data Science, minor in Data Science Engineering", "統計與資料科學學士，輔修資料科學工程")}
@@ -376,7 +390,7 @@ facts = [
      "窮的時候睡覺、看輕小說，有錢的時候品威士忌。我是大學生，所以你可以猜猜哪個比較常發生。"),
 ]
 fact_html = "".join(
-    f'\n        <article class="fact">\n          <p class="fact-label">{e} {T(en, zh)}</p>\n          {P(ben, bzh)}\n        </article>'
+    f'\n        <article class="fact" data-title="FAVORITE.DAT">\n          <p class="fact-label">{e} {T(en, zh)}</p>\n          {P(ben, bzh)}\n        </article>'
     for e, en, zh, ben, bzh in facts)
 
 personal = f"""
@@ -385,7 +399,7 @@ personal = f"""
       <h2 class="panel-title">{T("The non-work me", "工作以外的我")}</h2>
       {P("Strong opinions, held loosely. Mostly about anime and food.", "強烈的意見，鬆鬆地持有。主要關於動漫和食物。", "panel-sub")}
 
-      <article class="block novel">
+      <article class="block novel" data-title="NOVEL.DOC">
         <h3>{T("📖 The Unobserved", "📖 《未然？已然。》")}</h3>
         {hook("What if your power depended on how sharply you understood reality?", "如果你的力量取決於你對現實理解得多銳利呢？")}
         {P("An original fantasy novel · Traditional Chinese · in progress", "原創奇幻小說 · 繁體中文 · 撰寫中", "meta")}
@@ -468,11 +482,11 @@ contact = f"""
       </div>
 
       <div class="two-col">
-        <div class="block">
+        <div class="block" data-title="CHEAT_SHEET.TXT">
           <h2>{T("The recruiter cheat sheet", "招募人員速查表")}</h2>
           <dl class="cheat">{cheat}</dl>
         </div>
-        <div class="block clocks">
+        <div class="block clocks" data-title="WORLD_CLOCK.EXE">
           <h2>{T("Where &amp; when", "在哪、幾點")}</h2>
           <div class="clock-row"><span class="clock-city">{T("Los Angeles", "洛杉磯")}</span><span class="clock-time" id="clock-la">--:--</span></div>
           <div class="clock-row"><span class="clock-city">{T("Taipei", "台北")}</span><span class="clock-time" id="clock-tpe">--:--</span></div>
@@ -744,7 +758,7 @@ def resume_tile(href, title_en, title_zh, blurb_en, blurb_zh, tag_en, tag_zh):
       </a>"""
 
 
-resume_dialog = f"""  <dialog class="modal" id="d-resume" aria-labelledby="t-resume">
+resume_dialog = f"""  <dialog class="modal" id="d-resume" data-title="RESUME_PICKER.EXE" aria-labelledby="t-resume">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <h2 id="t-resume">{T("Pick a résumé", "選一份履歷")}</h2>
     {P("Same person, three framings, plus the long one. Click a tile to download.", "同一個人，三種包裝，外加那份很長的。點一個方塊就能下載。", "meta")}
@@ -1002,6 +1016,9 @@ for _key, _p in PAGES.items():
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">{_ld}</script>
   <script>document.documentElement.classList.add("js");</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@400;700&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-fixed-tab data-title-en="{html_mod.escape(_title_en)}" data-title-zh="{html_mod.escape(_title_zh)}">
@@ -1019,7 +1036,7 @@ for _key, _p in PAGES.items():
   </div>
 
   <main>
-    <article class="project-page">
+    <article class="project-page" data-title="{_bar(_p['slug'])}">
       <p class="crumbs"><a href="{_back_href}">{T(_back_en, _back_zh)}</a></p>
 {_inner}
       <p class="links"><a class="button ghost" href="{_back_href}">{T(_back_en, _back_zh)}</a></p>

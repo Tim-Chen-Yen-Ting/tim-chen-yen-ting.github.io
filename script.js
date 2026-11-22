@@ -97,6 +97,25 @@
   tick();
   setInterval(tick, 20000);
 
+  // Nightly-eval toy on the Phygtl card: a physical button that counts to 192. It does not call anything.
+  var run = document.getElementById("runbtn"), lcd = document.getElementById("lcd"), led = document.getElementById("led");
+  if (run && lcd && led) {
+    var busy = false;
+    run.addEventListener("click", function (e) {
+      e.stopPropagation(); // don't open the card's popup
+      if (busy) return;
+      busy = true; run.disabled = true; led.className = "led run";
+      var n = 0;
+      function finish() { lcd.textContent = "192 / 192"; led.className = "led ok"; run.disabled = false; busy = false; }
+      if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) { finish(); return; }
+      var t = setInterval(function () {
+        n = Math.min(192, n + 8);
+        lcd.textContent = ("00" + n).slice(-3) + " / 192";
+        if (n >= 192) { clearInterval(t); finish(); }
+      }, 45);
+    });
+  }
+
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 })();

@@ -19,7 +19,10 @@
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Yen-Ting Chen", "alternateName": ["Tim Chen", "Yen-Ting (Tim) Chen", "陳彥廷"], "url": "https://tim-chen-yen-ting.github.io/", "image": "https://tim-chen-yen-ting.github.io/assets/img/headshot.jpg", "description": "UCLA Statistics & Data Science student (B.S. 2027) who builds multi-agent simulations, LLM evaluation systems and hidden-information games.", "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of California, Los Angeles"}, "knowsAbout": ["Multi-agent simulation", "LLM evaluation", "Statistics", "Machine learning", "Natural language processing", "Software engineering"], "sameAs": ["https://github.com/Tim-Chen-Yen-Ting", "https://www.linkedin.com/in/tim-chen-yen-ting"]}</script>
   <meta name="color-scheme" content="dark">
   <script>document.documentElement.classList.add("js");</script>
-  <link rel="stylesheet" href="style.css?v=35a267de">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css?v=3b5fa4e4">
 </head>
 <body data-tab="home">
   <!-- Masthead: only shown on the About (home) tab. The tab bar below it sticks to the top on scroll. -->
@@ -67,7 +70,7 @@
         <p class="meta" lang="en">Two things worth a look if you only have a minute.</p>
 <p class="meta" lang="zh-Hant">如果你只有一分鐘，看這兩樣就夠了。</p>
         <div class="selected-grid">
-          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-civilizism">
+          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-civilizism" data-title="C:\WORK\CIVILIZISM.EXE">
             <img class="thumb-wide" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
             <h3>🏠 Civilizism</h3>
             <p class="hook" lang="en">What if you simulated one person really well, then simulated a lot of them?</p>
@@ -76,7 +79,7 @@
 <p lang="zh-Hant">一個沒人編劇本的社會模擬。模型負責提議行動，由人格引擎決定哪一個真的發生。</p>
             <p class="links"><a class="button" href="https://civilizism.vercel.app/viewer"><span lang="en">Watch a replay</span><span lang="zh-Hant">觀看回放</span></a> <button type="button" class="button ghost" data-open="d-civilizism"><span lang="en">Full story</span><span lang="zh-Hant">完整故事</span></button></p>
           </div>
-          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl">
+          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl" data-title="C:\WORK\PHYGTL.EXE">
             <img class="thumb-wide" src="assets/img/lana_wide.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
             <h3>🧪 <span lang="en">Phygtl · Agentic Systems Engineering Intern</span><span lang="zh-Hant">Phygtl · Agentic Systems Engineering 實習生</span></h3>
             <p class="hook" lang="en">Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.</p>
@@ -87,6 +90,13 @@
               <div class="stat"><b>69%</b><span><span lang="en">cheaper PR gate, same safety signal</span><span lang="zh-Hant">PR 閘門成本降低，安全訊號不變</span></span></div>
               <div class="stat"><b>1,547</b><span><span lang="en">utterances behind the intent merge the CEO adopted</span><span lang="zh-Hant">支撐意圖合併的測試句數，CEO 採納</span></span></div>
             </div>
+            <div class="gizmo">
+              <button type="button" class="button" id="runbtn"><span lang="en">Run nightly eval</span><span lang="zh-Hant">執行每晚評測</span></button>
+              <span class="lcd" id="lcd" role="status" aria-live="polite">000 / 192</span>
+              <i class="led" id="led" aria-hidden="true"></i>
+            </div>
+            <p class="note" lang="en">A toy: it only counts. The real run is 192 conversations a night.</p>
+<p class="note" lang="zh-Hant">只是個玩具，只會數數。真正的評測每晚跑 192 場對話。</p>
             <p class="links"><button type="button" class="button ghost" data-open="d-phygtl"><span lang="en">Read the full story</span><span lang="zh-Hant">閱讀完整故事</span></button></p>
           </div>
         </div>
@@ -166,14 +176,14 @@
       </div>
 
       <div class="two-col">
-        <div class="block">
+        <div class="block" data-title="OVERVIEW.TXT">
           <h2><span lang="en">Overview</span><span lang="zh-Hant">概覽</span></h2>
           <p lang="en">I'm a stats student who keeps ending up building things nobody asked for. The common thread: I like putting guardrails on unpredictable systems, like language models that drift, simulated people who stop acting like themselves, and game rules that accidentally give away a hidden piece. (Yes, I've noticed the pattern. I've chosen to lean in.)</p>
 <p lang="zh-Hant">我是個統計系學生，老是在做一些沒人拜託我做的東西。共通點是：我喜歡替不可預測的系統套上護欄，例如會漂移的語言模型、演著演著就不像自己的模擬人物，還有不小心洩漏暗棋的遊戲規則。（對，我注意到這個規律了，而且我決定擁抱它。）</p>
           <p lang="en">I split my time between Los Angeles and Taiwan, and I'm looking for software, AI engineering, or data roles. I'm happy to talk about any of the three.</p>
 <p lang="zh-Hant">我的時間分在洛杉磯和台灣之間，正在找軟體工程、AI 工程或資料相關的工作，三種都很樂意聊。</p>
         </div>
-        <div class="block">
+        <div class="block" data-title="EDUCATION.DAT">
           <h2><span lang="en">Education</span><span lang="zh-Hant">學歷</span></h2>
           <p class="edu-school">UCLA</p>
           <p lang="en">B.S. Statistics &amp; Data Science, minor in Data Science Engineering</p>
@@ -208,7 +218,7 @@
 
       <div class="gallery">
 
-        <button class="tile" data-open="d-civilizism">
+        <button class="tile" data-open="d-civilizism" data-title="C:\WORK\CIVILIZISM.EXE">
           <span class="thumb "><img src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy"></span>
           <span class="tile-body">
             <span class="tile-title">🏠 Civilizism</span>
@@ -217,7 +227,7 @@
             <span class="tile-more"><span lang="en">Open →</span><span lang="zh-Hant">展開 →</span></span>
           </span>
         </button>
-        <button class="tile" data-open="d-stratego">
+        <button class="tile" data-open="d-stratego" data-title="C:\WORK\STRATEGO.EXE">
           <span class="thumb "><img src="assets/img/stratego.png" alt="Stratego-Chess game screenshot" loading="lazy"></span>
           <span class="tile-body">
             <span class="tile-title"><span lang="en">♟️ Stratego-Chess</span><span lang="zh-Hant">♟️ 行軍西洋棋 Stratego-Chess</span></span>
@@ -226,7 +236,7 @@
             <span class="tile-more"><span lang="en">Open →</span><span lang="zh-Hant">展開 →</span></span>
           </span>
         </button>
-        <button class="tile" data-open="d-whenwhere">
+        <button class="tile" data-open="d-whenwhere" data-title="C:\WORK\WHENWHERE.EXE">
           <span class="thumb "><img src="assets/img/whenwhere.png" alt="WhenWhere world map" loading="lazy"></span>
           <span class="tile-body">
             <span class="tile-title">⏰ WhenWhere</span>
@@ -235,7 +245,7 @@
             <span class="tile-more"><span lang="en">Open →</span><span lang="zh-Hant">展開 →</span></span>
           </span>
         </button>
-        <button class="tile" data-open="d-statuscard">
+        <button class="tile" data-open="d-statuscard" data-title="C:\WORK\STATUSCARD.EXE">
           <span class="thumb contain"><img src="assets/img/statuscard.png" alt="Claude Code Status Card" loading="lazy"></span>
           <span class="tile-body">
             <span class="tile-title">🔔 Claude Code Status Card</span>
@@ -244,7 +254,7 @@
             <span class="tile-more"><span lang="en">Open →</span><span lang="zh-Hant">展開 →</span></span>
           </span>
         </button>
-        <button class="tile" data-open="d-steme">
+        <button class="tile" data-open="d-steme" data-title="C:\WORK\STEME.EXE">
           <span class="thumb contain"><img src="assets/img/steme_bloc.png" alt="STEME and BLOC benchmark results" loading="lazy"></span>
           <span class="tile-body">
             <span class="tile-title">🧠 STEME &amp; BLOC</span>
@@ -253,7 +263,7 @@
             <span class="tile-more"><span lang="en">Open →</span><span lang="zh-Hant">展開 →</span></span>
           </span>
         </button>
-        <button class="tile" data-open="d-coldemail">
+        <button class="tile" data-open="d-coldemail" data-title="C:\WORK\COLDEMAIL.EXE">
           <span class="thumb "><img src="assets/img/coldemail.png" alt="Cold Email Automator pipeline diagram" loading="lazy"></span>
           <span class="tile-body">
             <span class="tile-title">📬 Cold Email Automator</span>
@@ -262,7 +272,7 @@
             <span class="tile-more"><span lang="en">Open →</span><span lang="zh-Hant">展開 →</span></span>
           </span>
         </button>
-        <button class="tile" data-open="d-messages">
+        <button class="tile" data-open="d-messages" data-title="C:\WORK\MESSAGES.EXE">
           <span class="thumb "><img src="assets/img/messages.png" alt="Past Messages Analyzer pipeline diagram" loading="lazy"></span>
           <span class="tile-body">
             <span class="tile-title">💬 Past Messages Analyzer</span>
@@ -271,7 +281,7 @@
             <span class="tile-more"><span lang="en">Open →</span><span lang="zh-Hant">展開 →</span></span>
           </span>
         </button>
-        <button class="tile" data-open="d-pkb">
+        <button class="tile" data-open="d-pkb" data-title="C:\WORK\PKB.EXE">
           <span class="thumb "><img src="assets/img/pkb.png" alt="Personal Knowledge Base chat screen" loading="lazy"></span>
           <span class="tile-body">
             <span class="tile-title">📚 Personal Knowledge Base</span>
@@ -289,7 +299,7 @@
       <p class="panel-sub" lang="en">Strong opinions, held loosely. Mostly about anime and food.</p>
 <p class="panel-sub" lang="zh-Hant">強烈的意見，鬆鬆地持有。主要關於動漫和食物。</p>
 
-      <article class="block novel">
+      <article class="block novel" data-title="NOVEL.DOC">
         <h3><span lang="en">📖 The Unobserved</span><span lang="zh-Hant">📖 《未然？已然。》</span></h3>
         <p class="hook" lang="en">What if your power depended on how sharply you understood reality?</p>
 <p class="hook" lang="zh-Hant">如果你的力量取決於你對現實理解得多銳利呢？</p>
@@ -304,42 +314,42 @@
 
       <h3 class="subhead"><span lang="en">Favorites</span><span lang="zh-Hant">最愛</span></h3>
       <div class="facts">
-        <article class="fact">
+        <article class="fact" data-title="FAVORITE.DAT">
           <p class="fact-label">🏐 <span lang="en">Sport</span><span lang="zh-Hant">運動</span></p>
           <p lang="en">Volleyball. I play badly, but who can reject a sport that gives you a valid excuse to roll on the floor? Also, Haikyu is fire.</p>
 <p lang="zh-Hant">排球。我打得很爛，但誰能拒絕一個讓你有正當理由在地上打滾的運動？還有，《排球少年》超神。</p>
         </article>
-        <article class="fact">
+        <article class="fact" data-title="FAVORITE.DAT">
           <p class="fact-label">🏴‍☠️ <span lang="en">Anime</span><span lang="zh-Hant">動漫</span></p>
           <p lang="en">One Piece. The only anime better than One Piece is One Piece before the time skip. After the time skip... that's hard to say... Oda, I know you can do better.</p>
 <p lang="zh-Hant">《海賊王》。唯一比《海賊王》更好看的動漫，是時間跳躍前的《海賊王》。時間跳躍後嘛…這不好說…尾田老師，我知道你可以更好的。</p>
         </article>
-        <article class="fact">
+        <article class="fact" data-title="FAVORITE.DAT">
           <p class="fact-label">📚 <span lang="en">Light novel</span><span lang="zh-Hant">輕小說</span></p>
           <p lang="en">No Game No Life. Yuu Kamiya, where is the new volume? It's been ten years. Also, your books are a bit too smart for me, but that's what a battle of wits is.</p>
 <p lang="zh-Hant">《遊戲人生》。榎宮祐老師，新的一集呢？已經十年了。還有，你的書對我來說有點太聰明了，但這就是鬥智。</p>
         </article>
-        <article class="fact">
+        <article class="fact" data-title="FAVORITE.DAT">
           <p class="fact-label">🎤 <span lang="en">Artist</span><span lang="zh-Hant">歌手</span></p>
           <p lang="en">The globally renowned pick: JJ Lin. The hot take: Ren Ran, no hesitation. I have a 15-hour Spotify playlist of only Ren Ran songs, and I didn't even know Spotify had that many.</p>
 <p lang="zh-Hant">舉世聞名的選擇：林俊傑。冷門的看法：任然，毫不猶豫。我有一個 15 小時、全是任然的 Spotify 歌單，我甚至不知道 Spotify 上有那麼多任然的歌。</p>
         </article>
-        <article class="fact">
+        <article class="fact" data-title="FAVORITE.DAT">
           <p class="fact-label">🍜 <span lang="en">Food</span><span lang="zh-Hant">食物</span></p>
           <p lang="en">Lu wei (Taiwanese braised street snacks), no hesitation. Stir-fried noodles are a close second. In the US the closest thing is malatang, which is somehow expensive, so my US pick is Chick-fil-A. Thinking about it is making me want some right now.</p>
 <p lang="zh-Hant">滷味，毫不猶豫。炒麵是第二名。在美國最接近的是麻辣燙，但它貴得莫名其妙，所以我的美國首選是 Chick-fil-A。想到這裡我現在就想吃。</p>
         </article>
-        <article class="fact">
+        <article class="fact" data-title="FAVORITE.DAT">
           <p class="fact-label">🐻 <span lang="en">School</span><span lang="zh-Hant">學校</span></p>
           <p lang="en">U! C! L! A! Fight, fight, fight! I'm convinced the eight clap is written in our DNA.</p>
 <p lang="zh-Hant">U！C！L！A！Fight, fight, fight！我深信八拍掌（eight clap）已經寫進我們的 DNA 裡。</p>
         </article>
-        <article class="fact">
+        <article class="fact" data-title="FAVORITE.DAT">
           <p class="fact-label">💬 <span lang="en">Quote</span><span lang="zh-Hant">名言</span></p>
           <p lang="en">&quot;We do these things not because they are easy, but because we thought they were going to be easy.&quot; John F. Kennedy did not say this. Maciej Cegłowski did.</p>
 <p lang="zh-Hant">「我們做這些事，不是因為它們容易，而是因為我們以為它們會很容易。」甘迺迪沒說過這句話，是 Maciej Cegłowski 說的。</p>
         </article>
-        <article class="fact">
+        <article class="fact" data-title="FAVORITE.DAT">
           <p class="fact-label">😴 <span lang="en">Spare time</span><span lang="zh-Hant">閒暇時間</span></p>
           <p lang="en">Sleep and reading light novels when I'm broke, whiskey tasting when I'm rich. I'm a college student, so you can guess which one wins.</p>
 <p lang="zh-Hant">窮的時候睡覺、看輕小說，有錢的時候品威士忌。我是大學生，所以你可以猜猜哪個比較常發生。</p>
@@ -370,11 +380,11 @@
       </div>
 
       <div class="two-col">
-        <div class="block">
+        <div class="block" data-title="CHEAT_SHEET.TXT">
           <h2><span lang="en">The recruiter cheat sheet</span><span lang="zh-Hant">招募人員速查表</span></h2>
           <dl class="cheat"><div class="cheat-row"><dt><span lang="en">Name</span><span lang="zh-Hant">名字</span></dt><dd><span lang="en">Yen-Ting (Tim) Chen. Tim is also on my passport as an alternative name.</span><span lang="zh-Hant">陳彥廷，但我都叫 Tim，護照上也有 Tim 這個別名。</span></dd></div><div class="cheat-row"><dt><span lang="en">Based in</span><span lang="zh-Hant">所在地</span></dt><dd><span lang="en">Los Angeles and Taiwan</span><span lang="zh-Hant">洛杉磯與台灣</span></dd></div><div class="cheat-row"><dt><span lang="en">Languages</span><span lang="zh-Hant">語言</span></dt><dd><span lang="en">English and Mandarin Chinese (Traditional)</span><span lang="zh-Hant">英文與中文（繁體）</span></dd></div><div class="cheat-row"><dt><span lang="en">Graduating</span><span lang="zh-Hant">畢業時間</span></dt><dd><span lang="en">March 2027, UCLA, B.S. Statistics &amp; Data Science</span><span lang="zh-Hant">2027 年 3 月，UCLA 統計與資料科學學士</span></dd></div><div class="cheat-row"><dt><span lang="en">Available</span><span lang="zh-Hant">可到職時間</span></dt><dd><span lang="en">From April 2027</span><span lang="zh-Hant">2027 年 4 月起</span></dd></div><div class="cheat-row"><dt><span lang="en">Looking for</span><span lang="zh-Hant">正在尋找</span></dt><dd><span lang="en">Software, AI engineering, or data roles</span><span lang="zh-Hant">軟體、AI 工程或資料相關職位</span></dd></div><div class="cheat-row"><dt><span lang="en">Most recent role</span><span lang="zh-Hant">最近的職位</span></dt><dd><span lang="en">Agentic Systems Engineering Intern, Phygtl (summer 2026)</span><span lang="zh-Hant">Phygtl 的 Agentic Systems Engineering 實習生（2026 夏季）</span></dd></div></dl>
         </div>
-        <div class="block clocks">
+        <div class="block clocks" data-title="WORLD_CLOCK.EXE">
           <h2><span lang="en">Where &amp; when</span><span lang="zh-Hant">在哪、幾點</span></h2>
           <div class="clock-row"><span class="clock-city"><span lang="en">Los Angeles</span><span lang="zh-Hant">洛杉磯</span></span><span class="clock-time" id="clock-la">--:--</span></div>
           <div class="clock-row"><span class="clock-city"><span lang="en">Taipei</span><span lang="zh-Hant">台北</span></span><span class="clock-time" id="clock-tpe">--:--</span></div>
@@ -426,7 +436,7 @@
 
   <!-- ===================== PROJECT DIALOGS ===================== -->
 
-  <dialog class="modal" id="d-phygtl" data-slug="phygtl" data-section="experience" aria-labelledby="t-phygtl">
+  <dialog class="modal" id="d-phygtl" data-title="C:\WORK\PHYGTL.EXE" data-slug="phygtl" data-section="experience" aria-labelledby="t-phygtl">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img portrait" src="assets/img/lana.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
     <h2 id="t-phygtl">🧪 Phygtl · <span lang="en">Agentic Systems Engineering Intern</span><span lang="zh-Hant">Agentic Systems Engineering 實習生</span></h2>
@@ -460,7 +470,7 @@
     <p class="permalink"><a href="experience/phygtl/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-civilizism" data-slug="civilizism" data-section="projects" aria-labelledby="t-civilizism">
+  <dialog class="modal" id="d-civilizism" data-title="C:\WORK\CIVILIZISM.EXE" data-slug="civilizism" data-section="projects" aria-labelledby="t-civilizism">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
     <h2 id="t-civilizism">🏠 Civilizism</h2>
@@ -489,7 +499,7 @@
     <p class="permalink"><a href="projects/civilizism/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-stratego" data-slug="stratego-chess" data-section="projects" aria-labelledby="t-stratego">
+  <dialog class="modal" id="d-stratego" data-title="C:\WORK\STRATEGO_CHESS.EXE" data-slug="stratego-chess" data-section="projects" aria-labelledby="t-stratego">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/stratego.png" alt="Stratego-Chess game screenshot" loading="lazy">
     <h2 id="t-stratego"><span lang="en">♟️ Stratego-Chess</span><span lang="zh-Hant">♟️ 行軍西洋棋 Stratego-Chess</span></h2>
@@ -519,7 +529,7 @@
     <p class="permalink"><a href="projects/stratego-chess/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-whenwhere" data-slug="whenwhere" data-section="projects" aria-labelledby="t-whenwhere">
+  <dialog class="modal" id="d-whenwhere" data-title="C:\WORK\WHENWHERE.EXE" data-slug="whenwhere" data-section="projects" aria-labelledby="t-whenwhere">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/whenwhere.png" alt="WhenWhere world map" loading="lazy">
     <h2 id="t-whenwhere">⏰ WhenWhere</h2>
@@ -547,7 +557,7 @@
     <p class="permalink"><a href="projects/whenwhere/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-statuscard" data-slug="claude-code-status-card" data-section="projects" aria-labelledby="t-statuscard">
+  <dialog class="modal" id="d-statuscard" data-title="C:\WORK\CLAUDE_CODE_STATUS_CARD.EXE" data-slug="claude-code-status-card" data-section="projects" aria-labelledby="t-statuscard">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/statuscard.png" alt="Claude Code Status Card" loading="lazy">
     <h2 id="t-statuscard">🔔 Claude Code Status Card</h2>
@@ -575,7 +585,7 @@
     <p class="permalink"><a href="projects/claude-code-status-card/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-steme" data-slug="steme-bloc" data-section="projects" aria-labelledby="t-steme">
+  <dialog class="modal" id="d-steme" data-title="C:\WORK\STEME_BLOC.EXE" data-slug="steme-bloc" data-section="projects" aria-labelledby="t-steme">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/steme_bloc.png" alt="STEME and BLOC benchmark results" loading="lazy">
     <h2 id="t-steme">🧠 STEME &amp; BLOC</h2>
@@ -599,7 +609,7 @@
     <p class="permalink"><a href="projects/steme-bloc/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-coldemail" data-slug="cold-email-automator" data-section="projects" aria-labelledby="t-coldemail">
+  <dialog class="modal" id="d-coldemail" data-title="C:\WORK\COLD_EMAIL_AUTOMATOR.EXE" data-slug="cold-email-automator" data-section="projects" aria-labelledby="t-coldemail">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/coldemail.png" alt="Cold Email Automator pipeline diagram" loading="lazy">
     <h2 id="t-coldemail">📬 Cold Email Automator</h2>
@@ -625,7 +635,7 @@
     <p class="permalink"><a href="projects/cold-email-automator/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-messages" data-slug="past-messages-analyzer" data-section="projects" aria-labelledby="t-messages">
+  <dialog class="modal" id="d-messages" data-title="C:\WORK\PAST_MESSAGES_ANALYZER.EXE" data-slug="past-messages-analyzer" data-section="projects" aria-labelledby="t-messages">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/messages.png" alt="Past Messages Analyzer pipeline diagram" loading="lazy">
     <h2 id="t-messages">💬 Past Messages Analyzer</h2>
@@ -649,7 +659,7 @@
     <p class="permalink"><a href="projects/past-messages-analyzer/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-pkb" data-slug="personal-knowledge-base" data-section="projects" aria-labelledby="t-pkb">
+  <dialog class="modal" id="d-pkb" data-title="C:\WORK\PERSONAL_KNOWLEDGE_BASE.EXE" data-slug="personal-knowledge-base" data-section="projects" aria-labelledby="t-pkb">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <img class="modal-img" src="assets/img/pkb.png" alt="Personal Knowledge Base chat screen" loading="lazy">
     <h2 id="t-pkb">📚 Personal Knowledge Base</h2>
@@ -673,7 +683,7 @@
     <p class="permalink"><a href="projects/personal-knowledge-base/"><span lang="en">Open as its own page ↗</span><span lang="zh-Hant">以獨立頁面開啟 ↗</span></a></p>
   </dialog>
 
-  <dialog class="modal" id="d-resume" aria-labelledby="t-resume">
+  <dialog class="modal" id="d-resume" data-title="RESUME_PICKER.EXE" aria-labelledby="t-resume">
     <form method="dialog"><button class="close" aria-label="Close">×</button></form>
     <h2 id="t-resume"><span lang="en">Pick a résumé</span><span lang="zh-Hant">選一份履歷</span></h2>
     <p class="meta" lang="en">Same person, three framings, plus the long one. Click a tile to download.</p>
@@ -706,6 +716,6 @@
     </div>
   </dialog>
 
-  <script src="script.js?v=af002183"></script>
+  <script src="script.js?v=e7bb32ad"></script>
 </body>
 </html>

@@ -28,6 +28,8 @@ A social simulation where nobody scripts the outcome. The model proposes actions
 
 Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.
 
+A toy: it only counts. The real run is 192 conversations a night.
+
 ## Projects at a glance
 
 The short version, for people skimming. Click any row for the whole story.
