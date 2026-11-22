@@ -192,7 +192,7 @@ Lana is Phygtl's AI concierge: a sheep in a bellhop uniform who helps people fin
 
 ### My solution
 
-My first task was going from manual QA to a simulation environment. I used AI to build six simulated users with deliberately different personas, and they hold 192 conversations with Lana every night (6 personas × 32 seeds across 7 buckets, each seed testing one specific behavior), like a performance review she can't skip (except it happens every night). Then five evaluation pipelines read those conversations: core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged.
+My first task was going from manual QA to a simulation environment. I used AI to build six simulated users with deliberately different personas, and they hold 192 conversations with Lana every night (6 personas × 32 seeds across 7 buckets, each seed testing one specific behavior), like a performance review she can't skip. Then five evaluation pipelines read those conversations: core conversational evaluation, claim extraction and personal-data checks, a matcher and unlock flow, conversational policy and safety, and automated triage of whatever the others flagged.
 
 On top of that came regression checks and CI/CD that answer the real question: are we making Lana better or worse? A pull-request gate blocks the push on any regression above 5% on an axis, or any new hard failure. The gate doesn't accept "probably fine", only "confirmed fine"... or at least "confirmed fine, as far as the tests can tell".
 
