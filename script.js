@@ -105,7 +105,7 @@
         bub = document.getElementById("bubble"), scrub = document.getElementById("scrub"), pbtn = document.getElementById("playbtn"),
         cur = 0, timer = null;
     function go(i) {
-      cur = Math.max(0, Math.min(caps.length - 1, i));
+      cur = (i + caps.length) % caps.length; // wraps: the last stage leads back to the first
       caps.forEach(function (li, k) { li.classList.toggle("on", k === cur); });
       var li = caps[cur];
       clk.textContent = li.getAttribute("data-t");
@@ -115,9 +115,8 @@
     }
     function stop() { if (timer) { clearInterval(timer); timer = null; } pl.classList.remove("playing"); pbtn.textContent = "▶"; pbtn.setAttribute("aria-label", "Play"); }
     function play() {
-      if (cur >= caps.length - 1) go(0);
       pl.classList.add("playing"); pbtn.textContent = "❚❚"; pbtn.setAttribute("aria-label", "Pause");
-      timer = setInterval(function () { if (cur >= caps.length - 1) stop(); else go(cur + 1); }, 1700);
+      timer = setInterval(function () { go(cur + 1); }, 1700); // loops until paused
     }
     pl.querySelectorAll(".tbtn").forEach(function (b) {
       b.addEventListener("click", function () {

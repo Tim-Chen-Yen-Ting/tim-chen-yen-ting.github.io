@@ -158,7 +158,6 @@ head = f"""<!DOCTYPE html>
         <h1>{T("I build AI systems, then try very hard to prove they work.", "我打造 AI 系統，然後拚命證明它們真的有用。")}</h1>
         {P("Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.",
            "主要是多代理人模擬、LLM 評測，還有一款規則不會洩漏你秘密的西洋棋變體。", "tagline")}
-        <p class="hero-meta">{T("UCLA · Statistics &amp; Data Science · March 2027", "UCLA · 統計與資料科學 · 2027 年 3 月")}</p>
         <p class="links">
           {btn("#projects", "See what I've built", "看看我做了什麼")}
           <button type="button" class="button ghost" data-open="d-resume">{T("Résumé", "履歷")}</button>

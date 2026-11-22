@@ -8,8 +8,6 @@ This is the full text of https://tim-chen-yen-ting.github.io/ in plain markdown 
 
 Mostly agent simulations, LLM evals, and a chess variant whose rules can't leak your secrets.
 
-UCLA · Statistics & Data Science · March 2027
-
 [GitHub](https://github.com/Tim-Chen-Yen-Ting) [LinkedIn](https://www.linkedin.com/in/tim-chen-yen-ting)
 
 ## Selected work
