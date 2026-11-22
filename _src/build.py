@@ -215,7 +215,7 @@ about = f"""
             <div class="player" id="stageplay">
               <div class="rooms" aria-hidden="true">
                 <span>LIVING ROOM</span><span>KITCHEN</span><span>BEDROOM</span>
-                <div class="agent" id="agent"><i class="bubble" id="bubble">⏰</i><b>DA</b></div>
+                <div class="agent" id="agent"><i class="bubble" id="bubble">⏰</i><b>TC</b></div>
               </div>
               <div class="readout"><span class="lcd" id="clk">06:30</span><ol class="caps" id="caps" role="status" aria-live="polite">{_stage_caps}</ol></div>
               <div class="transport" role="group" aria-label="Replay controls">
