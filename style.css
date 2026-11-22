@@ -322,7 +322,9 @@ dialog.modal {
   width: min(92vw, 780px); max-height: 90vh; overflow-y: auto; padding-top: 0; padding-bottom: 2rem;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
 }
-dialog.modal { scrollbar-color: #5b6f93 #c1cbdb; }
+/* The window rule above sets position: relative; a modal must stay fixed to the viewport. */
+dialog.modal { position: fixed; inset: 0; margin: auto; overscroll-behavior: contain; scrollbar-color: #5b6f93 #c1cbdb; }
+body:has(dialog.modal[open]) { overflow: hidden; }
 dialog.modal::backdrop { background: rgba(5, 16, 45, 0.72); }
 dialog.modal::before { position: sticky; top: 0; z-index: 2; margin-bottom: 0; }
 dialog.modal form { position: sticky; top: 1.9rem; height: 0; margin: 0 -0.7rem 0 0; z-index: 3; text-align: right; }

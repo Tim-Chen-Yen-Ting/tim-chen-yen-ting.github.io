@@ -17,6 +17,8 @@
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
     window.scrollTo(0, 0);
+    // Back/forward must not leave a stale popup open: close any popup that does not match the destination
+    document.querySelectorAll("dialog.modal[open]").forEach(function (d) { if (!slug || d.dataset.slug !== slug) d.close(); });
     // Deep link: #projects/civilizism or #experience/phygtl opens that popup
     if (slug) {
       var dlg = document.querySelector('dialog.modal[data-slug="' + slug + '"]');
@@ -72,6 +74,7 @@
     var root = document.documentElement;
     root.setAttribute("data-lang", l);
     root.setAttribute("lang", l);
+    document.querySelectorAll("[data-set-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === l ? "true" : "false"); });
     document.title = document.body.getAttribute(l === "en" ? "data-title-en" : "data-title-zh") || TITLES[l];
     try { localStorage.setItem("lang", l); } catch (e) {}
   }

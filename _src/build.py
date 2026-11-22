@@ -207,7 +207,7 @@ about = f"""
         <h2>{T("Selected work", "精選作品")}</h2>
         {P("Two things worth a look if you only have a minute.", "如果你只有一分鐘，看這兩樣就夠了。", "meta")}
         <div class="selected-grid">
-          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-civilizism" data-title="{_bar('civilizism')}">
+          <div class="selected-card clickable" data-open="d-civilizism" data-title="{_bar('civilizism')}">
             <img class="thumb-wide" src="assets/img/civilizism.png" alt="Civilizism replay viewer" loading="lazy">
             <h3>🏠 Civilizism</h3>
             {hook("What if you simulated one person really well, then simulated a lot of them?", "如果你把一個人模擬得夠好，再模擬很多個，會怎樣？")}
@@ -230,7 +230,7 @@ about = f"""
             {P("A toy: seven stages of one made-up day. The real replay viewer is one click away.", "只是個玩具：一個虛構日子的七個階段。真正的回放檢視器就在旁邊一鍵之遙。", "note")}
             <p class="links">{btn("https://civilizism.vercel.app/viewer", "Watch a replay", "觀看回放")} <button type="button" class="button ghost" data-open="d-civilizism">{T("Full story", "完整故事")}</button></p>
           </div>
-          <div class="selected-card clickable" role="button" tabindex="0" data-open="d-phygtl" data-title="{_bar('phygtl')}">
+          <div class="selected-card clickable" data-open="d-phygtl" data-title="{_bar('phygtl')}">
             <img class="thumb-wide" src="assets/img/lana_wide.png" alt="Lana, Phygtl's AI concierge" loading="lazy">
             <h3>🧪 {T("Phygtl · Agentic Systems Engineering Intern", "Phygtl · Agentic Systems Engineering 實習生")}</h3>
             {hook("Nobody had built evaluation for Lana, so I did. The entire eval codebase is mine.", "沒有人替 Lana 建過評測，所以我來建。整個 eval 程式碼庫都是我的。")}
